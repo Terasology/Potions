@@ -1,0 +1,9 @@
+{
+    "id" : "Potions",
+    "version" : "0.1.0",
+    "author" : "bi0hax",
+    "displayName" : "Potion Pack",
+    "description" : "A small collection of potions",
+    "dependencies" : [],
+    "isServerSideOnly" : false
+}
