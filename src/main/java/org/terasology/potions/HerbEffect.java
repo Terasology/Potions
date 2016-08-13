@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Benjamin Glatzel <benjamin.glatzel@me.com>
+ * Copyright 2016 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,10 @@
  */
 package org.terasology.potions;
 
-import org.terasology.entitySystem.AbstractEvent;
-import org.terasology.entitySystem.EntityRef;
+import org.terasology.entitySystem.entity.EntityRef;
 
-/**
- * Intermediary Event for Activating the effect.
- * DrinkPotion ---> THIS -----> STATUS AFFECTOR
- */
-public class BoostSpeedEvent extends AbstractEvent {
-    private EntityRef instigator;
+public interface HerbEffect {
+    void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration);
 
-    public BoostSpeedEvent() {
-        this.instigator = EntityRef.NULL;
-    }
-
-    public BoostSpeedEvent(EntityRef instigator) {
-        this.instigator = instigator;
-    }
-
-    public EntityRef getInstigator() {
-        return instigator;
-    }
+    void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration);
 }
-

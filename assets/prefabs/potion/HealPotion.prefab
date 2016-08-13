@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:HealPotion1Bottle",
+        "stackId": "Potions:healPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Heal Potion I",
+        "description": "Heals 20 HP."
+    },
+    "Potion": {
+        "effect": "HEAL",
+        "magnitude": 0.2,
+        "duration": 1,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HEAL",
+                "magnitude": 0.2,
+                "duration": 1
+            }
+        ]
+    }
+}

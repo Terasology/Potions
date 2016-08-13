@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:CurePoisonPotionBottle",
+        "stackId": "Potions:curePoisonPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Cure Poison Potion",
+        "description": "Cures poison status when consumed."
+    },
+    "Potion": {
+        "effect": "CURE_POISON",
+        "magnitude": 3,
+        "duration": 10000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "CURE_POISON",
+                "magnitude": 1,
+                "duration": 100
+            }
+        ]
+    }
+}

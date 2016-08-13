@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:RegenPotion1Bottle",
+        "stackId": "Potions:regenPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Regen Potion I",
+        "description": "Regenerates 30 HP over 10 seconds."
+    },
+    "Potion": {
+        "effect": "REGEN",
+        "magnitude": 3,
+        "duration": 10000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "REGEN",
+                "magnitude": 3,
+                "duration": 10100
+            }
+        ]
+    }
+}

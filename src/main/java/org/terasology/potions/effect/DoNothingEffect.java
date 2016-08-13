@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Benjamin Glatzel <benjamin.glatzel@me.com>
+ * Copyright 2016 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.potions;
+package org.terasology.potions.effect;
 
-import org.terasology.entitySystem.AbstractEvent;
-import org.terasology.entitySystem.EntityRef;
+import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.potions.HerbEffect;
 
-public class PoisonedEvent extends AbstractEvent {
-    private EntityRef instigator;
-
-    public PoisonedEvent() {
-        this.instigator = EntityRef.NULL;
+public class DoNothingEffect implements HerbEffect {
+    @Override
+    public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
     }
 
-    public PoisonedEvent(EntityRef instigator) {
-        this.instigator = instigator;
-    }
-
-    public EntityRef getInstigator() {
-        return instigator;
+    @Override
+    public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
     }
 }
-

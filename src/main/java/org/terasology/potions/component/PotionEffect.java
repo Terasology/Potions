@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Benjamin Glatzel <benjamin.glatzel@me.com>
+ * Copyright 2016 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.potions;
+package org.terasology.potions.component;
 
-import org.terasology.entitySystem.AbstractEvent;
-import org.terasology.entitySystem.EntityRef;
+import org.terasology.reflection.MappedContainer;
 
-
-public class BoostHpEvent extends AbstractEvent {
-    private EntityRef instigator;
-
-    public BoostHpEvent() {
-        this.instigator = EntityRef.NULL;
-    }
-
-    public BoostHpEvent(EntityRef instigator) {
-        this.instigator = instigator;
-    }
-
-    public EntityRef getInstigator() {
-        return instigator;
-    }
+@MappedContainer
+public class PotionEffect {
+    public String effect;
+    public float magnitude;
+    public long duration;
 }

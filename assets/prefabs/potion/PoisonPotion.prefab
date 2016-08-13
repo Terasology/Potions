@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:PoisonPotion1Bottle",
+        "stackId": "Potions:poisonPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Poison Potion I",
+        "description": "Poisons user, dealing 3 damage per second for 15 seconds."
+    },
+    "Potion": {
+        "effect": "POISON",
+        "magnitude": 3,
+        "duration": 15000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "POISON",
+                "magnitude": 3,
+                "duration": 15100
+            }
+        ]
+    }
+}

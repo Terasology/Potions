@@ -1,9 +1,22 @@
 {
     "id" : "Potions",
-    "version" : "0.1.0",
-    "author" : "bi0hax",
-    "displayName" : "Potion Pack",
-    "description" : "A small collection of potions",
-    "dependencies" : [],
-    "isServerSideOnly" : false
+    "version" : "0.2.0-SNAPSHOT",
+    "author" : "bi0hax, XTariq",
+    "displayName" : "Potions",
+    "description" : "A small collection of various potions",
+    "dependencies" : [
+            {
+                "id" : "AlterationEffects",
+                "minVersion" : "0.2.0"
+            },
+            {
+                "id" : "Core",
+                "minVersion" : "1.0.0"
+            },
+            {
+                "id" : "Genome",
+                "minVersion" : "0.1.0"
+            }
+    ],
+    "serverSideOnly" : false
 }

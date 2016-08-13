@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Benjamin Glatzel <benjamin.glatzel@me.com>
+ * Copyright 2014 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.potions;
 
+package org.terasology.potions.component;
 
+import com.google.common.collect.Lists;
 import org.terasology.entitySystem.Component;
+import org.terasology.network.Replicate;
 
-public class PoisonedComponent implements Component {
-    public float poisonDuration = 5;
-    public float poisonRate = 1;
+import java.util.List;
+
+public final class PotionComponent implements Component {
+    public String effect;
+    public float magnitude;
+    public long duration;
+    public boolean hasGenome = true; // If a potion has been predefined by a developer, set this to false.
+
+    // List of PotionEffects.
+    @Replicate
+    public List<PotionEffect> effects = Lists.newArrayList();
 }

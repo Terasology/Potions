@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:CureAllPotionBottle",
+        "stackId": "Potions:cureAllPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Cure All Potion",
+        "description": "Cures all status ailments when consumed."
+    },
+    "Potion": {
+        "effect": "CURE_ALL_AILMENTS",
+        "magnitude": 3,
+        "duration": 10000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "CURE_ALL_AILMENTS",
+                "magnitude": 1,
+                "duration": 100
+            }
+        ]
+    }
+}

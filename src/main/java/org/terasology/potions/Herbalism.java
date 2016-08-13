@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Benjamin Glatzel <benjamin.glatzel@me.com>
+ * Copyright 2016 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,14 @@
  */
 package org.terasology.potions;
 
-import org.terasology.entitySystem.Component;
+public final class Herbalism {
+    public static final String EFFECT_PROPERTY = "effect";
+    public static final String DURATION_PROPERTY = "duration";
+    public static final String MAGNITUDE_PROPERTY = "magnitude";
+    public static final String NAME_PROPERTY = "name";
+    public static final String PLANTED_BLOCK_PROPERTY = "plantedBlock";
+    public static final String ICON_PROPERTY = "icon";
 
-/**
- * Details on the effects properties:
- */
-public class SpeedBoostComponent implements Component {
-    public float speedBoostDuration = 10;
+    private Herbalism() {
+    }
 }

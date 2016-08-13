@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:DoubleJumpPotionBottle",
+        "stackId": "Potions:doubleJumpPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Double Jump Potion I",
+        "description": "Allows the user to double jump for 15 seconds."
+    },
+    "Potion": {
+        "effect": "MULTI_JUMP",
+        "magnitude": 2,
+        "duration": 15000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "MULTI_JUMP",
+                "magnitude": 2,
+                "duration": 15100
+            }
+        ]
+    }
+}

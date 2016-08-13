@@ -1,0 +1,35 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:AllSpeedPotion1Bottle",
+        "stackId": "Potions:allSpeedPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "All Speed Potion I",
+        "description": "Combines the effects of all the tier 1 speed potions."
+    },
+    "Potion": {
+        "effect": "ALL",
+        "magnitude": 2,
+        "duration": 10000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 2,
+                "duration": 10100
+            },
+            {
+                "effect": "SWIM",
+                "magnitude": 2,
+                "duration": 10100
+            },
+            {
+                "effect": "JUMP",
+                "magnitude": 2,
+                "duration": 10100
+            }
+        ]
+    }
+}

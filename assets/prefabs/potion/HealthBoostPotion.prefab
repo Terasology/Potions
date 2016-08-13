@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:HealthBoostPotion1Bottle",
+        "stackId": "Potions:healthBoostPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Potion of Minor Health Boost",
+        "description": "Increases the user's base max health by 10% for 30 seconds."
+    },
+    "Potion": {
+        "effect": "TEMP_MAX_HEALTH_BOOST",
+        "magnitude": 10,
+        "duration": 30010,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "TEMP_MAX_HEALTH_BOOST",
+                "magnitude": 10,
+                "duration": 30010
+            }
+        ]
+    }
+}
