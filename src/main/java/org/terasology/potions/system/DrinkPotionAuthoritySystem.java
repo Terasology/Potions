@@ -32,8 +32,6 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.genome.component.GenomeComponent;
-import org.terasology.genome.system.GenomeManager;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.Herbalism;
 import org.terasology.potions.PotionCommonEffects;
@@ -54,24 +52,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     private AudioManager audioManager;
 
     @In
-    private GenomeManager genomeManager;
-
-    @In
     private Context context;
-
-    @ReceiveEvent
-    public void potionConsumed(ActivateEvent event, EntityRef item, PotionComponent potion, GenomeComponent genome) {
-
-        // TODO: Stopgap fix. If this potion is not supposed to have a dynamically-set Genome, return.
-        if (!potion.hasGenome) {
-            return;
-        }
-
-        final HerbEffect effect = genomeManager.getGenomeProperty(item, Herbalism.EFFECT_PROPERTY, HerbEffect.class);
-        final float magnitude = genomeManager.getGenomeProperty(item, Herbalism.MAGNITUDE_PROPERTY, Float.class);
-        final long duration = genomeManager.getGenomeProperty(item, Herbalism.DURATION_PROPERTY, Long.class);
-        effect.applyEffect(item, event.getInstigator(), magnitude, duration);
-    }
 
     private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v) {
         checkDrink(instigator, item, p, h, v, "");
@@ -99,6 +80,11 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         PotionComponent p = event.getPotionComponent();
         HerbEffect e = null;
         String effectID = "";
+
+        // If this potion is supposed to have a dynamically-set Genome, return.
+        if (p.hasGenome) {
+            return;
+        }
 
         EntityRef item = event.getItem();
 
@@ -146,6 +132,13 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     DamageOverTimeAlterationEffect poisonEffect = new DamageOverTimeAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(poisonEffect, "PoisonPotion", 1f, 1f);
                     effectID = "PoisonPotion";
+                    break;
+                case PotionCommonEffects.RESIST_POISON:
+                    // TODO: Add effect here, and support over on AlterationEffects.
+                    //CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
+                    //e = new AlterationEffectWrapperHerbEffect(cureEffect, 1f, 1f);
+                    effectID = "PoisonPotion";
+                    e = new DoNothingEffect();
                     break;
                 case PotionCommonEffects.CURE_POISON:
                     CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);

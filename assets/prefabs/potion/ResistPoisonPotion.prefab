@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:CurePoisonPotionBottle",
+        "stackId": "Potions:resistPoisonPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Resist Poison Potion",
+        "description": "Reduces or nullifies the effects of poison statuses when consumed for 15 seconds."
+    },
+    "Potion": {
+        "effect": "RESIST_POISON",
+        "magnitude": 3,
+        "duration": 10000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "RESIST_POISON",
+                "magnitude": 1,
+                "duration": 15500
+            }
+        ]
+    }
+}
