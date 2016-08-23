@@ -1,0 +1,22 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:CurePoisonPotionBottle",
+        "stackId": "Potions:resistPhysicalPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Resist Physical Potion",
+        "description": "Temporarily increases physical defense by 5 for 20 seconds."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "RESIST_PHYSICAL",
+                "magnitude": 5,
+                "duration": 20250
+            }
+        ]
+    }
+}

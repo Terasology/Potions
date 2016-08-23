@@ -20,6 +20,7 @@ import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlte
 import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
+import org.terasology.alterationEffects.resist.ResistDamageAlterationEffect;
 import org.terasology.alterationEffects.speed.ItemUseSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
@@ -108,6 +109,11 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     RegenerationAlterationEffect effect = new RegenerationAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
                     break;
+                case PotionCommonEffects.RESIST_PHYSICAL:
+                    ResistDamageAlterationEffect resistDamageEffect = new ResistDamageAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(resistDamageEffect, 1f, 1f);
+                    effectID = "physicalDamage";
+                    break;
                 case PotionCommonEffects.WALK_SPEED:
                     WalkSpeedAlterationEffect wsEffect = new WalkSpeedAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(wsEffect, 1f, 1f);
@@ -134,11 +140,9 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     effectID = "PoisonPotion";
                     break;
                 case PotionCommonEffects.RESIST_POISON:
-                    // TODO: Add effect here, and support over on AlterationEffects.
-                    //CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
-                    //e = new AlterationEffectWrapperHerbEffect(cureEffect, 1f, 1f);
-                    effectID = "PoisonPotion";
-                    e = new DoNothingEffect();
+                    ResistDamageAlterationEffect resistDamageEffect2 = new ResistDamageAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(resistDamageEffect2, 1f, 1f);
+                    effectID = "poisonDamage";
                     break;
                 case PotionCommonEffects.CURE_POISON:
                     CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);

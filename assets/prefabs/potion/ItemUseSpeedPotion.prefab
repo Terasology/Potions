@@ -7,18 +7,18 @@
     },
     "DisplayName": {
         "name": "Item Use Speed Potion I",
-        "description": "Doubles the user's item use speed for 10 seconds."
+        "description": "Increases the user's item use speed by 50% for 15 seconds."
     },
     "Potion": {
         "effect": "ITEM_HSE_SPEED",
         "magnitude": 2,
-        "duration": 10100,
+        "duration": 15100,
         "hasGenome": false,
         "effects": [
             {
                 "effect": "ITEM_USE_SPEED",
-                "magnitude": 0.5,
-                "duration": 10100
+                "magnitude": 0.75,
+                "duration": 15100
             }
         ]
     }

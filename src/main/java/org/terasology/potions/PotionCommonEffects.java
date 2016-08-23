@@ -18,6 +18,8 @@ package org.terasology.potions;
 public final class PotionCommonEffects {
     public static final String DO_NOTHING = "NOTHING";
 
+    public static final String RESIST_PHYSICAL = "RESIST_PHYSICAL";
+
     public static final String HEAL = "HEAL";
     public static final String REGEN = "REGEN";
     public static final String TEMP_MAX_HEALTH_BOOST = "TEMP_MAX_HEALTH_BOOST";
