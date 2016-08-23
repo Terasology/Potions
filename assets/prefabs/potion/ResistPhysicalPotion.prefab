@@ -7,14 +7,14 @@
     },
     "DisplayName": {
         "name": "Resist Physical Potion",
-        "description": "Temporarily increases physical defense by 5 for 20 seconds."
+        "description": "Temporarily increases physical defense by 15 for 20 seconds."
     },
     "Potion": {
         "hasGenome": false,
         "effects": [
             {
                 "effect": "RESIST_PHYSICAL",
-                "magnitude": 5,
+                "magnitude": 15,
                 "duration": 20250
             }
         ]

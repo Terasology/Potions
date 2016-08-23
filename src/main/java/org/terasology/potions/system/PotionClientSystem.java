@@ -27,6 +27,14 @@ import org.terasology.rendering.nui.widgets.TooltipLine;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class PotionClientSystem extends BaseComponentSystem {
+    /**
+     * Display the item tooltip for every potion.
+     *
+     * @param event             The event which contains the current list of tooltip lines.
+     * @param potion            Reference to the potion entity being examined.
+     * @param potionItem        A delimiter parameter used for ensuring that the examined item has a PotionComponent.
+     *
+     */
     @ReceiveEvent
     public void setItemTooltip(GetItemTooltip event, EntityRef potion, PotionComponent potionItem) {
         DisplayNameComponent d = potion.getComponent(DisplayNameComponent.class);
