@@ -21,5 +21,11 @@
                 "duration": 15100
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Poisons user, dealing 3 damage per second for 15 seconds."
+        ]
     }
 }

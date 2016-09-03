@@ -31,5 +31,11 @@
                 "duration": 10100
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Combines the effects of all the tier 1 speed potions."
+        ]
     }
 }

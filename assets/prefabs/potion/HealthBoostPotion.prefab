@@ -21,5 +21,11 @@
                 "duration": 30010
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Increases the user's base max health by 50% for 30 seconds."
+        ]
     }
 }

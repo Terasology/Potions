@@ -18,5 +18,11 @@
                 "duration": 20250
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Temporarily increases user's physical defense by 15 for 20 seconds."
+        ]
     }
 }

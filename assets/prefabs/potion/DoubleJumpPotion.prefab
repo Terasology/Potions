@@ -21,5 +21,11 @@
                 "duration": 15100
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Allows the user to double jump for 15 seconds."
+        ]
     }
 }

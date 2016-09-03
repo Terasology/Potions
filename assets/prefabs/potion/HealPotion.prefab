@@ -21,5 +21,11 @@
                 "duration": 1
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Restores 20 HP to the user."
+        ]
     }
 }

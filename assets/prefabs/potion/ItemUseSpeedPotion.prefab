@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "Item Use Speed Potion I",
-        "description": "Increases the user's item use speed by 50% for 15 seconds."
+        "description": "Increases the user's item use speed by 25% for 15 seconds."
     },
     "Potion": {
         "effect": "ITEM_HSE_SPEED",
@@ -20,6 +20,12 @@
                 "magnitude": 0.75,
                 "duration": 15100
             }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Increases the user's item use speed by 25% for 15 seconds."
         ]
     }
 }

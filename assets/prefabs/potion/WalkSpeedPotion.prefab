@@ -21,5 +21,11 @@
                 "duration": 10100
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Doubles the user's walk speed for 10 seconds."
+        ]
     }
 }

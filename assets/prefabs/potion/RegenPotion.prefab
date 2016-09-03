@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "Regen Potion I",
-        "description": "Regenerates 30 HP over 10 seconds."
+        "description": "Regenerates 3 HP per second for 10 seconds."
     },
     "Potion": {
         "effect": "REGEN",
@@ -20,6 +20,12 @@
                 "magnitude": 3,
                 "duration": 10100
             }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Regenerates 3 HP per second for 10 seconds."
         ]
     }
 }

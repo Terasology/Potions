@@ -21,5 +21,11 @@
                 "duration": 15500
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Reduces the effects of poison statuses by 2 when consumed for 15 seconds."
+        ]
     }
 }
