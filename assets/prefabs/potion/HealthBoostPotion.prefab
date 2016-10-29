@@ -10,9 +10,6 @@
         "description": "Increases the user's base max health by 50% for 30 seconds."
     },
     "Potion": {
-        "effect": "TEMP_MAX_HEALTH_BOOST",
-        "magnitude": 50,
-        "duration": 30010,
         "hasGenome": false,
         "effects": [
             {

@@ -23,9 +23,6 @@ import org.terasology.network.Replicate;
 import java.util.List;
 
 public final class PotionComponent implements Component {
-    public String effect;            // Name of the potion's effect.
-    public float magnitude;          // Magnitude of the potion's effect.
-    public long duration;            // Duration of the potion's effect.
     public boolean hasGenome = true; // If a potion has been predefined by a developer, set this to false.
 
     // List of PotionEffects that this potion has.

@@ -10,9 +10,6 @@
         "description": "Cures poison status when consumed."
     },
     "Potion": {
-        "effect": "CURE_POISON",
-        "magnitude": 3,
-        "duration": 10000,
         "hasGenome": false,
         "effects": [
             {

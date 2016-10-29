@@ -10,9 +10,6 @@
         "description": "Cures all status ailments when consumed."
     },
     "Potion": {
-        "effect": "CURE_ALL_AILMENTS",
-        "magnitude": 3,
-        "duration": 10000,
         "hasGenome": false,
         "effects": [
             {

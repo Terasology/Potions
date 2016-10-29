@@ -10,9 +10,6 @@
         "description": "Doubles the user's jump speed for 10 seconds."
     },
     "Potion": {
-        "effect": "JUMP",
-        "magnitude": 2,
-        "duration": 10000,
         "hasGenome": false,
         "effects": [
             {

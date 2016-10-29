@@ -10,9 +10,6 @@
         "description": "Poisons user, dealing 3 damage per second for 15 seconds."
     },
     "Potion": {
-        "effect": "POISON",
-        "magnitude": 3,
-        "duration": 15000,
         "hasGenome": false,
         "effects": [
             {
