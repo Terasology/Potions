@@ -28,11 +28,17 @@ import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
 import org.terasology.audio.AudioManager;
 import org.terasology.context.Context;
+import org.terasology.durability.components.DurabilityComponent;
+import org.terasology.durability.events.DurabilityReducedEvent;
+import org.terasology.durability.events.ReduceDurabilityEvent;
+import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.logic.inventory.InventoryComponent;
+import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
@@ -43,6 +49,7 @@ import org.terasology.potions.effect.HealEffect;
 import org.terasology.potions.events.BeforeDrinkPotionEvent;
 import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.logic.common.ActivateEvent;
+import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.utilities.Assets;
 
@@ -165,6 +172,35 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         }
 
         audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
+
+        // Get the EntityRef of the potion, and its durability component (if any).
+        EntityRef potion = event.getItem();
+        DurabilityComponent durability = potion.getComponent(DurabilityComponent.class);
+
+        // If the Durability component exists.
+        if (durability != null) {
+            // If the new durability value will be above 0 following the potion drink, or the bottle has inf durability, proceed.
+            // Otherwise, continue normally by destroying the old potion bottle.
+            int newDurabilityValue = durability.durability - p.costPerDrink;
+            if (newDurabilityValue > 0 || p.hasInfDurability) {
+                // Create an empty potion bottle using the bottlePrefab name of the item's potion component.
+                EntityRef emptyPotionBottle = CoreRegistry.get(EntityManager.class).create(Assets.getPrefab(p.bottlePrefab).get());
+
+                // Copy the old durability values from the filled potion bottle to the empty one.
+                emptyPotionBottle.getComponent(DurabilityComponent.class).durability = durability.durability;
+                emptyPotionBottle.getComponent(DurabilityComponent.class).maxDurability = durability.maxDurability;
+
+                // Send an event to reduce the durability of this potion bottle only if the bottle is ummune to potion
+                // degredation effects.
+                if (!p.hasInfDurability) {
+                    emptyPotionBottle.send(new ReduceDurabilityEvent(p.costPerDrink));
+                }
+
+                // Give the empty potion bottle to the player's inventory. This will act as a swap between the filled and
+                // empty ones.
+                CoreRegistry.get(InventoryManager.class).giveItem(event.getInstigator(), event.getInstigator(), emptyPotionBottle);
+            }
+        }
     }
 
     // Consume a potion without a Genome attached to it. Usually predefined ones.

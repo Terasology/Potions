@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:EmptyPotionBottle",
+        "stackId": "Potions:glassBottle",
+        "consumedOnUse": false
+    },
+    "DisplayName": {
+        "name": "Glass Bottle",
+        "description": "Used for storing fluids such as potions or water."
+    },
+    "Durability": {
+        "durability": 3,
+        "maxDurability": 3
+    },
+    "FluidContainerItem": {
+        "volume": 0.4,
+        "maxVolume": 0.4,
+        "fluidMinPerc": [0.1875, 0.15625],
+        "fluidSizePerc": [0.625, 0.4375],
+        "textureWithHole": "Potions:EmptyPotionBottle",
+        "emptyTexture": "Potions:EmptyPotionBottle"
+    },
+    "CraftingStationIngredient": {
+        "type": "Potions:glassBottle"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "Used for storing fluids such as potions or water."
+        ]
+    }
+}

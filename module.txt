@@ -14,8 +14,20 @@
                 "minVersion" : "1.0.0"
             },
             {
+                "id": "Durability",
+                "minVersion": "0.1.0"
+            },
+            {
+                "id" : "Fluid",
+                "minVersion" : "0.1.0"
+            },
+            {
                 "id": "InGameHelp",
                 "minVersion": "0.1.0"
+            },
+            {
+                "id" : "WorkstationCrafting",
+                "minVersion" : "0.1.0"
             }
     ],
     "serverSideOnly" : false

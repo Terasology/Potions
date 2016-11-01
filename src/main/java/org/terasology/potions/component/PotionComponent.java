@@ -23,6 +23,18 @@ import org.terasology.network.Replicate;
 import java.util.List;
 
 public final class PotionComponent implements Component {
+    // Can this potion bottle be reused indefinitely.
+    @Replicate
+    public boolean hasInfDurability = false;
+
+    // Name of the empty bottle prefab.
+    @Replicate
+    public String bottlePrefab = "Potions:GlassBottle";
+
+    // What's the durability cost per drink.
+    @Replicate
+    public int costPerDrink = 3;
+
     public boolean hasGenome = true; // If a potion has been predefined by a developer, set this to false.
 
     // List of PotionEffects that this potion has.
