@@ -9,6 +9,8 @@
         "name": "Glass Vial",
         "description": "Used for storing extracts or small amounts of chemicals."
     },
+    "EmptyPotion": {
+    },
     "Durability": {
         "durability": 1,
         "maxDurability": 1
@@ -20,9 +22,6 @@
         "fluidSizePerc": [0.625, 0.4375],
         "textureWithHole": "engine:items#redVial",
         "emptyTexture": "engine:items#emptyVial"
-    },
-    "CraftingStationIngredient": {
-        "type": "Potions:glassVial"
     },
     "ItemHelp": {
         "category": "Alchemy",

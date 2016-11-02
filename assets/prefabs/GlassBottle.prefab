@@ -9,6 +9,8 @@
         "name": "Glass Bottle",
         "description": "Used for storing fluids such as potions or water."
     },
+    "EmptyPotion": {
+    },
     "Durability": {
         "durability": 3,
         "maxDurability": 3
@@ -20,9 +22,6 @@
         "fluidSizePerc": [0.625, 0.4375],
         "textureWithHole": "Potions:EmptyPotionBottle",
         "emptyTexture": "Potions:EmptyPotionBottle"
-    },
-    "CraftingStationIngredient": {
-        "type": "Potions:glassBottle"
     },
     "ItemHelp": {
         "category": "Alchemy",

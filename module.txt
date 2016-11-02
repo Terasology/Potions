@@ -24,10 +24,6 @@
             {
                 "id": "InGameHelp",
                 "minVersion": "0.1.0"
-            },
-            {
-                "id" : "WorkstationCrafting",
-                "minVersion" : "0.1.0"
             }
     ],
     "serverSideOnly" : false
