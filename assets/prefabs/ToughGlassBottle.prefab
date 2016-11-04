@@ -1,0 +1,32 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:EmptyPotionBottle",
+        "stackId": "Potions:toughGlassBottle",
+        "consumedOnUse": false
+    },
+    "DisplayName": {
+        "name": "Toughened Glass Bottle",
+        "description": "Used for storing fluids such as potions or water. Stronger than the normal one."
+    },
+    "EmptyPotion": {
+    },
+    "Durability": {
+        "durability": 9,
+        "maxDurability": 9
+    },
+    "FluidContainerItem": {
+        "volume": 0.4,
+        "maxVolume": 0.4,
+        "fluidMinPerc": [0.1875, 0.15625],
+        "fluidSizePerc": [0.625, 0.4375],
+        "textureWithHole": "Potions:EmptyPotionBottle",
+        "emptyTexture": "Potions:EmptyPotionBottle"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "Used for storing fluids such as potions or water. Stronger than the normal one."
+        ]
+    }
+}
