@@ -53,20 +53,54 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.utilities.Assets;
 
+/**
+ * This authority system handles potion consumption by various entities.
+ */
 @RegisterSystem(value = RegisterMode.AUTHORITY)
 public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
+    /**
+     * Used for playing drinking sounds.
+     */
     @In
     private AudioManager audioManager;
 
+    /**
+     * This Context is necessary for all the AlterationEffects due to timing and use of the DelayManager.
+     */
     @In
     private Context context;
 
+    /**
+     * Check the potion drink event by sending out a consumable event so that other systems can either modify the
+     * effect parameters or cancel (consume) the event outright. Following that, if not consumed, apply the effect to
+     * the instigator.
+     * This calls the {@link #checkDrink(EntityRef, EntityRef, PotionComponent, HerbEffect, PotionEffect, String)}}
+     * method but leaves the id field empty.
+     *
+     * @param instigator    The entity who is trying to consume this potion.
+     * @param item          A reference to the potion item entity which has the potion effect.
+     * @param p             The PotionComponent of the potion item.
+     * @param h             The HerbEffect that will be used to apply the PotionEffect on the instigator.
+     * @param v             The PotionEffect that will be applied onto the instigator.
+     */
     private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v) {
         checkDrink(instigator, item, p, h, v, "");
     }
 
+    /**
+     * Check the potion drink event by sending out a consumable event so that other systems can either modify the
+     * effect parameters or cancel (consume) the event outright. Following that, if not consumed, apply the effect to
+     * the instigator.
+     *
+     * @param instigator    The entity who is trying to consume this potion.
+     * @param item          A reference to the potion item entity which has the potion effect.
+     * @param p             The PotionComponent of the potion item.
+     * @param h             The HerbEffect that will be used to apply the PotionEffect on the instigator.
+     * @param v             The PotionEffect that will be applied onto the instigator.
+     * @param id            The ID of this particular HerbEffect. Used to differentiate effects under the same family.
+     */
     private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v, String id) {
-        BeforeDrinkPotionEvent beforeDrink = instigator.send(new BeforeDrinkPotionEvent(p, h, v, instigator, item));
+        BeforeDrinkPotionEvent beforeDrink = instigator.send(new BeforeDrinkPotionEvent(v, instigator, item, p));
 
         if (!beforeDrink.isConsumed()) {
             float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
@@ -82,8 +116,17 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Event handler that handles consuming a potion without a genome component attached to it. This method will cycle
+     * through the potion's list of PotionEffects, apply them to the instigator entity, and then decrement the potion
+     * bottle's durability.
+     *
+     * @param event     The DrinkPotionEvent with information about the instigator and the potion.
+     * @param ref       Unused reference to entity.
+     */
     @ReceiveEvent
     public void onPotionWithoutGenomeConsumed(DrinkPotionEvent event, EntityRef ref) {
+        // Get the potion item's potion component.
         PotionComponent p = event.getPotionComponent();
         HerbEffect e = null;
         String effectID = "";
@@ -93,6 +136,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             return;
         }
 
+        // Get the potion item reference.
         EntityRef item = event.getItem();
 
         // If there are no effects, just play the drink sound and return.
@@ -103,6 +147,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
         // Iterate through all effects of this potion and apply them.
         for (PotionEffect pEffect : p.effects) {
+            // e will store a reference to the HerbEffect, and effectID will store the ID of the effect (if any).
             e = null;
             effectID = "";
 
@@ -168,9 +213,12 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     break;
             }
 
+            // Before actually consuming the potion and applying its effect, perform a final check and apply some
+            // potential modifications to the effect.
             checkDrink(event.getInstigator(), event.getItem(), p, e, pEffect, effectID);
         }
 
+        // Play the potion drink sound.
         audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
 
         // Get the EntityRef of the potion, and its durability component (if any).
@@ -190,7 +238,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 emptyPotionBottle.getComponent(DurabilityComponent.class).durability = durability.durability;
                 emptyPotionBottle.getComponent(DurabilityComponent.class).maxDurability = durability.maxDurability;
 
-                // Send an event to reduce the durability of this potion bottle only if the bottle is ummune to potion
+                // Send an event to reduce the durability of this potion bottle only if the bottle is unimmune to potion
                 // degredation effects.
                 if (!p.hasInfDurability) {
                     emptyPotionBottle.send(new ReduceDurabilityEvent(p.costPerDrink));
@@ -203,7 +251,13 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         }
     }
 
-    // Consume a potion without a Genome attached to it. Usually predefined ones.
+    /**
+     * Upon activating/using an item with a potion component, send a DrinkPotionEvent to begin drinking the potion.
+     *
+     * @param event     The ActiveEvent which was caught by this handler. The important part of this is the instigator.
+     * @param item      Reference to the potion item.
+     * @param potion    The potion component of the potion item. Used to filter out non-potion item uses.
+     */
     @ReceiveEvent
     public void potionWithoutGenomeConsumed(ActivateEvent event, EntityRef item, PotionComponent potion) {
         PotionComponent p = item.getComponent(PotionComponent.class);

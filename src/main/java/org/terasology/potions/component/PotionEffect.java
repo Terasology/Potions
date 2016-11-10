@@ -17,10 +17,15 @@ package org.terasology.potions.component;
 
 import org.terasology.reflection.MappedContainer;
 
-// This class or container contains details on a particular effect of a potion.
+/** This class or mapped container contains details on a particular effect of a potion. */
 @MappedContainer
 public class PotionEffect {
-    public String effect;       // Name of the potion's effect.
-    public float magnitude;     // Magnitude of the potion's effect.
-    public long duration;       // Duration of the potion's effect.
+    /** Name of the potion's effect. */
+    public String effect;
+
+    /** Magnitude of the potion's effect. */
+    public float magnitude;
+
+    /** Duration of the potion's effect. */
+    public long duration;
 }

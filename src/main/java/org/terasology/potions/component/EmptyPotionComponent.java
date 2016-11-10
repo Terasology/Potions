@@ -18,6 +18,8 @@ package org.terasology.potions.component;
 
 import org.terasology.entitySystem.Component;
 
-// This class is only used as an identifier.
+/**
+ * This component is only used as an identiifier to indentify if the entity is an empty potion container.
+ */
 public final class EmptyPotionComponent implements Component {
 }

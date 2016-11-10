@@ -25,6 +25,9 @@ import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 
+/**
+ * Client system that handles how tooltips are displayed for potions.
+ */
 @RegisterSystem(RegisterMode.CLIENT)
 public class PotionClientSystem extends BaseComponentSystem {
     /**
