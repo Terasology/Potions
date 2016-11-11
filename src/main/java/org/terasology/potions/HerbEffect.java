@@ -27,7 +27,7 @@ public interface HerbEffect {
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the herb effect is being applied on.
      * @param magnitude     The magnitude of the effect.
-     * @param duration      The duration of the effect.
+     * @param duration      The duration of the effect in milliseconds.
      */
     void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration);
 
@@ -41,7 +41,7 @@ public interface HerbEffect {
      * @param id            This particular HerbEffect's ID. Can be used to differentiate different effects under the
      *                      same family.
      * @param magnitude     The magnitude of the effect.
-     * @param duration      The duration of the effect.
+     * @param duration      The duration of the effect in milliseconds.
      */
     void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration);
 }

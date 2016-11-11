@@ -21,7 +21,8 @@ import org.terasology.entitySystem.event.Event;
 import org.terasology.potions.component.PotionComponent;
 
 /**
- * This event is sent to an entity to indicate that it'll be drinking a given potion.
+ * This event is sent to an entity to indicate that it'll be drinking a given potion. This will be treating the potion
+ * as one entity, all effects included. Consequently, it's intended to be sent once per potion consume action.
  */
 public class DrinkPotionEvent implements Event {
 

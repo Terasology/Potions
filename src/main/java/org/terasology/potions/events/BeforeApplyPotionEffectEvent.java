@@ -25,11 +25,12 @@ import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
 
 /**
- * This event is sent to an entity to allow modification and cancellation of potion drinks.
- * Note that one event will be sent per potion effect, so individual effects can be cancelled.
+ * This event is sent to an entity to allow modification and/or cancellation of this particular PotionEffect of a potion.
+ * The intended use-case is that one instance of this event will be sent per potion effect, so individual effects of a
+ * potion can be cancelled.
  */
 // TODO: Add extends AbstractValueModifiableEvent?
-public class BeforeDrinkPotionEvent implements ConsumableEvent {
+public class BeforeApplyPotionEffectEvent implements ConsumableEvent {
 
     /** A reference to the potion's potion component that's going to be consumed. */
     private PotionComponent potion;
@@ -65,7 +66,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
      *
      * @param potionEffect  The PotionEffect to be applied on the instigator.
      */
-    public BeforeDrinkPotionEvent(PotionEffect potionEffect) {
+    public BeforeApplyPotionEffectEvent(PotionEffect potionEffect) {
         pEffect = potionEffect;
         instigator = EntityRef.NULL;
         item = EntityRef.NULL;
@@ -78,7 +79,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
      * @param potionEffect      The PotionEffect to be applied on the instigator.
      * @param instigatorRef     The entity who started to drink this potion.
      */
-    public BeforeDrinkPotionEvent(PotionEffect potionEffect, EntityRef instigatorRef) {
+    public BeforeApplyPotionEffectEvent(PotionEffect potionEffect, EntityRef instigatorRef) {
         pEffect = potionEffect;
         instigator = instigatorRef;
         item = EntityRef.NULL;
@@ -93,7 +94,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
      * @param instigatorRef     The entity who started to drink this potion.
      * @param itemRef           A reference to the potion item entity which has the potion effect.
      */
-    public BeforeDrinkPotionEvent(PotionEffect potionEffect, EntityRef instigatorRef, EntityRef itemRef) {
+    public BeforeApplyPotionEffectEvent(PotionEffect potionEffect, EntityRef instigatorRef, EntityRef itemRef) {
         pEffect = potionEffect;
         instigator = instigatorRef;
         item = itemRef;
@@ -109,7 +110,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
      * @param itemRef           A reference to the potion item entity which has the potion effect.
      * @param p                 The PotionComponent of the potion item.The PotionComponent of the potion item.
      */
-    public BeforeDrinkPotionEvent(PotionEffect potionEffect, EntityRef instigatorRef, EntityRef itemRef, PotionComponent p) {
+    public BeforeApplyPotionEffectEvent(PotionEffect potionEffect, EntityRef instigatorRef, EntityRef itemRef, PotionComponent p) {
         pEffect = potionEffect;
         instigator = instigatorRef;
         item = itemRef;
@@ -295,9 +296,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
     }
 
     /**
-     * Informs whether or not this event has been consumed.
-     *
-     * @return True if the the event has been consumed, false otherwise.
+     * {@inheritDoc}
      */
     @Override
     public boolean isConsumed() {
@@ -305,8 +304,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
     }
 
     /**
-     * Marks this event as consumed.
-     * Makes subsequent {@link #isConsumed()} calls return true.
+     * {@inheritDoc}
      */
     @Override
     public void consume() {

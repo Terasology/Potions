@@ -21,38 +21,41 @@ import org.terasology.logic.health.DoHealEvent;
 import org.terasology.math.TeraMath;
 
 /**
- * This HerbEffect heals the target entity when applied.
+ * This HerbEffect heals the target entity instantly when applied.
  */
 public class HealEffect implements HerbEffect {
-    /** The maximum healing allowed. Used more as a a baseline measure to be later multiplied by the magnitude. */
-    private int maxHeal = 100;
+    /**
+     * The base amount of healing allowed. It's intended to be later multiplied by the magnitude to get the final
+     * healing amount.
+     */
+    private int baseHeal = 100;
 
     /**
-     * Apply the healing effect onto the entity. This will heal 100 (or maxHeal) * magnitude HP.
+     * Apply the healing effect onto the entity. This will heal 100 (or baseHeal) * magnitude HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the healing effect is being applied on.
-     * @param magnitude     The magnitude of the healing effect. It's multiplied by maxHeal to determine the final
+     * @param magnitude     The magnitude of the healing effect. It's multiplied by baseHeal to determine the final
      *                      healing quantity.
-     * @param duration      The duration of the healing effect. It's unused here as the heal is instant.
+     * @param duration      The duration of the healing effect in milliseconds. It's unused here as the heal is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
-        entity.send(new DoHealEvent(TeraMath.floorToInt(maxHeal * magnitude), instigator));
+        entity.send(new DoHealEvent(TeraMath.floorToInt(baseHeal * magnitude), instigator));
     }
 
     /**
-     * Apply the healing effect onto the entity. This will heal 100 (or maxHeal) * magnitude HP.
+     * Apply the healing effect onto the entity. This will heal 100 (or baseHeal) * magnitude HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the healing effect is being applied on.
      * @param id            Unused.
-     * @param magnitude     The magnitude of the healing effect. It's multiplied by maxHeal to determine the final
+     * @param magnitude     The magnitude of the healing effect. It's multiplied by baseHeal to determine the final
      *                      healing quantity.
-     * @param duration      The duration of the healing effect. It's unused here as the heal is instant.
+     * @param duration      The duration of the healing effect in milliseconds. It's unused here as the heal is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoHealEvent(TeraMath.floorToInt(maxHeal * magnitude), instigator));
+        entity.send(new DoHealEvent(TeraMath.floorToInt(baseHeal * magnitude), instigator));
     }
 }

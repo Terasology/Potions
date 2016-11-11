@@ -23,7 +23,7 @@ import org.terasology.potions.HerbEffect;
  * This HerbEffect wraps any AlterationEffect so that the latter can function within the herbalism systems and be treated
  * as a HerbEffect.
  */
-public class AlterationEffectWrapperHerbEffect implements HerbEffect {
+public class AlterationToHerbEffectWrapper implements HerbEffect {
     /** The AlterationEffect being wrapped. */
     private AlterationEffect alterationEffect;
 
@@ -44,7 +44,7 @@ public class AlterationEffectWrapperHerbEffect implements HerbEffect {
      * @param durationMultiplier    The value by which any duration should be multiplied by.
      * @param magnitudeMultiplier   The value by which any magnitude should be multiplied by.
      */
-    public AlterationEffectWrapperHerbEffect(AlterationEffect alterationEffect, float durationMultiplier, float magnitudeMultiplier) {
+    public AlterationToHerbEffectWrapper(AlterationEffect alterationEffect, float durationMultiplier, float magnitudeMultiplier) {
         this.alterationEffect = alterationEffect;
         this.durationMultiplier = durationMultiplier;
         this.magnitudeMultiplier = magnitudeMultiplier;
@@ -59,8 +59,8 @@ public class AlterationEffectWrapperHerbEffect implements HerbEffect {
      * @param durationMultiplier    The value by which any duration should be multiplied by.
      * @param magnitudeMultiplier   The value by which any magnitude should be multiplied by.
      */
-    public AlterationEffectWrapperHerbEffect(AlterationEffect alterationEffect, String effectID,
-                                             float durationMultiplier, float magnitudeMultiplier) {
+    public AlterationToHerbEffectWrapper(AlterationEffect alterationEffect, String effectID,
+                                         float durationMultiplier, float magnitudeMultiplier) {
         this.alterationEffect = alterationEffect;
         this.effectID = effectID;
         this.durationMultiplier = durationMultiplier;
@@ -74,7 +74,7 @@ public class AlterationEffectWrapperHerbEffect implements HerbEffect {
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the herb effect is being applied on.
      * @param magnitude     The magnitude of the effect.
-     * @param duration      The duration of the effect.
+     * @param duration      The duration of the effect in milliseconds.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
@@ -90,7 +90,7 @@ public class AlterationEffectWrapperHerbEffect implements HerbEffect {
      * @param id            This particular HerbEffect's ID. Can be used to differentiate different effects under the
      *                      same family.
      * @param magnitude     The magnitude of the effect.
-     * @param duration      The duration of the effect.
+     * @param duration      The duration of the effect in milliseconds.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {

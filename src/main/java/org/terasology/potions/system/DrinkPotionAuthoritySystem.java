@@ -29,7 +29,6 @@ import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
 import org.terasology.audio.AudioManager;
 import org.terasology.context.Context;
 import org.terasology.durability.components.DurabilityComponent;
-import org.terasology.durability.events.DurabilityReducedEvent;
 import org.terasology.durability.events.ReduceDurabilityEvent;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
@@ -37,16 +36,15 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
-import org.terasology.potions.effect.AlterationEffectWrapperHerbEffect;
+import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.HealEffect;
-import org.terasology.potions.events.BeforeDrinkPotionEvent;
+import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
 import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.logic.common.ActivateEvent;
 import org.terasology.registry.CoreRegistry;
@@ -79,12 +77,12 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      *
      * @param instigator    The entity who is trying to consume this potion.
      * @param item          A reference to the potion item entity which has the potion effect.
-     * @param p             The PotionComponent of the potion item.
-     * @param h             The HerbEffect that will be used to apply the PotionEffect on the instigator.
-     * @param v             The PotionEffect that will be applied onto the instigator.
+     * @param potion        The PotionComponent of the potion item.
+     * @param herbEffect    The HerbEffect that will be used to apply the PotionEffect on the instigator.
+     * @param potionEffect  The PotionEffect that will be applied onto the instigator.
      */
-    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v) {
-        checkDrink(instigator, item, p, h, v, "");
+    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect, PotionEffect potionEffect) {
+        checkDrink(instigator, item, potion, herbEffect, potionEffect, "");
     }
 
     /**
@@ -94,13 +92,13 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      *
      * @param instigator    The entity who is trying to consume this potion.
      * @param item          A reference to the potion item entity which has the potion effect.
-     * @param p             The PotionComponent of the potion item.
-     * @param h             The HerbEffect that will be used to apply the PotionEffect on the instigator.
-     * @param v             The PotionEffect that will be applied onto the instigator.
+     * @param potion        The PotionComponent of the potion item.
+     * @param herbEffect    The HerbEffect that will be used to apply the PotionEffect on the instigator.
+     * @param potionEffect  The PotionEffect that will be applied onto the instigator.
      * @param id            The ID of this particular HerbEffect. Used to differentiate effects under the same family.
      */
-    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v, String id) {
-        BeforeDrinkPotionEvent beforeDrink = instigator.send(new BeforeDrinkPotionEvent(v, instigator, item, p));
+    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect, PotionEffect potionEffect, String id) {
+        BeforeApplyPotionEffectEvent beforeDrink = instigator.send(new BeforeApplyPotionEffectEvent(potionEffect, instigator, item, potion));
 
         if (!beforeDrink.isConsumed()) {
             float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
@@ -108,9 +106,9 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
             if (modifiedMagnitude > 0 && modifiedDuration > 0) {
                 if (id.equalsIgnoreCase("")) {
-                    h.applyEffect(item, instigator, v.effect, modifiedMagnitude, modifiedDuration);
+                    herbEffect.applyEffect(item, instigator, potionEffect.effect, modifiedMagnitude, modifiedDuration);
                 } else {
-                    h.applyEffect(item, instigator, id, modifiedMagnitude, modifiedDuration);
+                    herbEffect.applyEffect(item, instigator, id, modifiedMagnitude, modifiedDuration);
                 }
             }
         }
@@ -127,112 +125,108 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     @ReceiveEvent
     public void onPotionWithoutGenomeConsumed(DrinkPotionEvent event, EntityRef ref) {
         // Get the potion item's potion component.
-        PotionComponent p = event.getPotionComponent();
-        HerbEffect e = null;
+        PotionComponent potion = event.getPotionComponent();
+        HerbEffect herbEffect = null;
         String effectID = "";
 
         // If this potion is supposed to have a dynamically-set Genome, return.
-        if (p.hasGenome) {
+        if (potion.hasGenome) {
             return;
         }
 
-        // Get the potion item reference.
-        EntityRef item = event.getItem();
-
         // If there are no effects, just play the drink sound and return.
-        if (p.effects.size() == 0) {
+        if (potion.effects.size() == 0) {
             audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
             return;
         }
 
         // Iterate through all effects of this potion and apply them.
-        for (PotionEffect pEffect : p.effects) {
-            // e will store a reference to the HerbEffect, and effectID will store the ID of the effect (if any).
-            e = null;
+        for (PotionEffect pEffect : potion.effects) {
+            // herbEffect will store a reference to the HerbEffect, and effectID will store the ID of the effect (if any).
+            herbEffect = null;
             effectID = "";
 
             // Figure out what specific effect this is and create a HerbEffect based on that.
             switch (pEffect.effect) {
                 case PotionCommonEffects.HEAL:
-                    e = new HealEffect();
+                    herbEffect = new HealEffect();
                     break;
                 case PotionCommonEffects.REGEN:
                     RegenerationAlterationEffect effect = new RegenerationAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(effect, 1f, 1f);
                     break;
                 case PotionCommonEffects.RESIST_PHYSICAL:
                     ResistDamageAlterationEffect resistDamageEffect = new ResistDamageAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(resistDamageEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(resistDamageEffect, 1f, 1f);
                     effectID = "physicalDamage";
                     break;
                 case PotionCommonEffects.WALK_SPEED:
                     WalkSpeedAlterationEffect wsEffect = new WalkSpeedAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(wsEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(wsEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.SWIM_SPEED:
                     SwimSpeedAlterationEffect ssEffect = new SwimSpeedAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(ssEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(ssEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.JUMP_SPEED:
                     JumpSpeedAlterationEffect jsEffect = new JumpSpeedAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(jsEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(jsEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.ITEM_USE_SPEED:
                     ItemUseSpeedAlterationEffect itsEffect = new ItemUseSpeedAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(itsEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(itsEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.MULTI_JUMP:
                     MultiJumpAlterationEffect mjEffect = new MultiJumpAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(mjEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(mjEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.POISON:
                     DamageOverTimeAlterationEffect poisonEffect = new DamageOverTimeAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(poisonEffect, "PoisonPotion", 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(poisonEffect, "PoisonPotion", 1f, 1f);
                     effectID = "PoisonPotion";
                     break;
                 case PotionCommonEffects.RESIST_POISON:
                     ResistDamageAlterationEffect resistDamageEffect2 = new ResistDamageAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(resistDamageEffect2, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(resistDamageEffect2, 1f, 1f);
                     effectID = "poisonDamage";
                     break;
                 case PotionCommonEffects.CURE_POISON:
                     CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(cureEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(cureEffect, 1f, 1f);
                     effectID = "PoisonPotion";
                     break;
                 case PotionCommonEffects.CURE_ALL_AILMENTS:
                     CureAllDamageOverTimeAlterationEffect cureAllEffect = new CureAllDamageOverTimeAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(cureAllEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(cureAllEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.TEMP_MAX_HEALTH_BOOST:
                     HealthBoostAlterationEffect hBoostEffect = new HealthBoostAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(hBoostEffect, 1f, 1f);
+                    herbEffect = new AlterationToHerbEffectWrapper(hBoostEffect, 1f, 1f);
                     break;
                 default:
-                    e = new DoNothingEffect();
+                    herbEffect = new DoNothingEffect();
                     break;
             }
 
             // Before actually consuming the potion and applying its effect, perform a final check and apply some
             // potential modifications to the effect.
-            checkDrink(event.getInstigator(), event.getItem(), p, e, pEffect, effectID);
+            checkDrink(event.getInstigator(), event.getItem(), potion, herbEffect, pEffect, effectID);
         }
 
         // Play the potion drink sound.
         audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
 
-        // Get the EntityRef of the potion, and its durability component (if any).
-        EntityRef potion = event.getItem();
-        DurabilityComponent durability = potion.getComponent(DurabilityComponent.class);
+        // Get the EntityRef of the potion item, and its durability component (if any).
+        EntityRef item = event.getItem();
+        DurabilityComponent durability = item.getComponent(DurabilityComponent.class);
 
-        // If the Durability component exists.
         if (durability != null) {
-            // If the new durability value will be above 0 following the potion drink, or the bottle has inf durability, proceed.
-            // Otherwise, continue normally by destroying the old potion bottle.
-            int newDurabilityValue = durability.durability - p.costPerDrink;
-            if (newDurabilityValue > 0 || p.hasInfDurability) {
+            // If the new durability value will be above 0 following the potion drink, or the bottle has inf durability,
+            // proceed. Otherwise, continue normally by destroying the old potion bottle.
+            int newDurabilityValue = durability.durability - potion.costPerDrink;
+            if (newDurabilityValue > 0 || potion.hasInfDurability) {
                 // Create an empty potion bottle using the bottlePrefab name of the item's potion component.
-                EntityRef emptyPotionBottle = CoreRegistry.get(EntityManager.class).create(Assets.getPrefab(p.bottlePrefab).get());
+                EntityRef emptyPotionBottle = CoreRegistry.get(EntityManager.class).create(Assets.getPrefab(potion.bottlePrefab).get());
 
                 // Copy the old durability values from the filled potion bottle to the empty one.
                 emptyPotionBottle.getComponent(DurabilityComponent.class).durability = durability.durability;
@@ -240,8 +234,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
                 // Send an event to reduce the durability of this potion bottle only if the bottle is unimmune to potion
                 // degredation effects.
-                if (!p.hasInfDurability) {
-                    emptyPotionBottle.send(new ReduceDurabilityEvent(p.costPerDrink));
+                if (!potion.hasInfDurability) {
+                    emptyPotionBottle.send(new ReduceDurabilityEvent(potion.costPerDrink));
                 }
 
                 // Give the empty potion bottle to the player's inventory. This will act as a swap between the filled and
