@@ -13,19 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.terasology.potions.component;
 
-import org.terasology.reflection.MappedContainer;
+import org.terasology.entitySystem.Component;
 
-/** Common class for describing an effect that may be present in a potion. */
-@MappedContainer
-public class PotionEffect {
-    /** Name of the potion's effect. */
-    public String effect;
-
-    /** Magnitude of the potion's effect. */
-    public float magnitude;
-
-    /** Duration of the potion's effect in milliseconds. */
-    public long duration;
+/**
+ * This component is only used as an identifier to identify if the entity is an empty potion container.
+ */
+public final class EmptyPotionComponent implements Component {
 }

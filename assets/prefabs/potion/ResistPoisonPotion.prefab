@@ -10,9 +10,6 @@
         "description": "Reduces the effects of poison statuses by 2 when consumed for 15 seconds."
     },
     "Potion": {
-        "effect": "RESIST_POISON",
-        "magnitude": 3,
-        "duration": 10000,
         "hasGenome": false,
         "effects": [
             {

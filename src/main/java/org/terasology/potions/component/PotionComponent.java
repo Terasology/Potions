@@ -22,13 +22,30 @@ import org.terasology.network.Replicate;
 
 import java.util.List;
 
+/**
+ * This component is used for storing information about a potion. Specifically, what potion bottle it came from, the
+ * durability cost per drink, whether it has a genome, and all of the potion's effects.
+ */
 public final class PotionComponent implements Component {
-    public String effect;            // Name of the potion's effect.
-    public float magnitude;          // Magnitude of the potion's effect.
-    public long duration;            // Duration of the potion's effect.
-    public boolean hasGenome = true; // If a potion has been predefined by a developer, set this to false.
+    /** Can this potion bottle be reused indefinitely. */
+    @Replicate
+    public boolean hasInfDurability = false;
 
-    // List of PotionEffects that this potion has.
+    /** Name of the empty bottle prefab. */
+    @Replicate
+    public String bottlePrefab = "Potions:GlassBottle";
+
+    /** What's the durability cost per drink. */
+    @Replicate
+    public int costPerDrink = 3;
+
+    /**
+     * Flag for storing whether this potion has a genome. If a potion has been predefined by a developer, set this to
+     * false.
+     */
+    public boolean hasGenome = true;
+
+    /** List of PotionEffects that this potion has. */
     @Replicate
     public List<PotionEffect> effects = Lists.newArrayList();
 }

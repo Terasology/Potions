@@ -1,0 +1,32 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "engine:items#emptyVial",
+        "stackId": "Potions:glassVial",
+        "consumedOnUse": false
+    },
+    "DisplayName": {
+        "name": "Glass Vial",
+        "description": "Used for storing extracts or small amounts of chemicals."
+    },
+    "EmptyPotion": {
+    },
+    "Durability": {
+        "durability": 1,
+        "maxDurability": 1
+    },
+    "FluidContainerItem": {
+        "volume": 0.2,
+        "maxVolume": 0.2,
+        "fluidMinPerc": [0.1875, 0.15625],
+        "fluidSizePerc": [0.625, 0.4375],
+        "textureWithHole": "engine:items#redVial",
+        "emptyTexture": "engine:items#emptyVial"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "Used for storing extracts or small amounts of chemicals."
+        ]
+    }
+}

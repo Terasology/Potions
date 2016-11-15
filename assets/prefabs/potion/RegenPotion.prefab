@@ -10,9 +10,6 @@
         "description": "Regenerates 3 HP per second for 10 seconds."
     },
     "Potion": {
-        "effect": "REGEN",
-        "magnitude": 3,
-        "duration": 10000,
         "hasGenome": false,
         "effects": [
             {

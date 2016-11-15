@@ -15,7 +15,10 @@
  */
 package org.terasology.potions;
 
-// Class containing a list of constant Strings used for potion-related effect type checks.
+/**
+ * This class contains a list of constants (effect IDs) used for potion-related effect type checks. Most are
+ * self-explanatory as to what they mean.
+ */
 public final class PotionCommonEffects {
     public static final String DO_NOTHING = "NOTHING";
 

@@ -1,6 +1,6 @@
 {
     "id" : "Potions",
-    "version" : "0.2.0-SNAPSHOT",
+    "version" : "0.2.1-SNAPSHOT",
     "author" : "bi0hax, XTariq",
     "displayName" : "Potions",
     "description" : "A small collection of various potions",
@@ -12,6 +12,14 @@
             {
                 "id" : "Core",
                 "minVersion" : "1.0.0"
+            },
+            {
+                "id": "Durability",
+                "minVersion": "0.1.0"
+            },
+            {
+                "id" : "Fluid",
+                "minVersion" : "0.1.0"
             },
             {
                 "id": "InGameHelp",

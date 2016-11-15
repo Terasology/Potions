@@ -10,9 +10,6 @@
         "description": "Increases the user's item use speed by 25% for 15 seconds."
     },
     "Potion": {
-        "effect": "ITEM_HSE_SPEED",
-        "magnitude": 2,
-        "duration": 15100,
         "hasGenome": false,
         "effects": [
             {
