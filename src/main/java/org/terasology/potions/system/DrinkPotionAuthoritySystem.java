@@ -21,6 +21,7 @@ import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterat
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
 import org.terasology.alterationEffects.resist.ResistDamageAlterationEffect;
+import org.terasology.alterationEffects.speed.GlueAlterationEffect;
 import org.terasology.alterationEffects.speed.ItemUseSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
@@ -202,6 +203,11 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 case PotionCommonEffects.TEMP_MAX_HEALTH_BOOST:
                     HealthBoostAlterationEffect hBoostEffect = new HealthBoostAlterationEffect(context);
                     herbEffect = new AlterationToHerbEffectWrapper(hBoostEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.GLUE:
+                    GlueAlterationEffect glueEffect = new GlueAlterationEffect(context);
+                    herbEffect = new AlterationToHerbEffectWrapper(glueEffect, 1f, 1f);
+                    effectID = "GluePotion";
                     break;
                 default:
                     herbEffect = new DoNothingEffect();

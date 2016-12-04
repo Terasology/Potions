@@ -37,6 +37,7 @@ public final class PotionCommonEffects {
     public static final String SWIM_SPEED = "SWIM";
     public static final String JUMP_SPEED = "JUMP";
     public static final String ITEM_USE_SPEED = "ITEM_USE_SPEED";
+    public static final String GLUE = "GLUE";
 
     public static final String DAMAGE_REDUCE = "DAMAGE_REDUCE";
     public static final String FEATHER_FALL = "FEATHER_FALL";

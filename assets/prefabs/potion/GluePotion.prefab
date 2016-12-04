@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:GluePotion1Bottle",
+        "stackId": "Potions:gluePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Glue Potion I",
+        "description": "Envelops the user in a sticky glue, as if stuck in a sturdy spiderweb."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "GLUE",
+                "magnitude": 3,
+                "duration": 15100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Envelops the user in a sticky glue, as if stuck in a sturdy spiderweb."
+        ]
+    }
+}
