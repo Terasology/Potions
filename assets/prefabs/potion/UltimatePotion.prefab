@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:UltimatePotion1Bottle",
+        "stackId": "Potions:ultimatePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Ultimate Potion I",
+        "description": "Doubles the user's walk speed for 10 seconds and heals 100HP."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 2,
+                "duration": 10100
+            },
+            {
+              "effect": "HEAL",
+              "magnitude": 1,
+              "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Doubles the user's walk speed for 10 seconds and heals 100HP."
+        ]
+    }
+}
