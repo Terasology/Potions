@@ -52,6 +52,6 @@ public class HarmEffect implements HerbEffect{
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseHeal * magnitude), instigator));
+        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseHeal * magnitude));
     }
 }
