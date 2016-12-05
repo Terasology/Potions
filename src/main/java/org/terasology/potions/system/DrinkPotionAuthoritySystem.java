@@ -44,6 +44,7 @@ import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.effect.DoNothingEffect;
+import org.terasology.potions.effect.HarmEffect;
 import org.terasology.potions.effect.HealEffect;
 import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
 import org.terasology.potions.events.DrinkPotionEvent;
@@ -149,6 +150,9 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
             // Figure out what specific effect this is and create a HerbEffect based on that.
             switch (pEffect.effect) {
+                case PotionCommonEffects.HARM:
+                    herbEffect = new HarmEffect()
+                    break;
                 case PotionCommonEffects.HEAL:
                     herbEffect = new HealEffect();
                     break;
