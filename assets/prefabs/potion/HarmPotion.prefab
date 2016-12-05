@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:HarmPotionBottle",
+        "stackId": "Potions:harmPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Harm Potion",
+        "description": "Harms 5 HP."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HARM",
+                "magnitude": -50,
+                "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Takes 5 HP from the user."
+        ]
+    }
+}
