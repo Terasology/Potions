@@ -151,7 +151,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             // Figure out what specific effect this is and create a HerbEffect based on that.
             switch (pEffect.effect) {
                 case PotionCommonEffects.HARM:
-                    herbEffect = new HarmEffect()
+                    herbEffect = new HarmEffect();
                     break;
                 case PotionCommonEffects.HEAL:
                     herbEffect = new HealEffect();
