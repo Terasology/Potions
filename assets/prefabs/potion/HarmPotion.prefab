@@ -14,7 +14,7 @@
         "effects": [
             {
                 "effect": "HARM",
-                "magnitude": -50,
+                "magnitude": 1,
                 "duration": 1
             }
         ]
