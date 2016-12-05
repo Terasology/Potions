@@ -1,0 +1,31 @@
+{
+	"parent": "engine:iconItem",
+	"Item": {
+		"icon": "Potions:EnlargePotionBottle",
+		"stackId": "Potions:enlargePotion",
+		"consumedOnUse": true
+	},
+	"DisplayName":{
+		"name": "Potion for Increase in Size"
+		"description": "Temporarily increases the user's body size by 50%\n	Reduces the amount of damage taken by 25% 30 seconds"
+	},
+	"Potion":{
+		"hasGenome": false,
+		"effects":[
+			{
+				"effect": "INCREASE_SIZE",
+				"magnitude": 50,
+				"duration": 30100
+			},
+			{
+				"effect": "DAMAGE_REDUCE",
+				"magnitude": 25,
+				"duration": 30100
+			}
+		]
+	},
+	"ItemHelp":{
+		"category": "Potions",
+		"paragraphText": ["Temporarily increases the user's body size by 50%\n	Reduces the amount of damage taken by 25% for 30 seconds"]
+	}
+}
