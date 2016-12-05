@@ -7,14 +7,14 @@
     },
     "DisplayName": {
         "name": "Harm Potion",
-        "description": "Harms 5 HP."
+        "description": "Harms 4 HP."
     },
     "Potion": {
         "hasGenome": false,
         "effects": [
             {
                 "effect": "HARM",
-                "magnitude": 1,
+                "magnitude": 4,
                 "duration": 1
             }
         ]
@@ -22,7 +22,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Takes 5 HP from the user."
+             "Takes 4 HP from the user."
         ]
     }
 }

@@ -24,7 +24,7 @@ public class HarmEffect implements HerbEffect{
      * The base amount of healing allowed. It's intended to be later multiplied by the magnitude to get the final
      * healing amount.
      */
-    private int baseHeal = 100;
+    private int baseHeal = 10;
 
     /**
      * Apply the harming effect onto the entity. This will heal or harm 100 (or baseHeal) * magnitude HP.
