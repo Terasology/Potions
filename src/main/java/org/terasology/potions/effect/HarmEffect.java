@@ -17,7 +17,8 @@ package org.terasology.potions.effect;
 
 import org.terasology.logic.health.DoDamageEvent;
 import org.terasology.potions.HerbEffect;
-
+import org.terasology.entitySystem.entity.*;
+import org.terasology.math.*;
 public class HarmEffect implements HerbEffect{
     /**
      * The base amount of healing allowed. It's intended to be later multiplied by the magnitude to get the final
@@ -30,9 +31,9 @@ public class HarmEffect implements HerbEffect{
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the healing effect is being applied on.
-     * @param magnitude     The magnitude of the healing effect. It's multiplied by baseHeal to determine the final
-     *                      healing quantity.
-     * @param duration      The duration of the healing effect in milliseconds. It's unused here as the heal is instant.
+     * @param magnitude     The magnitude of the harming effect. It's multiplied by baseHeal to determine the final
+     *                      harming quantity.
+     * @param duration      The duration of the harming effect in milliseconds. It's unused here as the heal is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
