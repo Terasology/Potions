@@ -21,37 +21,37 @@ import org.terasology.entitySystem.entity.*;
 import org.terasology.math.*;
 public class HarmEffect implements HerbEffect{
     /**
-     * The base amount of healing allowed. It's intended to be later multiplied by the magnitude to get the final
-     * healing amount.
+     * The base amount of harming allowed. It's intended to be later multiplied by the magnitude to get the final
+     * harming amount.
      */
-    private int baseHeal = 10;
+    private int baseDamage = 10;
 
     /**
-     * Apply the harming effect onto the entity. This will heal or harm 100 (or baseHeal) * magnitude HP.
+     * Apply the harming effect onto the entity. This will harm 10 (or baseDamage) * magnitude HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the healing effect is being applied on.
      * @param magnitude     The magnitude of the harming effect. It's multiplied by baseHeal to determine the final
      *                      harming quantity.
-     * @param duration      The duration of the harming effect in milliseconds. It's unused here as the heal is instant.
+     * @param duration      The duration of the harming effect in milliseconds. It's unused here as the harm is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
-        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseHeal * magnitude)));
+        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseDamage * magnitude)));
     }
 
     /**
-     * Apply the healing effect onto the entity. This will heal 100 (or baseHeal) * magnitude HP.
+     * Apply the harming effect onto the entity. This will harm 10 (or baseDamage) * magnitude HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
-     * @param entity        The entity who the healing effect is being applied on.
+     * @param entity        The entity who the harming effect is being applied on.
      * @param id            Unused.
-     * @param magnitude     The magnitude of the healing effect. It's multiplied by baseHeal to determine the final
-     *                      healing quantity.
-     * @param duration      The duration of the healing effect in milliseconds. It's unused here as the heal is instant.
+     * @param magnitude     The magnitude of the harming effect. It's multiplied by baseDamage to determine the final
+     *                      harming quantity.
+     * @param duration      The duration of the harming effect in milliseconds. It's unused here as the harm is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseHeal * magnitude)));
+        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseDamage * magnitude)));
     }
 }
