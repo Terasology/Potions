@@ -1,0 +1,43 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:RagePotionBottle",
+        "stackId": "Potions:ragePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Rage Potion",
+        "description": "Combines the effects of all the speed potions and poison potion."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 3,
+                "duration": 15100
+            },
+            {
+                "effect": "SWIM",
+                "magnitude": 3,
+                "duration": 15100
+            },
+            {
+                "effect": "JUMP",
+                "magnitude": 3,
+                "duration": 15100
+            },
+            {
+                "effect": "POISON",
+                "magnitude": 3,
+                "duration": 15100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Combines the effects of all the speed potions and poison potion."
+        ]
+    }
+}
