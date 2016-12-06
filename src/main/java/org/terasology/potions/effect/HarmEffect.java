@@ -30,7 +30,7 @@ public class HarmEffect implements HerbEffect{
      * Apply the harming effect onto the entity. This will harm 10 (or baseDamage) * magnitude HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
-     * @param entity        The entity who the healing effect is being applied on.
+     * @param entity        The entity who the harming effect is being applied on.
      * @param magnitude     The magnitude of the harming effect. It's multiplied by baseHeal to determine the final
      *                      harming quantity.
      * @param duration      The duration of the harming effect in milliseconds. It's unused here as the harm is instant.
