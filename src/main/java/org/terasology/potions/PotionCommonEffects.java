@@ -29,6 +29,7 @@ public final class PotionCommonEffects {
     public static final String TEMP_MAX_HEALTH_BOOST = "TEMP_MAX_HEALTH_BOOST";
 
     public static final String POISON = "POISON";
+    public static final String EXPLOSIVE = "EXPLOSIVE";
     public static final String RESIST_POISON = "RESIST_POISON";
     public static final String CURE_POISON = "CURE_POISON";
     public static final String CURE_ALL_AILMENTS = "CURE_ALL_AILMENTS";

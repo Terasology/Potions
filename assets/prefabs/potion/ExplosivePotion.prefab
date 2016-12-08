@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:HarmPotionBottle",
+        "stackId": "Potions:explosivePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Explosive Potion",
+        "description": "If consumed, explodes the player."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "EXPLOSIVE",
+                "magnitude": 2,
+                "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "When used on a block, it produces an explosion that destroys the surrounding area."
+        ]
+    }
+}
