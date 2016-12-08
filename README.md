@@ -21,6 +21,7 @@ The following potions are present in this module:
 * Resist Poison - Reduces the effects of poison statuses by 2 when consumed for 15 seconds.
 * Swim Speed - Doubles the user's swim speed for 10 seconds.
 * Walk Speed - Doubles the user's walk speed for 10 seconds.
+* Explosive - Explodes any object it is used on.
 
 ## Contribution
 
