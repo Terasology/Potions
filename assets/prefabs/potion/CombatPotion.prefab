@@ -1,0 +1,48 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:CombatPotionBottle",
+        "stackId": "Potions:combatPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Combat Potion",
+        "description": "Combines the effects of walk speed, health boost, regeneration, resist physical damage and heal potions. Useful in combat."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 3,
+                "duration": 15250
+            },
+            {
+                "effect": "TEMP_MAX_HEALTH_BOOST",
+                "magnitude": 50,
+                "duration": 15250
+            },
+            {
+                "effect": "REGEN",
+                "magnitude": 2,
+                "duration": 15250
+            },
+            {
+                "effect": "RESIST_PHYSICAL",
+                "magnitude": 15,
+                "duration": 15250
+            },
+            {
+                "effect": "HEAL",
+                "magnitude": 0.2,
+                "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Combines the effects of walk speed, health boost, regeneration, resist physical damage and heal potions. Useful in combat."
+        ]
+    }
+}
