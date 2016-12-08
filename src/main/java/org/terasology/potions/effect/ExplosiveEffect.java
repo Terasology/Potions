@@ -15,8 +15,15 @@
  */
 package org.terasology.potions.effect;
 
+import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.entitySystem.event.ReceiveEvent;
+import org.terasology.logic.actions.ActionTarget;
+import org.terasology.logic.actions.ExplosionActionComponent;
+import org.terasology.logic.health.DoDamageEvent;
 import org.terasology.potions.HerbEffect;
+import org.terasology.potions.events.DrinkPotionEvent;
+import org.terasology.world.block.Block;
 
 /**
  * This effect destroys all blocks in a specified block radius
@@ -32,6 +39,7 @@ public class ExplosiveEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
+        createExplosion(instigator, entity, magnitude);
     }
 
     /**
@@ -46,5 +54,13 @@ public class ExplosiveEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
+        createExplosion(instigator, entity, magnitude);
+    }
+
+
+    private void createExplosion(EntityRef instigator, EntityRef entity, float magnitude) {
+        instigator.addComponent(new ExplosionActionComponent());
+
+
     }
 }
