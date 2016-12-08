@@ -22,7 +22,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "If consumed, kills the user."
+             "When used on a block, it produces an explosion that destroys the surrounding area."
         ]
     }
 }

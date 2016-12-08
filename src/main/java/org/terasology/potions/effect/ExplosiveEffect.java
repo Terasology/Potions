@@ -26,7 +26,7 @@ import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.world.block.Block;
 
 /**
- * This effect destroys all blocks in a specified block radius
+ * This effect destroys blocks in a predefined block radius (the built-in one for now)
  */
 public class ExplosiveEffect implements HerbEffect {
     /**
