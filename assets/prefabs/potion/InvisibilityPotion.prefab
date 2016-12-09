@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:InvisibilityPotion",
+        "stackId": "Potions:invisibilityPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Invisibility potion",
+        "description": "Makes you invisible."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "INVIS",
+                "magnitude": 1,
+                "duration": 60
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Makes player invisible."
+        ]
+    }
+}
