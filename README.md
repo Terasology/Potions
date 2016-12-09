@@ -21,7 +21,6 @@ The following potions are present in this module:
 * Resist Poison - Reduces the effects of poison statuses by 2 when consumed for 15 seconds.
 * Swim Speed - Doubles the user's swim speed for 10 seconds.
 * Walk Speed - Doubles the user's walk speed for 10 seconds.
-* Explosive - When the player uses this on an object, it triggers an explosion.
 
 ## Contribution
 
@@ -147,3 +146,5 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 ## Credits for images:
 
 [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
+
+Invisibility Potion: https://cdn4.iconfinder.com/data/icons/video-game-items-concepts/128/armor-cloak-512.png
