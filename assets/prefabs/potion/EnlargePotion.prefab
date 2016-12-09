@@ -27,5 +27,5 @@
     "ItemHelp":{
         "category": "Potions",
         "paragraphText": ["Temporarily increases the user's body size by 50%\n\tReduces the amount of damage taken by 25% for 30 seconds"]
-    }
+	}
 }
