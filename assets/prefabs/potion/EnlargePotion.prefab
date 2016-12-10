@@ -13,8 +13,8 @@
         "hasGenome": false,
         "effects":[
             {
-                "effect": "INCREASE_SIZE",
-                "magnitude": 50,
+                "effect": "ENLARGE",
+                "magnitude": 1.5,
                 "duration": 30100
             },
             {
