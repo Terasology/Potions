@@ -27,6 +27,7 @@ The following potions are present in this module:
 * Mega Jump - Doubles all jump stats for 10 seconds
 * Giga Jump - Triples all jump stats for 10 seconds
 * Ninja - speeds up your running and jumping
+* BlindWalk - Turns the player blind for 5 seconds along with speed decrease (Awaiting API integration for the No_Visibility effect to work)
 
 ## Contribution
 
@@ -156,3 +157,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
 * MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
 * Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/
+* BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr

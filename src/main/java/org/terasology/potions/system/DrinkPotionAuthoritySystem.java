@@ -42,11 +42,12 @@ import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
-import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.ExplosiveEffect;
+import org.terasology.potions.effect.NoVisibilityEffect;
+import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
+import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.HarmEffect;
 import org.terasology.potions.effect.HealEffect;
-import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
 import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.logic.common.ActivateEvent;
@@ -216,6 +217,9 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     break;
                 case PotionCommonEffects.EXPLOSIVE:
                     herbEffect = new ExplosiveEffect();
+                    break;
+                case PotionCommonEffects.NO_VISIBILITY:
+                    herbEffect = new NoVisibilityEffect();
                     break;
                 default:
                     herbEffect = new DoNothingEffect();
