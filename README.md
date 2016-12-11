@@ -17,11 +17,13 @@ The following potions are present in this module:
 * Jump Speed - Doubles the user's jump speed for 10 seconds.
 * Poison - Poisons user, dealing 3 damage per second for up to 15 seconds.
 * Regen - User regenerates 3 HP per second for 10 seconds.
+* Regen II - User regenerates 6 HP per second for 10 seconds ( Like regular Regen X 2 )
 * Resist Physical - Temporarily increases user's physical defense by 15 for 20 seconds.
 * Resist Poison - Reduces the effects of poison statuses by 2 when consumed for 15 seconds.
 * Swim Speed - Doubles the user's swim speed for 10 seconds.
 * Walk Speed - Doubles the user's walk speed for 10 seconds.
 * Explosive - When the player uses this on an object, it triggers an explosion.
+* Invincible - Makes the user invincible for 10 seconds.
 
 ## Contribution
 
