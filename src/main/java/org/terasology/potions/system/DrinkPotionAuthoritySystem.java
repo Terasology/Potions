@@ -217,6 +217,9 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 case PotionCommonEffects.EXPLOSIVE:
                     herbEffect = new ExplosiveEffect();
                     break;
+				case PotionCommonEffects.NO_VISIBILITY:
+                    herbEffect = new NoVisibilityEffect();
+                    break;
                 default:
                     herbEffect = new DoNothingEffect();
                     break;
