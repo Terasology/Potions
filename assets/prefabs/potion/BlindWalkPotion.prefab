@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:BlindWalkPotionBottle",
+        "stackId": "Potions:blindwalkPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "BlindWalk Potion",
+        "description": "Turns the player blind for 5 seconds along with speed decrease."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 0.5,
+                "duration": 5100
+            },
+			{
+				"effect": "NO_VISIBILITY"
+				"magnitude": 1,
+				"duration": 5100
+			}
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Turns the player blind for 5 seconds along with speed decrease."
+        ]
+    }
+}
