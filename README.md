@@ -23,6 +23,7 @@ The following potions are present in this module:
 * Swim Speed - Doubles the user's swim speed for 10 seconds.
 * Walk Speed - Doubles the user's walk speed for 10 seconds.
 * Explosive - When the player uses this on an object, it triggers an explosion.
+* Invincible - Makes the user invincible for 10 seconds.
 
 ## Contribution
 
