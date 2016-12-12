@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:GigaJumpBottle",
+        "stackId": "Potions:gigaJumpPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Giga Jump Potion I",
+        "description": "Allows the user to triple jump and triples the user's jump speed for 10 seconds."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "MULTI_JUMP",
+                "magnitude": 3,
+                "duration": 10100
+            },
+            {
+                "effect": "JUMP",
+                "magnitude": 3,
+                "duration": 10100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Allows the user to triple jump and triples the user's jump speed for 10 seconds."
+        ]
+    }
+}
