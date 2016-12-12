@@ -17,11 +17,11 @@
                 "magnitude": 0.5,
                 "duration": 5100
             },
-	    {
-                "effect": "NO_VISIBILITY"
+	     {
+                "effect": "NO_VISIBILITY",
                 "magnitude": 1,
                 "duration": 5100
-	    }
+            }
         ]
     },
     "ItemHelp": {
