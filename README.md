@@ -22,6 +22,8 @@ The following potions are present in this module:
 * Swim Speed - Doubles the user's swim speed for 10 seconds.
 * Walk Speed - Doubles the user's walk speed for 10 seconds.
 * Explosive - When the player uses this on an object, it triggers an explosion.
+* Mega Jump - doubles all jump stats for 10 seconds
+* Giga Jump - Triples all jump stats for 10 seconds
 
 ## Contribution
 
