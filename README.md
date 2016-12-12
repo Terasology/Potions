@@ -26,7 +26,7 @@ The following potions are present in this module:
 * Invincible - Makes the user invincible for 10 seconds.
 * Mega Jump - Doubles all jump stats for 10 seconds
 * Giga Jump - Triples all jump stats for 10 seconds
-* BlindWalk - Turns the player blind for 5 seconds along with speed decrease (Awaiting API integration for the No_Visibility effect to work)
+* BlindWalk - Turns the player blind for 5 seconds along with speed decrease.
 
 ## Contribution
 
