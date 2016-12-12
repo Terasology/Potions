@@ -151,4 +151,5 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 ## Credits for images:
 
 * [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
-* MegaJumpBottle.png and GigaJumpBottle.png Edited by: Patrick Wang
+* InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
+* MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
