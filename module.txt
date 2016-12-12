@@ -1,7 +1,7 @@
 {
     "id" : "Potions",
     "version" : "0.2.1-SNAPSHOT",
-    "author" : "bi0hax, XTariq, shardulc, S-ulphuric, kallentu",
+    "author" : "bi0hax, XTariq, shardulc, S-ulphuric, kallentu, Mandar Juvekar",
     "displayName" : "Potions",
     "description" : "A small collection of various potions that can be consumed for several effects.",
     "dependencies" : [

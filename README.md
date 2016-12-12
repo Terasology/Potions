@@ -151,5 +151,6 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 ## Credits for images:
 
 * [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
+* http://opengameart.org/content/potion-bottles for the Overdrive Potion bottle image
 * InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
 * MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
