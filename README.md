@@ -149,3 +149,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 ## Credits for images:
 
 [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
+Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/
