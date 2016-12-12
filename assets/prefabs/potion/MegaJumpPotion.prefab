@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:MegaJumpBottle",
+        "stackId": "Potions:megaJumpPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Mega Jump Potion I",
+        "description": "Allows the user to double jump and doubles the user's jump speed for 10 seconds."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "MULTI_JUMP",
+                "magnitude": 2,
+                "duration": 10100
+            },
+            {
+		"effect": "JUMP",
+		"magnitude": 2,
+		"duration": 10100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Allows the user to double jump and doubles the user's jump speed for 10 seconds."
+        ]
+    }
+}
