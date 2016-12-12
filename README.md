@@ -154,3 +154,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * http://opengameart.org/content/potion-bottles for the Overdrive Potion bottle image
 * InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
 * MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
+* Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/

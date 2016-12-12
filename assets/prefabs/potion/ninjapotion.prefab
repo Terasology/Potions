@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:Ninjabottle",
+        "stackId": "Potions:ninjaPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Ninja potion",
+        "description": "Increases the user’s core abilities of jumping and walking!"
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 3,
+                "duration": 11100
+            },
+            {
+                "effect": "JUMP",
+                "magnitude": 3,
+                "duration": 11100
+            }
+        ]
+}
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Increases the user’s core abilities of jumping and walking! It basically turns you into a ninja!"
+        ]
+    }
+},
