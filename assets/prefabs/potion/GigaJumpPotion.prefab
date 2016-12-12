@@ -18,9 +18,9 @@
                 "duration": 10100
             },
             {
-		"effect": "JUMP",
-		"magnitude": 3,
-		"duration": 10100
+                "effect": "JUMP",
+                "magnitude": 3,
+                "duration": 10100
             }
         ]
     },
