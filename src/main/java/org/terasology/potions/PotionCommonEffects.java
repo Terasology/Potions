@@ -44,7 +44,7 @@ public final class PotionCommonEffects {
     public static final String FEATHER_FALL = "FEATHER_FALL";
     public static final String BRICK_FALL = "BRICK_FALL";
     public static final String MULTI_JUMP = "MULTI_JUMP";
-	public static final String NO_VISIBILITY = "NO_VISIBILITY";
+    public static final String NO_VISIBILITY = "NO_VISIBILITY"; //Awaiting API implementation for custom actions in Terasology for the NoVisibilityEffect to work.
 
     private PotionCommonEffects() {
 
