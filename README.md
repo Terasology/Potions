@@ -24,6 +24,8 @@ The following potions are present in this module:
 * Walk Speed - Doubles the user's walk speed for 10 seconds.
 * Explosive - When the player uses this on an object, it triggers an explosion.
 * Invincible - Makes the user invincible for 10 seconds.
+* Mega Jump - Doubles all jump stats for 10 seconds
+* Giga Jump - Triples all jump stats for 10 seconds
 
 ## Contribution
 
@@ -148,4 +150,5 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 
 ## Credits for images:
 
-[Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
+* [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
+* MegaJumpBottle.png and GigaJumpBottle.png Edited by: Patrick Wang
