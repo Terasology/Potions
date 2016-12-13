@@ -1,7 +1,7 @@
 {
     "id" : "Potions",
     "version" : "0.2.1-SNAPSHOT",
-    "author" : "bi0hax, XTariq, shardulc, DarkSoul943 (Camellia)",
+    "author" : "bi0hax, XTariq, shardulc, cam943",
     "displayName" : "Potions",
     "description" : "A small collection of various potions that can be consumed for several effects.",
     "dependencies" : [
