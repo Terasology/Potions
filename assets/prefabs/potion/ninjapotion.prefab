@@ -23,11 +23,11 @@
                 "duration": 11100
             }
         ]
-}
+    },
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
              "Increases the user’s core abilities of jumping and walking! It basically turns you into a ninja!"
         ]
     }
-},
+}

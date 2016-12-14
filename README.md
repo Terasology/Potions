@@ -26,6 +26,7 @@ The following potions are present in this module:
 * Invincible - Makes the user invincible for 10 seconds.
 * Mega Jump - Doubles all jump stats for 10 seconds
 * Giga Jump - Triples all jump stats for 10 seconds
+* Ninja - speeds up your running and jumping
 
 ## Contribution
 
