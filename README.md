@@ -26,6 +26,7 @@ The following potions are present in this module:
 * Invincible - Makes the user invincible for 10 seconds.
 * Mega Jump - Doubles all jump stats for 10 seconds
 * Giga Jump - Triples all jump stats for 10 seconds
+* Ninja - speeds up your running and jumping
 * BlindWalk - Turns the player blind for 5 seconds along with speed decrease.
 
 ## Contribution
@@ -152,5 +153,8 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 ## Credits for images:
 
 * [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
+* http://opengameart.org/content/potion-bottles for the Overdrive Potion bottle image
 * InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
 * MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
+* Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/
+* BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr
