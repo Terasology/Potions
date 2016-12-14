@@ -1,0 +1,44 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:BattlePotionBottle",
+        "stackId": "Potions:BattlePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Battle Potion",
+        "description": "Battle Potion increases the limit of damage you can withstand and it helps you to regenerate wounds faster.."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            
+            {
+                "effect": "TEMP_MAX_HEALTH_BOOST",
+                "magnitude": 100,
+                "duration": 11550
+            },
+            {
+                "effect": "REGEN",
+                "magnitude": 5,
+                "duration": 11550
+            },
+            {
+                "effect": "RESIST_PHYSICAL",
+                "magnitude": 20,
+                "duration": 11550
+            },
+            {
+                "effect": "HEAL",
+                "magnitude": 0.5,
+                "duration": 5
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Battle Potion increases the limit of damage you can withstand and it helps you to regenerate wounds faster."
+        ]
+    }
+}
