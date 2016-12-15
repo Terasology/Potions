@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:DiePotionBottle",
+        "stackId": "Potions:DiePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Die Potion",
+        "description": "Harms 10 HP."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "Die",
+                "magnitude": 10,
+                "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Takes 10 HP from the user."
+        ]
+    }
+}
