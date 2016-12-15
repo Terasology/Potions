@@ -157,4 +157,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
 * MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
 * Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/
-* Battle: https://pixabay.com/en/blue-water-brick-bottle-plastic-698289/
+* Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
