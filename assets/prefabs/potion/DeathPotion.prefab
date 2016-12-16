@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:DeathPotionBottle",
+        "stackId": "Potions:DeathPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Death Potion",
+        "description": "Harms 100 HP."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "Death",
+                "magnitude": 100,
+                "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Takes 100 HP from the user."
+        ]
+    }
+}
