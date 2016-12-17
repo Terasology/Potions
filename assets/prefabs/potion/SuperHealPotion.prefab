@@ -13,7 +13,7 @@
         "hasGenome": false,
         "effects": [
             {
-                "effect": "HEAL",
+                "effect": "Super HEAL",
                 "magnitude": 50,
                 "duration": 1
             }
