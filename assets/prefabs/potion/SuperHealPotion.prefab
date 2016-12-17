@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:SuperHealPotionBottle",
+        "stackId": "Potions:superHealPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "SuperHeal Potion",
+        "description": "Increase 50 HP."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HEAL",
+                "magnitude": 50,
+                "duration": 0.9
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Restores 50 HP to the user."
+        ]
+    }
+}
