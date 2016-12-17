@@ -15,7 +15,7 @@
             {
                 "effect": "ITEM_SUPER_HEAL",
                 "magnitude": 50,
-                "duration": 1
+                "duration": 0.9
             }
         ]
     },
