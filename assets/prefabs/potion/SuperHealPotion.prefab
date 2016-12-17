@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "SuperHeal Potion",
-        "description": "Harms 50 HP."
+        "description": "Increase 50 HP."
     },
     "Potion": {
         "hasGenome": false,
