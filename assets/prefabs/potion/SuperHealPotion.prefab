@@ -14,7 +14,7 @@
         "effects": [
             {
                 "effect": "HEAL",
-                "magnitude": 1,
+                "magnitude": 50,
                 "duration": 1
             }
         ]
