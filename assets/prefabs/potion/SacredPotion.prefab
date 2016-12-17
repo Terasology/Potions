@@ -1,0 +1,40 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:SacredPotionBottle",
+        "stackId": "Potions:sacredPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Sacred Potion",
+        "description": "A bottle of sacred potion with magical properties."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "REGEN",
+                "magnitude": 3,
+                "duration": 10100
+            },
+            {
+                "effect": "TEMP_MAX_HEALTH_BOOST",
+                "magnitude": 25,
+                "duration": 30010
+            },
+            {
+                "effect": "CURE_POISON",
+                "magnitude": 1,
+                "duration": 100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Regenerates 3 HP per second for 10 seconds.",
+            "Increases the user's base max health by 25% for 30 seconds.",
+            "Cures poison status when consumed."
+        ]
+    }
+}
