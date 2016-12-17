@@ -159,6 +159,5 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
 * Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/
 * BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr
-* DeathPotion.png edited by Dhananjay Garg
 * Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
 * SuperHealPotionBottle.png : Edited by Dhananjay Garg.
