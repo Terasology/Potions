@@ -161,3 +161,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr
 * DeathPotion.png edited by Dhananjay Garg
 * Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
+* SuperHealPotionBottle.png : Edited by Dhananjay Garg.
