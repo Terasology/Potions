@@ -30,6 +30,7 @@ The following potions are present in this module:
 * BlindWalk - Turns the player blind for 5 seconds along with speed decrease (Awaiting API integration for the No_Visibility effect to work)
 * Battle - It increases your damage withstand limit and helps you regenrate faster.
 * Super Heal - Restores a vast amount of HP
+* Sacred - Regenerates 3 HP per second for 10 seconds, increases the user's base max health by 25% for 30 seconds, and also cures poison status.
 
 ## Contribution
 
@@ -162,3 +163,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr
 * Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
 * SuperHealPotionBottle.png : https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/
+* Sacred: SacredPotionBottle.png edited from base by smsunarto 
