@@ -15,11 +15,14 @@
  */
 package org.terasology.potions.system;
 
+import org.terasology.alterationEffects.OnEffectModifyEvent;
+import org.terasology.alterationEffects.OnEffectRemoveEvent;
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
+import org.terasology.alterationEffects.regenerate.RegenerationComponent;
 import org.terasology.alterationEffects.resist.ResistDamageAlterationEffect;
 import org.terasology.alterationEffects.speed.GlueAlterationEffect;
 import org.terasology.alterationEffects.speed.ItemUseSpeedAlterationEffect;
@@ -37,11 +40,14 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.logic.health.HealthComponent;
 import org.terasology.logic.inventory.InventoryManager;
+import org.terasology.logic.location.LocationComponent;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
+import org.terasology.potions.component.PotionEffectsListComponent;
 import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.ExplosiveEffect;
 import org.terasology.potions.effect.HarmEffect;
@@ -70,6 +76,10 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      */
     @In
     private Context context;
+
+    private PotionEffect lastPotionEffect;
+    private float lastModifiedMagnitude;
+    private long lastModifiedDuration;
 
     /**
      * Check the potion drink event by sending out a consumable event so that other systems can either modify the
@@ -101,13 +111,45 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      * @param id            The ID of this particular HerbEffect. Used to differentiate effects under the same family.
      */
     private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect, PotionEffect potionEffect, String id) {
+
+        if (!instigator.hasComponent(PotionEffectsListComponent.class)) {
+            instigator.addComponent(new PotionEffectsListComponent());
+        }
+
+        PotionEffectsListComponent potionEffectsList = instigator.getComponent(PotionEffectsListComponent.class);
+
+        String name = "";
+        if (herbEffect instanceof AlterationToHerbEffectWrapper) {
+            name = ((AlterationToHerbEffectWrapper) herbEffect).getAlterationEffect().getClass().getCanonicalName();
+        } else if (herbEffect instanceof ExplosiveEffect) {
+            name = "Explosive";
+        } else if (herbEffect instanceof HarmEffect) {
+            name = "Harm";
+        } else if (herbEffect instanceof HealEffect) {
+            name = "Heal";
+        }
+
+        if (id.equalsIgnoreCase("")) {
+            potionEffectsList.effects.put(name, potionEffect);
+            // TODO: Need to send the effectID too so it can later be removed from the list properly.
+            herbEffect.applyEffect(item, instigator, potionEffect.effect, potionEffect.magnitude, potionEffect.duration);
+        } else {
+            potionEffectsList.effects.put(name + id, potionEffect);
+            herbEffect.applyEffect(item, instigator, id, potionEffect.magnitude, potionEffect.duration);
+        }
+
+        /*
         BeforeApplyPotionEffectEvent beforeDrink = instigator.send(new BeforeApplyPotionEffectEvent(potionEffect, instigator, item, potion));
 
         if (!beforeDrink.isConsumed()) {
+
             float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
             long modifiedDuration = (long) beforeDrink.getDurationResultValue();
-
             if (modifiedMagnitude > 0 && modifiedDuration > 0) {
+                lastPotionEffect = potionEffect;
+                lastModifiedDuration = modifiedDuration;
+                lastModifiedMagnitude = modifiedMagnitude;
+
                 if (id.equalsIgnoreCase("")) {
                     herbEffect.applyEffect(item, instigator, potionEffect.effect, modifiedMagnitude, modifiedDuration);
                 } else {
@@ -115,9 +157,72 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 }
             }
         }
+        */
     }
 
-    /**
+
+    // The HealthComponent parameter is a dummy one used so that the evnet handler works properly.
+    /*
+    @ReceiveEvent
+    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator, HealthComponent dummyComponent) {
+        onEffectApplied(event, instigator);
+    }
+    */
+
+    /*
+    @ReceiveEvent
+    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator, LocationComponent dummyComponent) {
+        onEffectApplied(event, instigator);
+    }
+    */
+    /*
+    @ReceiveEvent
+    private void onRegenerationEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
+        String x = "";
+        return;
+    }
+    */
+
+    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator) {
+        // So, a PotionEffectsListCompoent (analogue to EquipmentEffectsListComponent.
+        PotionEffectsListComponent potionEffectsList = event.getInstigator().getComponent(PotionEffectsListComponent.class);
+
+        if (potionEffectsList == null) {
+            return;
+        }
+
+        String name = event.getAlterationEffect().getClass().getCanonicalName();
+        potionEffectsList.effects.get(name + event.getId());
+
+        BeforeApplyPotionEffectEvent beforeDrink =
+                instigator.send(new BeforeApplyPotionEffectEvent(potionEffectsList.effects.get(name + event.getId()),
+                        event.getEntity(), event.getInstigator()));
+
+        if (!beforeDrink.isConsumed()) {
+            float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
+            long modifiedDuration = (long) beforeDrink.getDurationResultValue();
+            if (/*modifiedMagnitude > 0 &&*/ modifiedDuration > 0) {
+                event.addDuration(modifiedDuration);
+                event.addMagnitude(modifiedMagnitude);
+            }
+        }
+    }
+
+    /*
+    // TODO: ADD THIS ON SATURDAY.
+    @ReceiveEvent
+    private void onEffectRemoved(OnEffectRemoveEvent event, EntityRef instigator) {
+        PotionEffectsListComponent potionEffectsList = event.getInstigator().getComponent(PotionEffectsListComponent.class);
+
+        if (potionEffectsList == null) {
+            return;
+        }
+
+        potionEffectsList.effects.remove(event.getAlterationEffect().toString() + event.getId());
+    }
+    *?
+
+     /**
      * Event handler that handles consuming a potion without a genome component attached to it. This method will cycle
      * through the potion's list of PotionEffects, apply them to the instigator entity, and then decrement the potion
      * bottle's durability.
