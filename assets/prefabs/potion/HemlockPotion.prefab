@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:HemlockPotionBottle",
+        "stackId": "Potions:hemlockPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Hemlock Potion",
+        "description": "Poisons the user. It deals 6 damage per second for 15 seconds. Intensified poision potion."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "POISON",
+                "magnitude": 6,
+                "duration": 15100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Poisons the user. It deals 6 damage per second for 15 seconds. Intensified poision potion."
+        ]
+    }
+}
