@@ -31,6 +31,7 @@ The following potions are present in this module:
 * Battle - It increases your damage withstand limit and helps you regenrate faster.
 * Super Heal - Restores a vast amount of HP
 * Sacred - Regenerates 3 HP per second for 10 seconds, increases the user's base max health by 25% for 30 seconds, and also cures poison status.
+* Ultra Heal - Restores a very vast amount of HP for 2 seconds.
 
 ## Contribution
 
@@ -164,3 +165,4 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
 * SuperHealPotionBottle.png : https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/
 * Sacred: SacredPotionBottle.png edited from base by smsunarto 
+* Ultra Heal: https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/ (edited)(resized)
