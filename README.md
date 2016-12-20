@@ -13,6 +13,7 @@ The following potions are present in this module:
 * Double Jump - Allows the user to double jump for 15 seconds.
 * Heal - Restores 20 HP to the user.
 * Health Boost - Increases the user's base max health by 50% for 30 seconds.
+* Hemlock Potion - Is a worse poison potion. 
 * Item Use Speed - Increases the user's item use speed by 25% for 15 seconds.
 * Jump Speed - Doubles the user's jump speed for 10 seconds.
 * Poison - Poisons user, dealing 3 damage per second for up to 15 seconds.
@@ -164,5 +165,6 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr
 * Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
 * SuperHealPotionBottle.png : https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/
+* HemlockPotion.png : Made by SufurElite.
 * Sacred: SacredPotionBottle.png edited from base by smsunarto 
 * Ultra Heal: https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/ (edited)(resized)
