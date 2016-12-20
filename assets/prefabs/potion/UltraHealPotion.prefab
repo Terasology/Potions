@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:UltraHealPotionBottle",
+        "stackId": "Potions:UltraHealPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "UltraHeal Potion",
+        "description": "Restores a very vast amount of HP to the user for 2 seconds."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HEAL",
+                "magnitude": 3,
+                "duration": 2
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Restores a very vast amount of HP to the user for 2 seconds."
+        ]
+    }
+}
