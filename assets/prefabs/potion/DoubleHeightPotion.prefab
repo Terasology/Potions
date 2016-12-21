@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:DoubleHeightPotion",
+        "stackId": "Potions:doubleHeightPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Double Height Potion",
+        "description": "Increases height of user to double the original height for 5 minutes."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HEIGHT",
+                "magnitude": 2,
+                "duration": 5 * 60 * 1000
+            },
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Increases height of user to double the original height for 5 minutes."
+        ]
+    }
+}
