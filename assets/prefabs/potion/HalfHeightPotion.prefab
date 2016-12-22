@@ -1,7 +1,7 @@
 {
     "parent": "engine:iconItem",
     "Item": {
-        "icon": "Potions:HalfHeightPotion",
+        "icon": "Potions:HalfHeightPotionBottle",
         "stackId": "Potions:halfHeightPotion",
         "consumedOnUse": true
     },
@@ -14,9 +14,9 @@
         "effects": [
             {
                 "effect": "HEIGHT",
-                "magnitude": 1/2,
-                "duration": 5 * 60 * 1000
-            },
+                "magnitude": 0.5,
+                "duration": 300000
+            }
         ]
     },
     "ItemHelp": {
