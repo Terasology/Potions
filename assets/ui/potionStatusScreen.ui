@@ -1,0 +1,153 @@
+{
+  "type": "PotionStatusScreen",
+  "contents": {
+    "type": "relativeLayout",
+    "contents": [
+      {
+        "type": "columnLayout",
+        "layoutInfo": {
+          "width": 300,
+          "use-content-height": true,
+          "position-right": {
+            "target": "RIGHT",
+            "offset": 0
+          },
+          "position-top": {
+            "target": "TOP",
+            "offset": 280
+          }
+        },
+        "columns": 1,
+        "verticalSpacing": 8,
+        "contents": [
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusOneIcon",
+                "image": "engine:icons#redHeart"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusOneName",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusOneDuration",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusTwoIcon",
+                "image": "engine:icons#redHeart"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusTwoName",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusTwoDuration",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusThreeIcon",
+                "image": "engine:icons#redHeart"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusThreeName",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusThreeDuration",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusFourIcon",
+                "image": "engine:icons#redHeart"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusFourName",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusFourDuration",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusFiveIcon",
+                "image": "engine:icons#redHeart"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusFiveName",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusFiveDuration",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusSixIcon",
+                "image": "engine:icons#redHeart"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusSixName",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusSixDuration",
+                "text": "Duration"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
