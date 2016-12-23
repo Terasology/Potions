@@ -33,6 +33,7 @@ The following potions are present in this module:
 * Super Heal - Restores a vast amount of HP
 * Sacred - Regenerates 3 HP per second for 10 seconds, increases the user's base max health by 25% for 30 seconds, and also cures poison status.
 * Ultra Heal - Restores a very vast amount of HP for 2 seconds.
+* God's Wrath - Instantly kills player when consumed or detroys any enity used on
 
 ## Contribution
 
