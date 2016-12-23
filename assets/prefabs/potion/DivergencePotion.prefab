@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "Potion of Divergence",
-        "description": "Coincidentally heals and damages the player for 10 seconds, but heals at a faster rate."
+        "description": "Coincidentally heals and damages the player for 10 seconds, but heals in larger amounts."
     },
     "Potion": {
         "hasGenome": false,
@@ -27,7 +27,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Coincidentally heals and damages the player for 10 second, but heals at a faster rate."
+             "Coincidentally heals and damages the player for 10 second, but heals in larger amounts."
         ]
     }
 }
