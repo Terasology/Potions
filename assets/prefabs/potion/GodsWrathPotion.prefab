@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:DivergencePotionBottle",
+        "stackId": "Potions:divergencePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Potion of Divergence",
+        "description": "Coincidentally heals and damages the player for 10 seconds, but heals at a faster rate."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HARM",
+                "magnitude": 3,
+                "duration": 10100
+            }, 
+            {
+                "effect": "HEAL",
+                "magnitude": 5,
+                "duration": 10100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Coincidentally heals and damages the player for 10 second, but heals at a faster rate."
+        ]
+    }
+}
