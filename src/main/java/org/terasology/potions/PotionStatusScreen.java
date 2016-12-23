@@ -34,11 +34,7 @@ public class PotionStatusScreen extends CoreScreenLayer {
     }
 
     @Override
-    @ReceiveEvent(priority = 101)
-    public void onBindEvent(BindButtonEvent event) {
-        if (event instanceof InventoryButton && event.isDown()) {
-            logger.info("Potions Close");
-            getManager().closeScreen(this);
-        }
+    public boolean isModal() {
+        return false;
     }
 }
