@@ -15,22 +15,15 @@
  */
 package org.terasology.potions;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.input.BindButtonEvent;
-import org.terasology.input.binds.inventory.InventoryButton;
 import org.terasology.rendering.nui.CoreScreenLayer;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class PotionStatusScreen extends CoreScreenLayer {
-    private static final Logger logger = LoggerFactory.getLogger(PotionStatusScreen.class);
 
     @Override
     public void initialise() {
-        logger.info("Potions init");
     }
 
     @Override

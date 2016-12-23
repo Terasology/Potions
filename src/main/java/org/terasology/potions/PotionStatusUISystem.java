@@ -15,9 +15,6 @@
  */
 package org.terasology.potions;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
@@ -30,16 +27,12 @@ import org.terasology.rendering.nui.NUIManager;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class PotionStatusUISystem extends BaseComponentSystem {
-
-    private static final Logger logger = LoggerFactory.getLogger(PotionStatusUISystem.class);
-
     @In
     private NUIManager nuiManager;
 
     @ReceiveEvent(priority = 101)
     public void inventoryToggled(InventoryButton event, EntityRef entity) {
         if (event.getState() == ButtonState.DOWN) {
-            logger.info("Potions Open");
             nuiManager.toggleScreen("potions:PotionStatusScreen");
         }
     }
