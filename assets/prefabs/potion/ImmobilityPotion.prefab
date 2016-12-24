@@ -1,0 +1,43 @@
+{
+  "parent": "engine:iconItem",
+  "Item": {
+    "icon": "Potions:ImmobilityPotionBottle",
+    "stackId": "Potions:ImmobilityPotion",
+    "consumedOnUse": true
+  },
+  "DisplayName": {
+    "name": "Immobility Potion",
+    "description": "Greatly reduces various mobility stats for 15 seconds."
+  },
+  "Potion": {
+    "hasGenome": false,
+    "effects": [
+      {
+        "effect": "JUMP",
+        "magnitude": 0.1,
+        "duration": 15100
+      },
+      {
+        "effect": "WALK",
+        "magnitude": 0.1,
+        "duration": 15100
+      },
+      {
+        "effect": "ITEM_USE_SPEED",
+        "magnitude": 0.1,
+        "duration": 15100
+      },
+      {
+        "effect": "SWIM",
+        "magnitude": 0.1,
+        "duration": 15100
+      },
+    ]
+  },
+  "ItemHelp": {
+    "category": "Potions",
+    "paragraphText": [
+      "Greatly reduces various mobility stats for 15 seconds."
+    ]
+  }
+}
