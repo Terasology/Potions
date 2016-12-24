@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:HalfHeightPotionBottle",
+        "stackId": "Potions:halfHeightPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Half Height Potion",
+        "description": "Reduced height of user to half the original height for 5 minutes."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HEIGHT",
+                "magnitude": 0.5,
+                "duration": 300000
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Reduced height of user to half the original height for 5 minutes."
+        ]
+    }
+}

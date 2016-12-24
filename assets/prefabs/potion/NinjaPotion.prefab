@@ -1,12 +1,12 @@
 {
     "parent": "engine:iconItem",
     "Item": {
-        "icon": "Potions:Ninjabottle",
+        "icon": "Potions:NinjaBottle",
         "stackId": "Potions:ninjaPotion",
         "consumedOnUse": true
     },
     "DisplayName": {
-        "name": "Ninja potion",
+        "name": "Ninja Potion",
         "description": "Increases the user’s core abilities of jumping and walking!"
     },
     "Potion": {

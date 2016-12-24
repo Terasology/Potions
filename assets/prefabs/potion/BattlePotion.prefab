@@ -12,7 +12,6 @@
     "Potion": {
         "hasGenome": false,
         "effects": [
-            
             {
                 "effect": "TEMP_MAX_HEALTH_BOOST",
                 "magnitude": 100,

@@ -33,5 +33,11 @@
                 "duration": 10100
             }
         ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Puts the character in an adrenaline-driven overdrive."
+        ]
     }
 }
