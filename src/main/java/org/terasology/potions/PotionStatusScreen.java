@@ -15,15 +15,49 @@
  */
 package org.terasology.potions;
 
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.terasology.potions.component.PotionEffect;
+import org.terasology.rendering.assets.texture.TextureRegion;
 import org.terasology.rendering.nui.CoreScreenLayer;
+import org.terasology.rendering.nui.widgets.UIImage;
+import org.terasology.rendering.nui.widgets.UILabel;
+import org.terasology.utilities.Assets;
 
-@RegisterSystem(RegisterMode.CLIENT)
+import java.util.Arrays;
+
 public class PotionStatusScreen extends CoreScreenLayer {
+    private static final Logger logger = LoggerFactory.getLogger(PotionStatusScreen.class);
+
+    private UIImage[] statusIcons = new UIImage[10];
+    private UILabel[] statusNames = new UILabel[10];
+    private UILabel[] statusDurations = new UILabel[10];
 
     @Override
     public void initialise() {
+        for (int i = 0; i < 10; i++) {
+            statusIcons[i] = find("statusIcon" + (i + 1), UIImage.class);
+            statusNames[i] = find("statusName" + (i + 1), UILabel.class);
+            statusDurations[i] = find("statusDuration" + (i + 1), UILabel.class);
+        }
+        logger.info(find("statusIcon1", UIImage.class).toString());
+        for (int i = 0; i < 10; i++) {
+            removeEffect(i);
+        }
+    }
+
+    public void addEffect(int index, String name, long duration) {
+//        TextureRegion icon =  Assets.getTextureRegion("potions:effectIcons#" + name).get();
+  //      icon = icon != null ? icon : Assets.getTextureRegion("engine:icons#emptyIcon").get();
+    //    statusIcons[index].setImage(icon);
+        statusNames[index].setText(name);
+        statusDurations[index].setText(String.valueOf(duration));
+    }
+
+    public void removeEffect(int index) {
+        statusIcons[index].setImage(Assets.getTextureRegion("engine:icons#emptyIcon").get());
+        statusNames[index].setText("");
+        statusDurations[index].setText("");
     }
 
     @Override

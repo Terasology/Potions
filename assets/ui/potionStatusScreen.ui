@@ -21,22 +21,27 @@
         "verticalSpacing": 8,
         "contents": [
           {
+            "type": "UILabel",
+            "id": "PotionStatusLabel",
+            "text": "Active Effects"
+          },
+          {
             "type": "rowLayout",
             "horizontalSpacing": 0,
             "contents": [
               {
                 "type": "UIImage",
-                "id": "statusOneIcon",
-                "image": "engine:icons#redHeart"
+                "id": "statusIcon1",
+                "image": "engine:icons#emptyIcon"
               },
               {
                 "type": "UILabel",
-                "id": "statusOneName",
+                "id": "statusName1",
                 "text": "Name"
               },
               {
                 "type": "UILabel",
-                "id": "statusOneDuration",
+                "id": "statusDuration1",
                 "text": "Duration"
               }
             ]
@@ -47,17 +52,17 @@
             "contents": [
               {
                 "type": "UIImage",
-                "id": "statusTwoIcon",
-                "image": "engine:icons#redHeart"
+                "id": "statusIcon2",
+                "image": "engine:icons#emptyIcon"
               },
               {
                 "type": "UILabel",
-                "id": "statusTwoName",
+                "id": "statusName2",
                 "text": "Name"
               },
               {
                 "type": "UILabel",
-                "id": "statusTwoDuration",
+                "id": "statusDuration2",
                 "text": "Duration"
               }
             ]
@@ -68,17 +73,17 @@
             "contents": [
               {
                 "type": "UIImage",
-                "id": "statusThreeIcon",
-                "image": "engine:icons#redHeart"
+                "id": "statusIcon3",
+                "image": "engine:icons#emptyIcon"
               },
               {
                 "type": "UILabel",
-                "id": "statusThreeName",
+                "id": "statusName3",
                 "text": "Name"
               },
               {
                 "type": "UILabel",
-                "id": "statusThreeDuration",
+                "id": "statusDuration3",
                 "text": "Duration"
               }
             ]
@@ -89,17 +94,17 @@
             "contents": [
               {
                 "type": "UIImage",
-                "id": "statusFourIcon",
-                "image": "engine:icons#redHeart"
+                "id": "statusIcon4",
+                "image": "engine:icons#emptyIcon"
               },
               {
                 "type": "UILabel",
-                "id": "statusFourName",
+                "id": "statusName4",
                 "text": "Name"
               },
               {
                 "type": "UILabel",
-                "id": "statusFourDuration",
+                "id": "statusDuration4",
                 "text": "Duration"
               }
             ]
@@ -110,17 +115,17 @@
             "contents": [
               {
                 "type": "UIImage",
-                "id": "statusFiveIcon",
-                "image": "engine:icons#redHeart"
+                "id": "statusIcon5",
+                "image": "engine:icons#emptyIcon"
               },
               {
                 "type": "UILabel",
-                "id": "statusFiveName",
+                "id": "statusName5",
                 "text": "Name"
               },
               {
                 "type": "UILabel",
-                "id": "statusFiveDuration",
+                "id": "statusDuration5",
                 "text": "Duration"
               }
             ]
@@ -131,17 +136,101 @@
             "contents": [
               {
                 "type": "UIImage",
-                "id": "statusSixIcon",
-                "image": "engine:icons#redHeart"
+                "id": "statusIcon6",
+                "image": "engine:icons#emptyIcon"
               },
               {
                 "type": "UILabel",
-                "id": "statusSixName",
+                "id": "statusName6",
                 "text": "Name"
               },
               {
                 "type": "UILabel",
-                "id": "statusSixDuration",
+                "id": "statusDuration6",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusIcon7",
+                "image": "engine:icons#emptyIcon"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusName7",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusDuration7",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusIcon8",
+                "image": "engine:icons#emptyIcon"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusName8",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusDuration8",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusIcon9",
+                "image": "engine:icons#emptyIcon"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusName9",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusDuration9",
+                "text": "Duration"
+              }
+            ]
+          },
+          {
+            "type": "rowLayout",
+            "horizontalSpacing": 0,
+            "contents": [
+              {
+                "type": "UIImage",
+                "id": "statusIcon10",
+                "image": "engine:icons#emptyIcon"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusName10",
+                "text": "Name"
+              },
+              {
+                "type": "UILabel",
+                "id": "statusDuration10",
                 "text": "Duration"
               }
             ]
