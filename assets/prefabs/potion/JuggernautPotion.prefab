@@ -1,0 +1,48 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:JuggernautPotion",
+        "stackId": "Potions:juggernautPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Juggernaut Potion",
+        "description": "Gives the Effect of a Juggernaut in Combat."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "GLUE",
+                "magnitude": 3,
+                "duration": 10100
+            },
+            {
+                "effect": "TEMP_MAX_HEALTH_BOOST",
+                "magnitude": 50,
+                "duration": 10100
+            },
+            {
+                "effect": "RESIST_PHYSICAL",
+                "magnitude": 30,
+                "duration": 10100
+            },
+            {
+                "effect": "FEATHER_FALL",
+                "magnitude": 5,
+                "duration": 10100
+            },
+            {
+                "effect": "RESIST_POISON",
+                "magnitude": 10,
+                "duration": 10100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+            "Gives the Effect of a Juggernaut in Combat."
+        ]
+    }
+}
