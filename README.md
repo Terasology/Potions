@@ -35,6 +35,7 @@ The following potions are present in this module:
 * Ultra Heal - Restores a very vast amount of HP for 2 seconds.
 * Immobility Potion - Greatly reduces various mobility stats for 15 seconds.
 * Inversion - Disorients the player by inverting the controls (i.e. turning left will turn right).
+* Juggernaut - Restricts the Player's movements in exchange for damage resistance for 10 seconds.
 
 ## Contribution
 
@@ -171,4 +172,5 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 * Sacred: SacredPotionBottle.png edited from base by smsunarto 
 * Ultra Heal: https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/ (edited)(resized)
 * Immobility Potion: ImmobilityPotionBottle.png edited from base
-* InversionPotion.png: Made by TheJYKoder
+* InversionPotionBottle.png: Made by TheJYKoder
+* JuggernautPotionBottle.png: Made by TheJYKoder
