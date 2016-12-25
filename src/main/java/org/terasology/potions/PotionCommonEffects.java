@@ -47,7 +47,8 @@ public final class PotionCommonEffects {
 
     // TODO: Awaiting API implementation for custom actions in Terasology for the NoVisibilityEffect to work.
     public static final String NO_VISIBILITY = "NO_VISIBILITY";
-
+    public static final String INVERSION_OF_CONTROLS = "INVERSION_OF_CONTROLS";
+    
     private PotionCommonEffects() {
 
     }
