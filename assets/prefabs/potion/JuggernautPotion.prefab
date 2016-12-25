@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "Juggernaut Potion",
-        "description": "Gives the Effect of a Juggernaut in Combat."
+        "description": " Restricts the Player's movements in exchange for damage resistance for 10 seconds."
     },
     "Potion": {
         "hasGenome": false,
@@ -42,7 +42,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-            "Gives the Effect of a Juggernaut in Combat."
+            " Restricts the Player's movements in exchange for damage resistance for 10 seconds."
         ]
     }
 }
