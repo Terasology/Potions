@@ -15,8 +15,6 @@
  */
 package org.terasology.potions;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.EventPriority;
@@ -28,7 +26,6 @@ import org.terasology.input.ButtonState;
 import org.terasology.input.binds.inventory.InventoryButton;
 import org.terasology.logic.delay.DelayManager;
 import org.terasology.logic.delay.PeriodicActionTriggeredEvent;
-import org.terasology.logic.players.LocalPlayer;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.registry.In;
@@ -39,7 +36,6 @@ import java.util.ArrayList;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class PotionStatusUISystem extends BaseComponentSystem {
-    private static final Logger logger = LoggerFactory.getLogger(PotionStatusUISystem.class);
 
     @In
     private NUIManager nuiManager;
@@ -63,7 +59,6 @@ public class PotionStatusUISystem extends BaseComponentSystem {
 
     @ReceiveEvent(priority = 110)
     public void inventoryToggled(InventoryButton event, EntityRef entity) {
-        logger.info("inv toggle: " + entity.toString());
         if (event.getState() == ButtonState.DOWN) {
             nuiManager.toggleScreen("potions:potionStatusScreen");
             isScreenVisible = nuiManager.isOpen("potions:potionStatusScreen");
@@ -74,7 +69,6 @@ public class PotionStatusUISystem extends BaseComponentSystem {
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH)
     public void onPotionDrink(DrinkPotionEvent event, EntityRef entity) {
 
-        logger.info("drink: " + entity.toString());
         for (PotionEffect effect : event.getPotionComponent().effects) {
             int index = effects.indexOf(effect);
             if (index == -1) {
@@ -91,10 +85,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
 
     @ReceiveEvent
     public void onEffectUpdate(PeriodicActionTriggeredEvent event, EntityRef entity) {
-        logger.info("Periodic Activated");
         String actionID = event.getActionId();
         if (actionID.startsWith("PUI")) {
-            logger.info(actionID.substring(3));
             int index = effects.indexOf(actionID.substring(3));
             durations.set(index, durations.get(index) - updateRate);
             if (durations.get(index) < 0) {

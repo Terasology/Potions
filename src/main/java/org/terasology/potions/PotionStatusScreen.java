@@ -15,15 +15,10 @@
  */
 package org.terasology.potions;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.terasology.rendering.nui.CoreScreenLayer;
-import org.terasology.rendering.nui.widgets.UIImage;
 import org.terasology.rendering.nui.widgets.UILabel;
-import org.terasology.utilities.Assets;
 
 public class PotionStatusScreen extends CoreScreenLayer {
-    private static final Logger logger = LoggerFactory.getLogger(PotionStatusScreen.class);
 
     private UILabel[] statusLabels = new UILabel[10];
 
