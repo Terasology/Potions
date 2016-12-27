@@ -25,31 +25,45 @@ import org.terasology.utilities.Assets;
 public class PotionStatusScreen extends CoreScreenLayer {
     private static final Logger logger = LoggerFactory.getLogger(PotionStatusScreen.class);
 
-    private UIImage[] statusIcons = new UIImage[10];
-    private UILabel[] statusNames = new UILabel[10];
-    private UILabel[] statusDurations = new UILabel[10];
+    private UILabel[] statusLabels = new UILabel[10];
 
     @Override
     public void initialise() {
         for (int i = 0; i < 10; i++) {
-            statusIcons[i] = find("statusIcon" + (i + 1), UIImage.class);
-            statusNames[i] = find("statusName" + (i + 1), UILabel.class);
-            statusDurations[i] = find("statusDuration" + (i + 1), UILabel.class);
+            statusLabels[i] = find("statusLabel" + (i + 1), UILabel.class);
         }
         removeAll();
     }
 
     public void addEffect(int index, String name, long duration) {
-        statusNames[index].setText(name);
-        statusDurations[index].setText(String.valueOf(duration));
+        statusLabels[index].setText(toTitleCase(name) + " " + (duration / 1000) + "s");
     }
 
     public void removeAll() {
         for (int i = 0; i < 10; i++) {
-            statusIcons[i].setImage(Assets.getTextureRegion("engine:icons#emptyIcon").get());
-            statusNames[i].setText("");
-            statusDurations[i].setText("");
+            statusLabels[i].setText("");
         }
+    }
+
+    //Tweaked from http://stackoverflow.com/a/1086134
+    @Deprecated
+    public static String toTitleCase(String input) {
+        input = input.replace('_', ' ').toLowerCase();
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
     }
 
     @Override

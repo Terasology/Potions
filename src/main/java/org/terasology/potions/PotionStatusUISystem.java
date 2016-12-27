@@ -55,13 +55,14 @@ public class PotionStatusUISystem extends BaseComponentSystem {
 
     private boolean isScreenVisible = false;
 
+    private int updateRate = 200;
+
     @Override
     public void initialise() {
     }
 
     @ReceiveEvent(priority = 110)
     public void inventoryToggled(InventoryButton event, EntityRef entity) {
-
         logger.info("inv toggle: " + entity.toString());
         if (event.getState() == ButtonState.DOWN) {
             nuiManager.toggleScreen("potions:potionStatusScreen");
@@ -79,7 +80,7 @@ public class PotionStatusUISystem extends BaseComponentSystem {
             if (index == -1) {
                 effects.add(effect.effect);
                 durations.add(effect.duration);
-                delayManager.addPeriodicAction(entity, "PUI" + effect.effect, 500, 500);
+                delayManager.addPeriodicAction(entity, "PUI" + effect.effect, updateRate, updateRate);
             } else {
                 effects.set(index, effect.effect);
                 durations.set(index, effect.duration);
@@ -95,7 +96,7 @@ public class PotionStatusUISystem extends BaseComponentSystem {
         if (actionID.startsWith("PUI")) {
             logger.info(actionID.substring(3));
             int index = effects.indexOf(actionID.substring(3));
-            durations.set(index, durations.get(index) - 500);
+            durations.set(index, durations.get(index) - updateRate);
             if (durations.get(index) < 0) {
                 durations.remove(index);
                 effects.remove(index);

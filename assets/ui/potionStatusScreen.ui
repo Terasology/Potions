@@ -26,214 +26,53 @@
             "text": "Active Effects"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon1",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName1",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration1",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel1",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon2",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName2",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration2",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel2",
+            "text": "Name"
+          },{
+            "type": "UILabel",
+            "id": "statusLabel3",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon3",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName3",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration3",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel4",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon4",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName4",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration4",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel5",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon5",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName5",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration5",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel6",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon6",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName6",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration6",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel7",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon7",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName7",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration7",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel8",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon8",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName8",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration8",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel9",
+            "text": "Name"
           },
           {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon9",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName9",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration9",
-                "text": "Duration"
-              }
-            ]
-          },
-          {
-            "type": "rowLayout",
-            "horizontalSpacing": 0,
-            "contents": [
-              {
-                "type": "UIImage",
-                "id": "statusIcon10",
-                "image": "engine:icons#emptyIcon"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusName10",
-                "text": "Name"
-              },
-              {
-                "type": "UILabel",
-                "id": "statusDuration10",
-                "text": "Duration"
-              }
-            ]
+            "type": "UILabel",
+            "id": "statusLabel10",
+            "text": "Name"
           }
         ]
       }
