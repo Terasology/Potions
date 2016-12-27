@@ -17,14 +17,10 @@ package org.terasology.potions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.terasology.potions.component.PotionEffect;
-import org.terasology.rendering.assets.texture.TextureRegion;
 import org.terasology.rendering.nui.CoreScreenLayer;
 import org.terasology.rendering.nui.widgets.UIImage;
 import org.terasology.rendering.nui.widgets.UILabel;
 import org.terasology.utilities.Assets;
-
-import java.util.Arrays;
 
 public class PotionStatusScreen extends CoreScreenLayer {
     private static final Logger logger = LoggerFactory.getLogger(PotionStatusScreen.class);
@@ -40,24 +36,20 @@ public class PotionStatusScreen extends CoreScreenLayer {
             statusNames[i] = find("statusName" + (i + 1), UILabel.class);
             statusDurations[i] = find("statusDuration" + (i + 1), UILabel.class);
         }
-        logger.info(find("statusIcon1", UIImage.class).toString());
-        for (int i = 0; i < 10; i++) {
-            removeEffect(i);
-        }
+        removeAll();
     }
 
     public void addEffect(int index, String name, long duration) {
-//        TextureRegion icon =  Assets.getTextureRegion("potions:effectIcons#" + name).get();
-  //      icon = icon != null ? icon : Assets.getTextureRegion("engine:icons#emptyIcon").get();
-    //    statusIcons[index].setImage(icon);
         statusNames[index].setText(name);
         statusDurations[index].setText(String.valueOf(duration));
     }
 
-    public void removeEffect(int index) {
-        statusIcons[index].setImage(Assets.getTextureRegion("engine:icons#emptyIcon").get());
-        statusNames[index].setText("");
-        statusDurations[index].setText("");
+    public void removeAll() {
+        for (int i = 0; i < 10; i++) {
+            statusIcons[i].setImage(Assets.getTextureRegion("engine:icons#emptyIcon").get());
+            statusNames[i].setText("");
+            statusDurations[i].setText("");
+        }
     }
 
     @Override
