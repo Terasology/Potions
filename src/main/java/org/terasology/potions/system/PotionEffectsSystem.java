@@ -16,11 +16,13 @@
 package org.terasology.potions.system;
 
 import org.terasology.alterationEffects.OnEffectModifyEvent;
+import org.terasology.alterationEffects.OnEffectRemoveEvent;
 import org.terasology.context.Context;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.component.PotionEffectsListComponent;
 import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
 import org.terasology.registry.In;
@@ -28,29 +30,52 @@ import org.terasology.registry.In;
 @RegisterSystem
 public class PotionEffectsSystem extends BaseComponentSystem {
 
+    private final static String POTION_EFFECT_PREFIX = "POTIONS";
+
     @ReceiveEvent
-    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator) {
+    public void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator) {
         // So, a PotionEffectsListCompoent (analogue to EquipmentEffectsListComponent.
-        PotionEffectsListComponent potionEffectsList = event.getInstigator().getComponent(PotionEffectsListComponent.class);
+        PotionEffectsListComponent potionEffectsList = instigator.getComponent(PotionEffectsListComponent.class);
 
         if (potionEffectsList == null) {
             return;
         }
 
         String name = event.getAlterationEffect().getClass().getCanonicalName();
-        potionEffectsList.effects.get(name + event.getId());
+        PotionEffect potionEffect = potionEffectsList.effects.get(name + event.getId());
+
+        if (potionEffect == null) {
+            return;
+        }
 
         BeforeApplyPotionEffectEvent beforeDrink =
-                instigator.send(new BeforeApplyPotionEffectEvent(potionEffectsList.effects.get(name + event.getId()),
+                instigator.send(new BeforeApplyPotionEffectEvent(potionEffect,
                         event.getEntity(), event.getInstigator()));
 
         if (!beforeDrink.isConsumed()) {
             float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
             long modifiedDuration = (long) beforeDrink.getDurationResultValue();
             if (/*modifiedMagnitude > 0 &&*/ modifiedDuration > 0) {
-                event.addDuration(modifiedDuration);
+                event.addDuration(modifiedDuration, POTION_EFFECT_PREFIX);
                 event.addMagnitude(modifiedMagnitude);
             }
         }
+    }
+
+    @ReceiveEvent
+    public void onEffectRemoved(OnEffectRemoveEvent event, EntityRef instigator) {
+        // This is used as a guard/delimiter so remove events intended for other systems will not affect this one.
+        if (!event.getEffectId().equals(POTION_EFFECT_PREFIX)) {
+            return;
+        }
+
+        PotionEffectsListComponent potionEffectsList = instigator.getComponent(PotionEffectsListComponent.class);
+
+        if (potionEffectsList == null) {
+            return;
+        }
+
+        // TODO: Need to add event.getEffectId() so that
+        potionEffectsList.effects.remove(event.getAlterationEffect().getClass().getCanonicalName() + event.getId());
     }
 }

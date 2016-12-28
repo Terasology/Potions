@@ -120,13 +120,13 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
         String name = "";
         if (herbEffect instanceof AlterationToHerbEffectWrapper) {
-            name = ((AlterationToHerbEffectWrapper) herbEffect).getAlterationEffect().getClass().getCanonicalName();
+            name += ((AlterationToHerbEffectWrapper) herbEffect).getAlterationEffect().getClass().getCanonicalName();
         } else if (herbEffect instanceof ExplosiveEffect) {
-            name = "Explosive";
+            name += "Explosive";
         } else if (herbEffect instanceof HarmEffect) {
-            name = "Harm";
+            name += "Harm";
         } else if (herbEffect instanceof HealEffect) {
-            name = "Heal";
+            name += "Heal";
         }
 
         if (id.equalsIgnoreCase("")) {
