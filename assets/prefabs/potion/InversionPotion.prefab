@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:InversionPotionBottle",
+        "stackId": "Potions:inversionPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Potion of Inversion",
+        "description": "Disorients a player by inverting controls for 10 seconds."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "INVERSION_OF_CONTROLS",
+                "magnitude": 1,
+                "duration": 10010
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Disorients a player by inverting controls (i.e. turning left actually turns right) for 10 seconds."
+        ]
+    }
+}
