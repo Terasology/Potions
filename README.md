@@ -38,7 +38,6 @@ The following potions are present in this module:
 * Inversion - Disorients the player by inverting the controls (i.e. turning left will turn right).
 * Juggernaut - Restricts the Player's movements in exchange for damage resistance for 10 seconds.
 
-
 ## Contribution
 
 Fork and clone this repository locally.
