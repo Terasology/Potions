@@ -1,0 +1,33 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:DivergenceBottle",
+        "stackId": "Potions:divergencePotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Potion of Divergence",
+        "description": "Coincidentally harms and regenerates player's health, but regen's in larger amounts."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HARM",
+                "magnitude": 3,
+                "duration": 10100
+            }, 
+            {
+                "effect": "REGEN",
+                "magnitude": 5,
+                "duration": 10100
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Coincidentally harms and regenerates player's health, but regen's in larger amounts."
+        ]
+    }
+}
