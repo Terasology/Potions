@@ -137,51 +137,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             potionEffectsList.effects.put(name + id, potionEffect);
             herbEffect.applyEffect(item, instigator, id, potionEffect.magnitude, potionEffect.duration);
         }
-
-        /*
-        BeforeApplyPotionEffectEvent beforeDrink = instigator.send(new BeforeApplyPotionEffectEvent(potionEffect, instigator, item, potion));
-
-        if (!beforeDrink.isConsumed()) {
-
-            float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
-            long modifiedDuration = (long) beforeDrink.getDurationResultValue();
-            if (modifiedMagnitude > 0 && modifiedDuration > 0) {
-                lastPotionEffect = potionEffect;
-                lastModifiedDuration = modifiedDuration;
-                lastModifiedMagnitude = modifiedMagnitude;
-
-                if (id.equalsIgnoreCase("")) {
-                    herbEffect.applyEffect(item, instigator, potionEffect.effect, modifiedMagnitude, modifiedDuration);
-                } else {
-                    herbEffect.applyEffect(item, instigator, id, modifiedMagnitude, modifiedDuration);
-                }
-            }
-        }
-        */
     }
-
-
-    // The HealthComponent parameter is a dummy one used so that the evnet handler works properly.
-    /*
-    @ReceiveEvent
-    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator, HealthComponent dummyComponent) {
-        onEffectApplied(event, instigator);
-    }
-    */
-
-    /*
-    @ReceiveEvent
-    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator, LocationComponent dummyComponent) {
-        onEffectApplied(event, instigator);
-    }
-    */
-    /*
-    @ReceiveEvent
-    private void onRegenerationEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
-        String x = "";
-        return;
-    }
-    */
 
     private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator) {
         // So, a PotionEffectsListCompoent (analogue to EquipmentEffectsListComponent.
@@ -207,20 +163,6 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             }
         }
     }
-
-    /*
-    // TODO: ADD THIS ON SATURDAY.
-    @ReceiveEvent
-    private void onEffectRemoved(OnEffectRemoveEvent event, EntityRef instigator) {
-        PotionEffectsListComponent potionEffectsList = event.getInstigator().getComponent(PotionEffectsListComponent.class);
-
-        if (potionEffectsList == null) {
-            return;
-        }
-
-        potionEffectsList.effects.remove(event.getAlterationEffect().toString() + event.getId());
-    }
-    *?
 
      /**
      * Event handler that handles consuming a potion without a genome component attached to it. This method will cycle

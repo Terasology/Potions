@@ -15,9 +15,9 @@
  */
 package org.terasology.potions.system;
 
+import org.terasology.alterationEffects.AlterationEffects;
 import org.terasology.alterationEffects.OnEffectModifyEvent;
 import org.terasology.alterationEffects.OnEffectRemoveEvent;
-import org.terasology.context.Context;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
@@ -25,7 +25,6 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.component.PotionEffectsListComponent;
 import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
-import org.terasology.registry.In;
 
 @RegisterSystem
 public class PotionEffectsSystem extends BaseComponentSystem {
@@ -65,7 +64,8 @@ public class PotionEffectsSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void onEffectRemoved(OnEffectRemoveEvent event, EntityRef instigator) {
         // This is used as a guard/delimiter so remove events intended for other systems will not affect this one.
-        if (!event.getEffectId().equals(POTION_EFFECT_PREFIX)) {
+        if (!event.getEffectId().equals(POTION_EFFECT_PREFIX)
+                && !event.getEffectId().equals(AlterationEffects.CONSUMABLE_ITEM) ) {
             return;
         }
 
@@ -75,7 +75,6 @@ public class PotionEffectsSystem extends BaseComponentSystem {
             return;
         }
 
-        // TODO: Need to add event.getEffectId() so that
         potionEffectsList.effects.remove(event.getAlterationEffect().getClass().getCanonicalName() + event.getId());
     }
 }
