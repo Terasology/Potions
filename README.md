@@ -162,17 +162,6 @@ Send in PRs to this repository and feel free to add your name to the authors lis
 ## Credits for images:
 
 * [Trekmarvel](https://github.com/Trekmarvel) for the base potion bottle graphics.
-* http://opengameart.org/content/potion-bottles for the Overdrive Potion bottle image
-* InvinciblePotionBottle.png, Regen2PotionBottle.png edited from base by Minege
-* MegaJumpBottle.png, GigaJumpBottle.png edited from base by Patrick Wang
-* Ninja Potion: https://pixabay.com/en/bottle-vector-water-bottle-1737388/
-* BlindWalk Potion: BlindWalkPotionBottle.png edited from base by digitalripperynr
-* Battle: https://pixabay.com/en/bottle-clear-glass-close-cork-307980/
-* SuperHealPotionBottle.png : https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/
-* HemlockPotion.png : Made by SufurElite.
+* Regen2PotionBottle.png edited from base by Minege
 * Sacred: SacredPotionBottle.png edited from base by smsunarto 
-* Ultra Heal: https://pixabay.com/en/erlenmeyer-flask-glassware-red-296843/ (edited)(resized)
-* Immobility Potion: ImmobilityPotionBottle.png edited from base
-* InversionPotionBottle.png: Made by TheJYKoder
-* JuggernautPotionBottle.png: Made by TheJYKoder
-* Divergence Potion Bottle: Variant of base potion bottle
+
