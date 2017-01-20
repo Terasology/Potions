@@ -77,15 +77,10 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     @In
     private Context context;
 
-    private PotionEffect lastPotionEffect;
-    private float lastModifiedMagnitude;
-    private long lastModifiedDuration;
-
     /**
-     * Check the potion drink event by sending out a consumable event so that other systems can either modify the
-     * effect parameters or cancel (consume) the event outright. Following that, if not consumed, apply the effect to
-     * the instigator.
-     * This calls the {@link #checkDrink(EntityRef, EntityRef, PotionComponent, HerbEffect, PotionEffect, String)}}
+     * Apply the potion effect with the given ID to the instigator. This will also add the specific effect to the
+     * instigator's potion effects map.
+     * This calls the {@link #applyPotionEffect(EntityRef, EntityRef, PotionComponent, HerbEffect, PotionEffect, String)}}
      * method but leaves the id field empty.
      *
      * @param instigator    The entity who is trying to consume this potion.
@@ -94,30 +89,40 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      * @param herbEffect    The HerbEffect that will be used to apply the PotionEffect on the instigator.
      * @param potionEffect  The PotionEffect that will be applied onto the instigator.
      */
-    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect, PotionEffect potionEffect) {
-        checkDrink(instigator, item, potion, herbEffect, potionEffect, "");
+    private void applyPotionEffect(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect,
+                                   PotionEffect potionEffect) {
+        applyPotionEffect(instigator, item, potion, herbEffect, potionEffect, "");
     }
 
     /**
-     * Check the potion drink event by sending out a consumable event so that other systems can either modify the
-     * effect parameters or cancel (consume) the event outright. Following that, if not consumed, apply the effect to
-     * the instigator.
+     * Apply the potion effect with the given ID to the instigator. This will also add the specific effect to the
+     * instigator's potion effects map.
      *
-     * @param instigator    The entity who is trying to consume this potion.
+     * @param instigator    The entity who is trying to consume this potion and have the potion effect applied on it.
      * @param item          A reference to the potion item entity which has the potion effect.
      * @param potion        The PotionComponent of the potion item.
      * @param herbEffect    The HerbEffect that will be used to apply the PotionEffect on the instigator.
      * @param potionEffect  The PotionEffect that will be applied onto the instigator.
      * @param id            The ID of this particular HerbEffect. Used to differentiate effects under the same family.
      */
-    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect, PotionEffect potionEffect, String id) {
-
+    private void applyPotionEffect(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect,
+                                   PotionEffect potionEffect, String id) {
+        // If the instigator doesn't have a potion effects list, create one.
         if (!instigator.hasComponent(PotionEffectsListComponent.class)) {
             instigator.addComponent(new PotionEffectsListComponent());
         }
 
         PotionEffectsListComponent potionEffectsList = instigator.getComponent(PotionEffectsListComponent.class);
 
+        /*
+        The following if-blocks are used for creating the name to store this potion effect under in the potion effects
+        map. This is analogous to the effectIDs. The names are defined using these rules:
+
+        * Use the canonical name of the alteration effect class if the HerbEffect is an AlterationToHerbEffectWrapper.
+        * Use the prefix "Explosive" if the HerbEffect is an ExplosiveEffect.
+        * Use the prefix "Harm" if the HerbEffect is a HarmEffect.
+        * Use the prefix "Heal" if the HerbEffect is a HealEffect.
+        */
         String name = "";
         if (herbEffect instanceof AlterationToHerbEffectWrapper) {
             name += ((AlterationToHerbEffectWrapper) herbEffect).getAlterationEffect().getClass().getCanonicalName();
@@ -129,38 +134,15 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             name += "Heal";
         }
 
+        // Add the effect to the potion effects map, and save component storing the map.
+        potionEffectsList.effects.put(name + id, potionEffect);
+        instigator.saveComponent(potionEffectsList);
+
+        // Apply the herb effect onto the instigator.
         if (id.equalsIgnoreCase("")) {
-            potionEffectsList.effects.put(name, potionEffect);
-            // TODO: Need to send the effectID too so it can later be removed from the list properly.
             herbEffect.applyEffect(item, instigator, potionEffect.effect, potionEffect.magnitude, potionEffect.duration);
         } else {
-            potionEffectsList.effects.put(name + id, potionEffect);
             herbEffect.applyEffect(item, instigator, id, potionEffect.magnitude, potionEffect.duration);
-        }
-    }
-
-    private void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator) {
-        // So, a PotionEffectsListCompoent (analogue to EquipmentEffectsListComponent.
-        PotionEffectsListComponent potionEffectsList = event.getInstigator().getComponent(PotionEffectsListComponent.class);
-
-        if (potionEffectsList == null) {
-            return;
-        }
-
-        String name = event.getAlterationEffect().getClass().getCanonicalName();
-        potionEffectsList.effects.get(name + event.getId());
-
-        BeforeApplyPotionEffectEvent beforeDrink =
-                instigator.send(new BeforeApplyPotionEffectEvent(potionEffectsList.effects.get(name + event.getId()),
-                        event.getEntity(), event.getInstigator()));
-
-        if (!beforeDrink.isConsumed()) {
-            float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
-            long modifiedDuration = (long) beforeDrink.getDurationResultValue();
-            if (/*modifiedMagnitude > 0 &&*/ modifiedDuration > 0) {
-                event.addDuration(modifiedDuration);
-                event.addMagnitude(modifiedMagnitude);
-            }
         }
     }
 
@@ -192,7 +174,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
         // Iterate through all effects of this potion and apply them.
         for (PotionEffect pEffect : potion.effects) {
-            // herbEffect will store a reference to the HerbEffect, and effectID will store the ID of the effect (if any).
+            // herbEffect will store a reference to the HerbEffect, and effectID will store the ID of the effect
+            // (if any).
             herbEffect = null;
             effectID = "";
 
@@ -269,9 +252,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     break;
             }
 
-            // Before actually consuming the potion and applying its effect, perform a final check and apply some
-            // potential modifications to the effect.
-            checkDrink(event.getInstigator(), event.getItem(), potion, herbEffect, pEffect, effectID);
+            // Apply the potion's current effect onto the instigator.
+            applyPotionEffect(event.getInstigator(), event.getItem(), potion, herbEffect, pEffect, effectID);
         }
 
         // Play the potion drink sound.
