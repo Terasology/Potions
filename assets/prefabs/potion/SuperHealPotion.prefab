@@ -1,0 +1,28 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Potions:SuperHealPotionBottle",
+        "stackId": "Potions:superHealPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "SuperHeal Potion",
+        "description": "Restores a vast amount of HP to the user."
+    },
+    "Potion": {
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "HEAL",
+                "magnitude": 5,
+                "duration": 1
+            }
+        ]
+    },
+    "ItemHelp": {
+        "category": "Potions",
+        "paragraphText": [
+             "Restores a vast amount of HP to the user."
+        ]
+    }
+}

@@ -45,6 +45,10 @@ public final class PotionCommonEffects {
     public static final String BRICK_FALL = "BRICK_FALL";
     public static final String MULTI_JUMP = "MULTI_JUMP";
 
+    // TODO: Awaiting API implementation for custom actions in Terasology for the NoVisibilityEffect to work.
+    public static final String NO_VISIBILITY = "NO_VISIBILITY";
+    public static final String INVERSION_OF_CONTROLS = "INVERSION_OF_CONTROLS";
+    
     private PotionCommonEffects() {
 
     }
