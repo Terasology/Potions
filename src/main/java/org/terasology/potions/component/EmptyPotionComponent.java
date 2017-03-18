@@ -17,9 +17,11 @@
 package org.terasology.potions.component;
 
 import org.terasology.entitySystem.Component;
+import org.terasology.network.Replicate;
 
 /**
  * This component is only used as an identifier to identify if the entity is an empty potion container.
  */
+@Replicate
 public final class EmptyPotionComponent implements Component {
 }

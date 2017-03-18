@@ -15,17 +15,21 @@
  */
 package org.terasology.potions.component;
 
+import org.terasology.network.Replicate;
 import org.terasology.reflection.MappedContainer;
 
 /** Common class for describing an effect that may be present in a potion. */
 @MappedContainer
 public class PotionEffect {
     /** Name of the potion's effect. */
+    @Replicate
     public String effect;
 
     /** Magnitude of the potion's effect. */
+    @Replicate
     public float magnitude;
 
     /** Duration of the potion's effect in milliseconds. */
+    @Replicate
     public long duration;
 }

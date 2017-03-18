@@ -16,6 +16,7 @@
 package org.terasology.potions.component;
 
 import org.terasology.entitySystem.Component;
+import org.terasology.network.Replicate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,5 +30,6 @@ import java.util.Map;
  */
 public class PotionEffectsListComponent implements Component {
     /** A map of potion-based effects being applied to an entity. */
+    @Replicate
     public Map<String, PotionEffect> effects = new HashMap<String, PotionEffect>();
 }
