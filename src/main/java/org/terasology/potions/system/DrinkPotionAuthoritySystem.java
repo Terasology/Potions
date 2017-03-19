@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 MovingBlocks
+ * Copyright 2017 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,11 @@
  */
 package org.terasology.potions.system;
 
-import org.terasology.alterationEffects.OnEffectModifyEvent;
-import org.terasology.alterationEffects.OnEffectRemoveEvent;
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
-import org.terasology.alterationEffects.regenerate.RegenerationComponent;
 import org.terasology.alterationEffects.resist.ResistDamageAlterationEffect;
 import org.terasology.alterationEffects.speed.GlueAlterationEffect;
 import org.terasology.alterationEffects.speed.ItemUseSpeedAlterationEffect;
@@ -40,9 +37,7 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.logic.health.HealthComponent;
 import org.terasology.logic.inventory.InventoryManager;
-import org.terasology.logic.location.LocationComponent;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
@@ -52,10 +47,8 @@ import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.ExplosiveEffect;
 import org.terasology.potions.effect.NoVisibilityEffect;
 import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
-import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.HarmEffect;
 import org.terasology.potions.effect.HealEffect;
-import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
 import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.logic.common.ActivateEvent;
 import org.terasology.registry.CoreRegistry;
