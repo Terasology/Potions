@@ -13,15 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.terasology.potions.component;
 
 import org.terasology.entitySystem.Component;
 import org.terasology.network.Replicate;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * This component is only used as an identifier to identify if the entity is an empty potion container.
+ * This component is used for storing a mapped list of physical stats modifiers that are applied to the entity that
+ * this component's attached to. Each map entry is a reference to an item's or effect's physical stat modifiers. This is
+ * intended to be attached to entities, not items. Use PhysicalStatsModifierComponent for items.
+ *
+ * Note: Make sure that the entity you are attaching this to has a PhysicalStatsComponent.
  */
-@Replicate
-public final class EmptyPotionComponent implements Component {
+public class PotionEffectsListComponent implements Component {
+    /** A map of potion-based effects being applied to an entity. */
+    @Replicate
+    public Map<String, PotionEffect> effects = new HashMap<String, PotionEffect>();
 }

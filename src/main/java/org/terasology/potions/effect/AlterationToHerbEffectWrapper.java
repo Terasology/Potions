@@ -96,4 +96,8 @@ public class AlterationToHerbEffectWrapper implements HerbEffect {
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
         alterationEffect.applyEffect(instigator, entity, id, magnitude * magnitudeMultiplier, (long) (duration * durationMultiplier));
     }
+
+    public AlterationEffect getAlterationEffect() {
+        return alterationEffect;
+    }
 }
