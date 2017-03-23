@@ -1,0 +1,81 @@
+{
+  "type": "PotionStatusScreen",
+  "contents": {
+    "type": "relativeLayout",
+    "contents": [
+      {
+        "type": "columnLayout",
+        "layoutInfo": {
+          "width": 300,
+          "use-content-height": true,
+          "position-right": {
+            "target": "RIGHT",
+            "offset": 0
+          },
+          "position-top": {
+            "target": "TOP",
+            "offset": 280
+          }
+        },
+        "columns": 1,
+        "verticalSpacing": 8,
+        "contents": [
+          {
+            "type": "UILabel",
+            "id": "PotionStatusLabel",
+            "text": "Active Effects"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel1",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel2",
+            "text": "Name"
+          },{
+            "type": "UILabel",
+            "id": "statusLabel3",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel4",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel5",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel6",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel7",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel8",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel9",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel10",
+            "text": "Name"
+          }
+        ]
+      }
+    ]
+  }
+}
