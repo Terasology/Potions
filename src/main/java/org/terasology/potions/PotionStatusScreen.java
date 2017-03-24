@@ -20,11 +20,11 @@ import org.terasology.rendering.nui.widgets.UILabel;
 
 public class PotionStatusScreen extends CoreScreenLayer {
 
-    private UILabel[] statusLabels = new UILabel[10];
+    private UILabel[] statusLabels = new UILabel[15];
 
     @Override
     public void initialise() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             statusLabels[i] = find("statusLabel" + (i + 1), UILabel.class);
         }
         removeAll();
@@ -34,8 +34,12 @@ public class PotionStatusScreen extends CoreScreenLayer {
         statusLabels[index].setText(toTitleCase(name) + " " + (duration / 1000) + "s");
     }
 
+    public void addEffect(int index, String name, float magnitude, long duration) {
+        statusLabels[index].setText(toTitleCase(name) + " (" + magnitude + "u) " + (duration / 1000) + "s");
+    }
+
     public void removeAll() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             statusLabels[i].setText("");
         }
     }

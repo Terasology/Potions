@@ -18,12 +18,12 @@
           }
         },
         "columns": 1,
-        "verticalSpacing": 8,
+        "verticalSpacing": 7,
         "contents": [
           {
             "type": "UILabel",
             "id": "PotionStatusLabel",
-            "text": "Active Effects"
+            "text": "Active Potion Effects"
           },
           {
             "type": "UILabel",
@@ -34,7 +34,8 @@
             "type": "UILabel",
             "id": "statusLabel2",
             "text": "Name"
-          },{
+          },
+          {
             "type": "UILabel",
             "id": "statusLabel3",
             "text": "Name"
@@ -72,6 +73,31 @@
           {
             "type": "UILabel",
             "id": "statusLabel10",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel11",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel12",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel13",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel14",
+            "text": "Name"
+          },
+          {
+            "type": "UILabel",
+            "id": "statusLabel15",
             "text": "Name"
           }
         ]
