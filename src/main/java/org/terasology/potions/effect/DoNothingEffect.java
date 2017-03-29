@@ -16,6 +16,8 @@
 package org.terasology.potions.effect;
 
 import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.logic.console.Console;
+import org.terasology.logic.console.CoreMessageType;
 import org.terasology.potions.HerbEffect;
 
 /**
@@ -23,8 +25,20 @@ import org.terasology.potions.HerbEffect;
  * in case one or more of the listed effects in prefabs are invalid.
  */
 public class DoNothingEffect implements HerbEffect {
+    private final Console console;
+    private final String invalidEffectName;
+
     /**
-     * Do nothing when attempting to apply an effect to the given entity.
+     *
+     * @param console The console where an error message will be printed when the invalid effect is triggered
+     */
+    public DoNothingEffect(Console console, String invalidEffectName) {
+        this.console = console;
+        this.invalidEffectName = invalidEffectName;
+    }
+
+    /**
+     * Log an error message when attempting to apply an effect to the given entity.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the herb effect is being applied on.
@@ -33,10 +47,11 @@ public class DoNothingEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
+        logErrorMessage();
     }
 
     /**
-     * Do nothing when attempting to apply an effect to the given entity.
+     * Log an error message when attempting to apply an effect to the given entity.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the herb effect is being applied on.
@@ -47,5 +62,15 @@ public class DoNothingEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
+        logErrorMessage();
+    }
+
+    /**
+     * Log the name of the invalid potion effect to the game console
+     */
+    private void logErrorMessage() {
+        if(console != null) {
+            console.addMessage("Cannot find potion effect: " + invalidEffectName, CoreMessageType.ERROR);
+        }
     }
 }

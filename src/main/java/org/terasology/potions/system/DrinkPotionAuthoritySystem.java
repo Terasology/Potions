@@ -37,6 +37,7 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.logic.console.Console;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
@@ -246,7 +247,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     herbEffect = new NoVisibilityEffect();
                     break;
                 default:
-                    herbEffect = new DoNothingEffect();
+                    herbEffect = new DoNothingEffect(context.get(Console.class), pEffect.effect);
                     break;
             }
 
