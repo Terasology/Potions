@@ -5,26 +5,26 @@
     "displayName" : "Potions",
     "description" : "A small collection of various potions that can be consumed for several effects.",
     "dependencies" : [
-            {
-                "id" : "AlterationEffects",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id" : "Core",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id": "Durability",
-                "minVersion": "1.0.0"
-            },
-            {
-                "id" : "Fluid",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id": "InGameHelp",
-                "minVersion": "1.0.0"
-            }
+        {
+            "id" : "AlterationEffects",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "Core",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id": "Durability",
+            "minVersion": "1.0.0"
+        },
+        {
+            "id" : "Fluid",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "InGameHelpAPI",
+            "minVersion" : "0.1.0"
+        }
     ],
     "serverSideOnly" : false
 }
