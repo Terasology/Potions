@@ -41,6 +41,10 @@ public class PotionClientSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void setItemTooltip(GetItemTooltip event, EntityRef potion, PotionComponent potionItem) {
         DisplayNameComponent d = potion.getComponent(DisplayNameComponent.class);
-        event.getTooltipLines().add(new TooltipLine(d.description));
+
+        // Only add tooltip lines if this potion item actually has a DisplayName component.
+        if (d != null) {
+            event.getTooltipLines().add(new TooltipLine(d.description));
+        }
     }
 }
