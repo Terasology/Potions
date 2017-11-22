@@ -7,14 +7,14 @@
     },
     "DisplayName": {
         "name": "Harm Potion",
-        "description": "Harms 4 HP."
+        "description": "Deals 20 damage to the user instantly."
     },
     "Potion": {
         "hasGenome": false,
         "effects": [
             {
                 "effect": "HARM",
-                "magnitude": 4,
+                "magnitude": 20,
                 "duration": 1
             }
         ]
@@ -22,7 +22,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Takes 4 HP from the user."
+             "Deals 20 damage to the user instantly."
         ]
     }
 }

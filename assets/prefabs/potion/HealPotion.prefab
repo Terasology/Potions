@@ -7,14 +7,14 @@
     },
     "DisplayName": {
         "name": "Heal Potion I",
-        "description": "Heals 20 HP."
+        "description": "Restores 20 HP to the user instantly."
     },
     "Potion": {
         "hasGenome": false,
         "effects": [
             {
                 "effect": "HEAL",
-                "magnitude": 0.2,
+                "magnitude": 20,
                 "duration": 1
             }
         ]
@@ -22,7 +22,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Restores 20 HP to the user."
+             "Restores 20 HP to the user instantly."
         ]
     }
 }

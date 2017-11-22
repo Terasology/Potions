@@ -14,12 +14,12 @@
         "effects": [
             {
                 "effect": "HEAL",
-                "magnitude": 1,
+                "magnitude": 100,
                 "duration": 1
             },
             {
                 "effect": "REGEN",
-                "magnitude": 5,
+                "magnitude": 10,
                 "duration": 15100
             },
             {
@@ -74,7 +74,7 @@
         "paragraphText": [
              "Applies all effects from the positive potions onto the user.",
              "For 15 seconds, the following effects are applied:",
-             "   The user is healed for 100 HP, and gains 5 HP/sec health regen.",
+             "   The user is healed for 100 HP, and gains 10 HP/sec health regen.",
              "   The user is cured of all status ailments.",
              "   The user's walk, swim, jump, and item use speeds are doubled.",
              "   The user gains the ability to double jump.",

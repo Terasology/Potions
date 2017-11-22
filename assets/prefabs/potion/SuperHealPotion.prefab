@@ -7,14 +7,14 @@
     },
     "DisplayName": {
         "name": "SuperHeal Potion",
-        "description": "Restores a vast amount of HP to the user."
+        "description": "Restores a vast 300 HP to the user."
     },
     "Potion": {
         "hasGenome": false,
         "effects": [
             {
                 "effect": "HEAL",
-                "magnitude": 5,
+                "magnitude": 300,
                 "duration": 1
             }
         ]
@@ -22,7 +22,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Restores a vast amount of HP to the user."
+             "Restores a vast 300 HP to the user."
         ]
     }
 }

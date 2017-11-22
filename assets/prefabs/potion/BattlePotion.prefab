@@ -30,7 +30,7 @@
             },
             {
                 "effect": "HEAL",
-                "magnitude": 0.5,
+                "magnitude": 50,
                 "duration": 5
             }
         ]
