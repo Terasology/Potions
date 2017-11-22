@@ -30,7 +30,8 @@ import org.terasology.world.block.Block;
  */
 public class ExplosiveEffect implements HerbEffect {
     /**
-     *
+     * Apply the explosive effect onto the entity. This will deal {@code magnitude} damage of the explosive damage over
+     * the default radius of 64 units. It will not (directly) harm the user.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the herb effect is being applied on.
@@ -43,7 +44,8 @@ public class ExplosiveEffect implements HerbEffect {
     }
 
     /**
-     *
+     * Apply the explosive effect onto the entity. This will deal {@code magnitude} damage of the explosive damage over
+     * the default radius of 64 units. It will not (directly) harm the user.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the herb effect is being applied on.
@@ -57,10 +59,16 @@ public class ExplosiveEffect implements HerbEffect {
         createExplosion(instigator, entity, magnitude);
     }
 
-
+    /**
+     * Create explosion originating from the consumer entity.
+     *
+     * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
+     * @param entity        The entity or user who this effect explosive effect will be applied on.
+     * @param magnitude     The amount of damage this explosion will deal.
+     */
     private void createExplosion(EntityRef instigator, EntityRef entity, float magnitude) {
-        instigator.addComponent(new ExplosionActionComponent());
-
-
+        ExplosionActionComponent e = new ExplosionActionComponent();
+        e.damageAmount = (int) magnitude;
+        instigator.addComponent(e);
     }
 }

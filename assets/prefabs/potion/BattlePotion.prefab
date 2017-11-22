@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "Battle Potion",
-        "description": "Battle Potion increases the limit of damage you can withstand and it helps you to regenerate wounds faster.."
+        "description": "Increases the limit of damage the user can withstand and helps regenerate wounds faster."
     },
     "Potion": {
         "hasGenome": false,
@@ -38,7 +38,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-            "Battle Potion increases the limit of damage you can withstand and it helps you to regenerate wounds faster."
+            "Increases the limit of damage the user can withstand and helps regenerate wounds faster."
         ]
     }
 }

@@ -7,36 +7,41 @@ Moreover, if a potion is durable enough, an empty bottle will be returned follow
 
 The following potions are present in this module:
 
-* All Speed - Combines the effects of all the speed potions.
+* All Speed - Combines the effects of the Jump Speed, Swim Speed, and Walk Speed potions.
+* Battle - Allows the user to withstand more damage, restores 50 HP, and activates 5 HP per second health regen for 11.5 seconds.
+* BlindWalk - Turns the player blind for 5 seconds along with speed decrease (Awaiting API integration for the No_Visibility effect to work)
+* Combat - Combines the effects of walk speed, health boost, regeneration, resist physical damage and heal potions. Useful in combat.
 * Cure All - Cures all status ailments when consumed.
 * Cure Poison - Cures poison status when consumed.
+* Divergence - Coincidentally harms and regenerates player's health, but regens in larger amounts.
 * Double Jump - Allows the user to double jump for 15 seconds.
+* Explosive - When consumed, it produces an explosion that destroys the surrounding area.
+* Explosive - When the player uses this on an object, it triggers an explosion.
+* Giga Jump - Triples all jump stats for 10 seconds
 * Heal - Restores 20 HP to the user.
 * Health Boost - Increases the user's base max health by 50% for 30 seconds.
-* Hemlock Potion - Is a worse poison potion. 
+* Hemlock Potion - Is a worse poison potion.
+* Immobility Potion - Greatly reduces various mobility stats for 15 seconds.
+* Inversion - Disorients the player by inverting the controls (i.e. turning left will turn right).
+* Invincible - Makes the user invincible for 10 seconds.
 * Item Use Speed - Increases the user's item use speed by 25% for 15 seconds.
+* Juggernaut - Restricts the Player's movements in exchange for damage resistance for 10 seconds.
 * Jump Speed - Doubles the user's jump speed for 10 seconds.
+* Mega Jump - Doubles all jump stats for 10 seconds
+* Mobility - For 15 seconds, doubles the user's jump height, walk speed, and swim speed, grants the ability to double jump, but reduces item use speed by 25%.
+* Ninja - speeds up your running and jumping
 * Poison - Poisons user, dealing 3 damage per second for up to 15 seconds.
+* Rage - Triples the user's jump height, walk speed, and swim speed for 15 seconds. However, during this period, it also poisons the user for 3 damage per second.
 * Regen - User regenerates 3 HP per second for 10 seconds.
 * Regen II - User regenerates 6 HP per second for 10 seconds ( Like regular Regen X 2 )
 * Resist Physical - Temporarily increases user's physical defense by 15 for 20 seconds.
 * Resist Poison - Reduces the effects of poison statuses by 2 when consumed for 15 seconds.
-* Swim Speed - Doubles the user's swim speed for 10 seconds.
-* Walk Speed - Doubles the user's walk speed for 10 seconds.
-* Explosive - When the player uses this on an object, it triggers an explosion.
-* Invincible - Makes the user invincible for 10 seconds.
-* Mega Jump - Doubles all jump stats for 10 seconds
-* Giga Jump - Triples all jump stats for 10 seconds
-* Ninja - speeds up your running and jumping
-* BlindWalk - Turns the player blind for 5 seconds along with speed decrease (Awaiting API integration for the No_Visibility effect to work)
-* Battle - It increases your damage withstand limit and helps you regenrate faster.
-* Super Heal - Restores a vast amount of HP
 * Sacred - Regenerates 3 HP per second for 10 seconds, increases the user's base max health by 25% for 30 seconds, and also cures poison status.
+* Super Heal - Restores a vast amount of HP
+* Swim Speed - Doubles the user's swim speed for 10 seconds.
+* Ultimate - Applies all effects from the positive potions onto the user.
 * Ultra Heal - Restores a very vast amount of HP for 2 seconds.
-* Divergence - Coincidentally harms and regenerates player's health, but regen's in larger amounts.
-* Immobility Potion - Greatly reduces various mobility stats for 15 seconds.
-* Inversion - Disorients the player by inverting the controls (i.e. turning left will turn right).
-* Juggernaut - Restricts the Player's movements in exchange for damage resistance for 10 seconds.
+* Walk Speed - Doubles the user's walk speed for 10 seconds.
 
 ## Contribution
 

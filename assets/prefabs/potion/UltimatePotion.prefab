@@ -7,27 +7,79 @@
     },
     "DisplayName": {
         "name": "Ultimate Potion I",
-        "description": "Doubles the user's walk speed for 10 seconds and heals 100HP."
+        "description": "Applies all effects from the positive potions onto the user."
     },
     "Potion": {
         "hasGenome": false,
         "effects": [
             {
-                "effect": "WALK",
-                "magnitude": 2,
-                "duration": 10100
+                "effect": "HEAL",
+                "magnitude": 1,
+                "duration": 1
             },
             {
-              "effect": "HEAL",
-              "magnitude": 1,
-              "duration": 1
+                "effect": "REGEN",
+                "magnitude": 5,
+                "duration": 15100
+            },
+            {
+                "effect": "CURE_ALL_AILMENTS",
+                "magnitude": 1,
+                "duration": 100
+            },
+            {
+                "effect": "ITEM_USE_SPEED",
+                "magnitude": 2,
+                "duration": 15100
+            },
+            {
+                "effect": "WALK",
+                "magnitude": 2,
+                "duration": 15100
+            },
+            {
+                "effect": "SWIM",
+                "magnitude": 2,
+                "duration": 15100
+            },
+            {
+                "effect": "JUMP",
+                "magnitude": 2,
+                "duration": 15100
+            },
+            {
+                "effect": "MULTI_JUMP",
+                "magnitude": 2,
+                "duration": 15100
+            },
+            {
+                "effect": "TEMP_MAX_HEALTH_BOOST",
+                "magnitude": 100,
+                "duration": 15010
+            },
+            {
+                "effect": "RESIST_PHYSICAL",
+                "magnitude": 15,
+                "duration": 15100
+            },
+            {
+                "effect": "RESIST_POISON",
+                "magnitude": 15,
+                "duration": 15100
             }
         ]
     },
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Doubles the user's walk speed for 10 seconds and heals 100HP."
+             "Applies all effects from the positive potions onto the user.",
+             "For 15 seconds, the following effects are applied:",
+             "   The user is healed for 100 HP, and gains 5 HP/sec health regen.",
+             "   The user is cured of all status ailments.",
+             "   The user's walk, swim, jump, and item use speeds are doubled.",
+             "   The user gains the ability to double jump.",
+             "   The user'a max HP is increased by 100%.",
+             "   The user gains +15 defense against physical and poison damage."
         ]
     }
 }
