@@ -91,7 +91,7 @@ public class PotionsCategory implements HelpCategory {
         TextRenderStyle titleRenderStyle = new TextRenderStyle() {
             @Override
             public Font getFont(boolean hyperlink) {
-                return Assets.getFont("engine:title").get();
+                return Assets.getFont("NotoSans-Regular-Large").get();
             }
         };
         ParagraphRenderStyle titleParagraphStyle = new ParagraphRenderStyle() {
