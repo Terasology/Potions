@@ -40,7 +40,7 @@ The following potions are present in this module:
 
 ## Contribution
 
-Fork and clone this repository locally.
+Run `groovyw module recurse Potions` while in the Terasology root folder to fetch and store the module locally. Then fork the module and a remote reference using the command `git remote add <remote-name> <your fork>` in the `/module/Potions` directory.
 
 ### Creating a Potion
 To create a potion, create a prefab similar to the ones [here](https://github.com/Terasology/Potions/tree/master/assets/prefabs/potion) at `Potions/assets/prefabs/potion/` and add the associated icon to `Potions/assets/textures/potions/`.
