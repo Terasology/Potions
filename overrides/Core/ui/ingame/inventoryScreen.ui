@@ -20,15 +20,6 @@
       },
       {
         "type": "RelativeLayout",
-        "id": "outerLayout",
-        "contents": [
-          {
-            "type":"PotionStatusWidget"
-          }
-        ]
-      },
-      {
-        "type": "RelativeLayout",
         "id": "inventoryLayout",
         "contents": [
           {
@@ -45,6 +36,22 @@
                 "offset": 32
               },
               "position-vertical-center": {}
+            }
+          }
+        ]
+      },
+      {
+        "type": "RelativeLayout",
+        "id": "outerLayout",
+        "contents": [
+          {
+            "type": "PotionStatusWidget",
+            "id": "PotionUI",
+            "layoutInfo": {
+              "use-content-height": true,
+              "use-content-width": false,
+              "position-vertical-center": {},
+              "position-horizontal-center": {}
             }
           }
         ]
