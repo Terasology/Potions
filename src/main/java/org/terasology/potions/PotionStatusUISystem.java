@@ -16,6 +16,7 @@
 
 package org.terasology.potions;
 
+import org.terasology.engine.Time;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.EventPriority;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -25,17 +26,13 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.input.binds.inventory.InventoryButton;
 import org.terasology.logic.delay.DelayManager;
 import org.terasology.logic.delay.DelayedActionTriggeredEvent;
-import org.terasology.logic.delay.PeriodicActionTriggeredEvent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.events.DrinkPotionEvent;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
 import org.terasology.rendering.nui.databinding.Binding;
-import org.terasology.rendering.nui.databinding.DefaultBinding;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.terasology.rendering.nui.databinding.ReadOnlyBinding;
 
 
 @RegisterSystem(RegisterMode.CLIENT)
@@ -44,15 +41,15 @@ public class PotionStatusUISystem extends BaseComponentSystem {
     private static final String PERIODIC_ACTION_ID = "PotionStatusScreenUI";
     private static final String TARGET_SCREEN_NAME = "Core:InventoryScreen";
     private static final String WIDGET_NAME = "PotionUI";
-    private static final int UPDATE_RATE = 100;
     @In
     private NUIManager nuiManager;
     @In
     private DelayManager delayManager;
     @In
     private LocalPlayer localPlayer;
+    @In
+    private Time time;
     private PotionStatusWidget widget;
-    private Map<String, Binding<Long>> durations = new HashMap<>();
 
 
     @Override
@@ -97,8 +94,13 @@ public class PotionStatusUISystem extends BaseComponentSystem {
      * @param effect The effect to add
      */
     private void addPotionEffect(PotionEffect effect) {
-        Binding<Long> binding = new DefaultBinding<>(effect.duration);
-        durations.put(effect.effect, binding);
+        long endTime = time.getGameTimeInMs() + effect.duration;
+        Binding<Long> binding = new ReadOnlyBinding<Long>() {
+            @Override
+            public Long get() {
+                return endTime - time.getGameTimeInMs();
+            }
+        };
         widget.addOrUpdateEffect(effect.effect, binding);
 
         /* Register removal */
@@ -106,36 +108,7 @@ public class PotionStatusUISystem extends BaseComponentSystem {
             delayManager.cancelDelayedAction(localPlayer.getCharacterEntity(), PERIODIC_ACTION_ID + effect.effect);
         }
         delayManager.addDelayedAction(localPlayer.getCharacterEntity(), PERIODIC_ACTION_ID + effect.effect, effect.duration);
-
-        /* Ensure update is still ticking */
-        if (!delayManager.hasPeriodicAction(localPlayer.getCharacterEntity(), PERIODIC_ACTION_ID)) {
-            delayManager.addPeriodicAction(localPlayer.getCharacterEntity(), PERIODIC_ACTION_ID, UPDATE_RATE, UPDATE_RATE);
-        }
     }
-
-    /**
-     * Updates the duration on display in the widget
-     * <p>
-     * Called every {@link #UPDATE_RATE} milliseconds
-     *
-     * @see PeriodicActionTriggeredEvent
-     */
-    @ReceiveEvent
-    public void onEffectUpdate(PeriodicActionTriggeredEvent event, EntityRef entity) {
-        /* Check this is the right periodic trigger */
-        if (!event.getActionId().equals(PERIODIC_ACTION_ID)) {
-            return;
-        }
-
-        if (durations.isEmpty()) {
-            delayManager.cancelPeriodicAction(entity, event.getActionId());
-        } else {
-            for (Binding<Long> duration : durations.values()) {
-                duration.set(Math.max(0, duration.get() - UPDATE_RATE));
-            }
-        }
-    }
-
 
     /**
      * Removes the effect from the widget once it's duration has ended.
