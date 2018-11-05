@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.terasology.potions;
 
 import org.terasology.math.geom.Vector2i;
@@ -63,7 +64,7 @@ public class PotionStatusWidget extends CoreWidget {
         Binding<String> nameBinding = new ReadOnlyBinding<String>() {
             @Override
             public String get() {
-                return effectName + String.format("%.1f", (float) duration.get() / 1000) + "s";
+                return String.format("%s %.1f", effectName, (float) duration.get() / 1000) + "s";
             }
         };
 
