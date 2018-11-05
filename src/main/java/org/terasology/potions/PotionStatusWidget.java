@@ -53,12 +53,12 @@ public class PotionStatusWidget extends CoreWidget {
     }
 
     /**
-     * Add an effect to the display
+     * Adds or updates an effect on the display
      *
      * @param effectId The effect ID
      * @param duration A binding giving the time remaining
      */
-    public void addEffect(String effectId, Binding<Integer> duration) {
+    public void addOrUpdateEffect(String effectId, Binding<Long> duration) {
         String effectName = toTitleCase(effectId);
         Binding<String> nameBinding = new ReadOnlyBinding<String>() {
             @Override
@@ -66,7 +66,13 @@ public class PotionStatusWidget extends CoreWidget {
                 return effectName + String.format("%.1f", (float) duration.get() / 1000) + "s";
             }
         };
-        effects.addWidget(new UILabel(effectId, nameBinding));
+
+        UILabel target = findWidget(effectId);
+        if (target == null) {
+            effects.addWidget(new UILabel(effectId, nameBinding));
+        } else {
+            target.bindText(nameBinding);
+        }
     }
 
     /**
@@ -81,6 +87,21 @@ public class PotionStatusWidget extends CoreWidget {
                 return;
             }
         }
+    }
+
+    /**
+     * Locates a widget by the given id in the column
+     *
+     * @param effectId The id of the effect locate
+     * @return The widget if one was found, null otherwise
+     */
+    private UILabel findWidget(String effectId) {
+        for (UIWidget widget : effects) {
+            if (widget.getId().equals(effectId)) {
+                return (UILabel) widget;
+            }
+        }
+        return null;
     }
 
     @Override
