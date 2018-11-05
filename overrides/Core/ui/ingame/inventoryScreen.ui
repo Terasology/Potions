@@ -1,0 +1,54 @@
+{
+  "type": "inventoryScreen",
+  "skin": "inventoryDefault",
+  "contents": {
+    "type": "ColumnLayout",
+    "id": "outerColumns",
+    "columns": 3,
+    "column-widths": [
+      0.2,
+      0.6,
+      0.2
+    ],
+    "contents": [
+      {
+        "type": "UISpace",
+        "size": [
+          0,
+          0
+        ]
+      },
+      {
+        "type": "RelativeLayout",
+        "id": "outerLayout",
+        "contents": [
+          {
+            "type":"PotionStatusWidget"
+          }
+        ]
+      },
+      {
+        "type": "RelativeLayout",
+        "id": "inventoryLayout",
+        "contents": [
+          {
+            "type": "InventoryGrid",
+            "id": "inventory",
+            "maxHorizontalCells": 10,
+            "layoutInfo": {
+              "use-content-height": true,
+              "use-content-width": false,
+              "position-left": {
+                "offset": 32
+              },
+              "position-right": {
+                "offset": 32
+              },
+              "position-vertical-center": {}
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
