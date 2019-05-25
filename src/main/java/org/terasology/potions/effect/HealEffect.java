@@ -17,7 +17,7 @@ package org.terasology.potions.effect;
 
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.potions.HerbEffect;
-import org.terasology.logic.health.DoHealEvent;
+import org.terasology.logic.health.event.DoHealEvent;
 import org.terasology.math.TeraMath;
 
 /**
