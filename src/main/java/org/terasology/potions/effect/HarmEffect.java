@@ -15,11 +15,12 @@
  */
 package org.terasology.potions.effect;
 
-import org.terasology.logic.health.DoDamageEvent;
+import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.logic.health.event.DoDamageEvent;
+import org.terasology.math.TeraMath;
 import org.terasology.potions.HerbEffect;
-import org.terasology.entitySystem.entity.*;
-import org.terasology.math.*;
-public class HarmEffect implements HerbEffect{
+
+public class HarmEffect implements HerbEffect {
     /**
      * The base amount of harming allowed. It's intended to be later multiplied by the magnitude to get the final
      * harming amount.

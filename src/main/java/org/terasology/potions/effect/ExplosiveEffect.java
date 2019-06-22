@@ -15,15 +15,9 @@
  */
 package org.terasology.potions.effect;
 
-import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.logic.actions.ActionTarget;
 import org.terasology.logic.actions.ExplosionActionComponent;
-import org.terasology.logic.health.DoDamageEvent;
 import org.terasology.potions.HerbEffect;
-import org.terasology.potions.events.DrinkPotionEvent;
-import org.terasology.world.block.Block;
 
 /**
  * This effect destroys blocks in a predefined block radius (the built-in one for now)
