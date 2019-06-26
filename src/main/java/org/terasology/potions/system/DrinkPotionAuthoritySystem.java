@@ -15,6 +15,8 @@
  */
 package org.terasology.potions.system;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
@@ -37,7 +39,9 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.logic.inventory.InventoryManager;
+import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
@@ -71,6 +75,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      */
     @In
     private Context context;
+
+    private Logger logger = LoggerFactory.getLogger(DrinkPotionAuthoritySystem.class);
 
     /**
      * Apply the potion effect with the given ID to the instigator. This will also add the specific effect to the
@@ -130,6 +136,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         }
 
         // Add the effect to the potion effects map, and save component storing the map.
+        logger.warn("name of effect " + id);
         potionEffectsList.effects.put(name + id, potionEffect);
         instigator.saveComponent(potionEffectsList);
 
@@ -184,6 +191,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     break;
                 case PotionCommonEffects.REGEN:
                     RegenerationAlterationEffect effect = new RegenerationAlterationEffect(context);
+                    effectID = event.getItem().getComponent(ItemComponent.class).stackId;
                     herbEffect = new AlterationToHerbEffectWrapper(effect, 1f, 1f);
                     break;
                 case PotionCommonEffects.RESIST_PHYSICAL:
