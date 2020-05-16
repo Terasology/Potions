@@ -16,7 +16,7 @@
 package org.terasology.potions.effect;
 
 import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.logic.actions.ExplosionActionComponent;
+import org.terasology.explosives.logic.ExplosionActionComponent;
 import org.terasology.potions.HerbEffect;
 
 /**
