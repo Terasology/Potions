@@ -34,7 +34,7 @@ public class HealEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
-        entity.send(new DoHealEvent(TeraMath.floorToInt(magnitude), instigator));
+        entity.send(new DoRestoreEvent(TeraMath.floorToInt(magnitude), instigator));
     }
 
     /**
@@ -48,6 +48,6 @@ public class HealEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoHealEvent(TeraMath.floorToInt(magnitude), instigator));
+        entity.send(new DoRestoreEvent(TeraMath.floorToInt(magnitude), instigator));
     }
 }
