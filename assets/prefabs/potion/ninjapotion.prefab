@@ -6,8 +6,8 @@
         "consumedOnUse": true
     },
     "DisplayName": {
-        "name": "Ninja potion",
-        "description": "Increases the user’s core abilities of jumping and walking!"
+        "name": "Ninja Potion",
+        "description": "Triples the user’s core abilities of jumping and walking for 11 seconds!"
     },
     "Potion": {
         "hasGenome": false,
@@ -27,7 +27,7 @@
     "ItemHelp": {
         "category": "Potions",
         "paragraphText": [
-             "Increases the user’s core abilities of jumping and walking! It basically turns you into a ninja!"
+             "Triples the user’s core abilities of jumping and walking for 11 seconds! It basically turns you into a ninja!"
         ]
     }
 }

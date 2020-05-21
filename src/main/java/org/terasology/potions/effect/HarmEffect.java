@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 MovingBlocks
+ * Copyright 2020 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,39 +20,34 @@ import org.terasology.logic.health.event.DoDamageEvent;
 import org.terasology.math.TeraMath;
 import org.terasology.potions.HerbEffect;
 
-public class HarmEffect implements HerbEffect {
+/**
+ * This HerbEffect harms the target entity instantly when applied.
+ */
+public class HarmEffect implements HerbEffect{
     /**
-     * The base amount of harming allowed. It's intended to be later multiplied by the magnitude to get the final
-     * harming amount.
-     */
-    private int baseDamage = 10;
-
-    /**
-     * Apply the harming effect onto the entity. This will harm 10 (or baseDamage) * magnitude HP.
+     * Apply the harming effect onto the entity. This will harm {@code magnitude} HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the harming effect is being applied on.
-     * @param magnitude     The magnitude of the harming effect. It's multiplied by baseHeal to determine the final
-     *                      harming quantity.
+     * @param magnitude     The magnitude of the harming effect.
      * @param duration      The duration of the harming effect in milliseconds. It's unused here as the harm is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
-        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseDamage * magnitude)));
+        entity.send(new DoDamageEvent(TeraMath.floorToInt(magnitude)));
     }
 
     /**
-     * Apply the harming effect onto the entity. This will harm 10 (or baseDamage) * magnitude HP.
+     * Apply the harming effect onto the entity. This will harm {@code magnitude} HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the harming effect is being applied on.
      * @param id            Unused.
-     * @param magnitude     The magnitude of the harming effect. It's multiplied by baseDamage to determine the final
-     *                      harming quantity.
+     * @param magnitude     The magnitude of the harming effect.
      * @param duration      The duration of the harming effect in milliseconds. It's unused here as the harm is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoDamageEvent(TeraMath.floorToInt(baseDamage * magnitude)));
+        entity.send(new DoDamageEvent(TeraMath.floorToInt(magnitude)));
     }
 }

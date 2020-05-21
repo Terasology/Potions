@@ -34,7 +34,7 @@
             },
             {
                 "effect": "HEAL",
-                "magnitude": 0.2,
+                "magnitude": 20,
                 "duration": 1
             }
         ]

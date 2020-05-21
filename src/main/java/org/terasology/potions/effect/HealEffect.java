@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 MovingBlocks
+ * Copyright 2020 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,37 +25,29 @@ import org.terasology.math.TeraMath;
  */
 public class HealEffect implements HerbEffect {
     /**
-     * The base amount of healing allowed. It's intended to be later multiplied by the magnitude to get the final
-     * healing amount.
-     */
-    private int baseHeal = 100;
-
-    /**
-     * Apply the healing effect onto the entity. This will heal 100 (or baseHeal) * magnitude HP.
+     * Apply the healing effect onto the entity. This will heal {@code magnitude} HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the healing effect is being applied on.
-     * @param magnitude     The magnitude of the healing effect. It's multiplied by baseHeal to determine the final
-     *                      healing quantity.
+     * @param magnitude     The magnitude of the healing effect.
      * @param duration      The duration of the healing effect in milliseconds. It's unused here as the heal is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
-        entity.send(new DoRestoreEvent(TeraMath.floorToInt(baseHeal * magnitude), instigator));
+        entity.send(new DoRestoreEvent(TeraMath.floorToInt(magnitude), instigator));
     }
 
     /**
-     * Apply the healing effect onto the entity. This will heal 100 (or baseHeal) * magnitude HP.
+     * Apply the healing effect onto the entity. This will heal {@code magnitude} HP.
      *
      * @param instigator    The instigator who is applying this effect on the entity. It can be a herb, potion, etc.
      * @param entity        The entity who the healing effect is being applied on.
      * @param id            Unused.
-     * @param magnitude     The magnitude of the healing effect. It's multiplied by baseHeal to determine the final
-     *                      healing quantity.
+     * @param magnitude     The magnitude of the healing effect.
      * @param duration      The duration of the healing effect in milliseconds. It's unused here as the heal is instant.
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoRestoreEvent(TeraMath.floorToInt(baseHeal * magnitude), instigator));
+        entity.send(new DoRestoreEvent(TeraMath.floorToInt(magnitude), instigator));
     }
 }

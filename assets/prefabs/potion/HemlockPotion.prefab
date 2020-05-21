@@ -7,7 +7,7 @@
     },
     "DisplayName": {
         "name": "Hemlock Potion",
-        "description": "Poisons the user. It deals 6 damage per second for 15 seconds. Intensified poision potion."
+        "description": "Poisons the user. It deals 6 damage per second for 15 seconds. Intensified poison potion."
     },
     "Potion": {
         "hasGenome": false,
