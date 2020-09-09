@@ -1,18 +1,5 @@
-/*
- * Copyright 2017 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.potions.system;
 
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
@@ -27,33 +14,33 @@ import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
 import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
-import org.terasology.audio.AudioManager;
-import org.terasology.context.Context;
 import org.terasology.durability.components.DurabilityComponent;
 import org.terasology.durability.events.ReduceDurabilityEvent;
-import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.logic.inventory.InventoryManager;
+import org.terasology.engine.audio.AudioManager;
+import org.terasology.engine.context.Context;
+import org.terasology.engine.entitySystem.entity.EntityManager;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.logic.common.ActivateEvent;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.utilities.Assets;
+import org.terasology.inventory.logic.InventoryManager;
 import org.terasology.potions.HerbEffect;
 import org.terasology.potions.PotionCommonEffects;
 import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.component.PotionEffectsListComponent;
+import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.ExplosiveEffect;
-import org.terasology.potions.effect.NoVisibilityEffect;
-import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.effect.HarmEffect;
 import org.terasology.potions.effect.HealEffect;
+import org.terasology.potions.effect.NoVisibilityEffect;
 import org.terasology.potions.events.DrinkPotionEvent;
-import org.terasology.logic.common.ActivateEvent;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.registry.In;
-import org.terasology.utilities.Assets;
 
 /**
  * This authority system handles potion consumption by various entities.
@@ -74,15 +61,14 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
     /**
      * Apply the potion effect with the given ID to the instigator. This will also add the specific effect to the
-     * instigator's potion effects map.
-     * This calls the {@link #applyPotionEffect(EntityRef, EntityRef, PotionComponent, HerbEffect, PotionEffect, String)}}
-     * method but leaves the id field empty.
+     * instigator's potion effects map. This calls the {@link #applyPotionEffect(EntityRef, EntityRef, PotionComponent,
+     * HerbEffect, PotionEffect, String)}} method but leaves the id field empty.
      *
-     * @param instigator    The entity who is trying to consume this potion.
-     * @param item          A reference to the potion item entity which has the potion effect.
-     * @param potion        The PotionComponent of the potion item.
-     * @param herbEffect    The HerbEffect that will be used to apply the PotionEffect on the instigator.
-     * @param potionEffect  The PotionEffect that will be applied onto the instigator.
+     * @param instigator The entity who is trying to consume this potion.
+     * @param item A reference to the potion item entity which has the potion effect.
+     * @param potion The PotionComponent of the potion item.
+     * @param herbEffect The HerbEffect that will be used to apply the PotionEffect on the instigator.
+     * @param potionEffect The PotionEffect that will be applied onto the instigator.
      */
     private void applyPotionEffect(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect,
                                    PotionEffect potionEffect) {
@@ -93,12 +79,13 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
      * Apply the potion effect with the given ID to the instigator. This will also add the specific effect to the
      * instigator's potion effects map.
      *
-     * @param instigator    The entity who is trying to consume this potion and have the potion effect applied on it.
-     * @param item          A reference to the potion item entity which has the potion effect.
-     * @param potion        The PotionComponent of the potion item.
-     * @param herbEffect    The HerbEffect that will be used to apply the PotionEffect on the instigator.
-     * @param potionEffect  The PotionEffect that will be applied onto the instigator.
-     * @param id            The ID of this particular HerbEffect. Used to differentiate effects under the same family.
+     * @param instigator The entity who is trying to consume this potion and have the potion effect applied on
+     *         it.
+     * @param item A reference to the potion item entity which has the potion effect.
+     * @param potion The PotionComponent of the potion item.
+     * @param herbEffect The HerbEffect that will be used to apply the PotionEffect on the instigator.
+     * @param potionEffect The PotionEffect that will be applied onto the instigator.
+     * @param id The ID of this particular HerbEffect. Used to differentiate effects under the same family.
      */
     private void applyPotionEffect(EntityRef instigator, EntityRef item, PotionComponent potion, HerbEffect herbEffect,
                                    PotionEffect potionEffect, String id) {
@@ -135,19 +122,20 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
         // Apply the herb effect onto the instigator.
         if (id.equalsIgnoreCase("")) {
-            herbEffect.applyEffect(item, instigator, potionEffect.effect, potionEffect.magnitude, potionEffect.duration);
+            herbEffect.applyEffect(item, instigator, potionEffect.effect, potionEffect.magnitude,
+                    potionEffect.duration);
         } else {
             herbEffect.applyEffect(item, instigator, id, potionEffect.magnitude, potionEffect.duration);
         }
     }
 
-     /**
+    /**
      * Event handler that handles consuming a potion without a genome component attached to it. This method will cycle
      * through the potion's list of PotionEffects, apply them to the instigator entity, and then decrement the potion
      * bottle's durability.
      *
-     * @param event     The DrinkPotionEvent with information about the instigator and the potion.
-     * @param ref       Unused reference to entity.
+     * @param event The DrinkPotionEvent with information about the instigator and the potion.
+     * @param ref Unused reference to entity.
      */
     @ReceiveEvent
     public void onPotionWithoutGenomeConsumed(DrinkPotionEvent event, EntityRef ref) {
@@ -227,7 +215,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     effectID = "PoisonPotion";
                     break;
                 case PotionCommonEffects.CURE_ALL_AILMENTS:
-                    CureAllDamageOverTimeAlterationEffect cureAllEffect = new CureAllDamageOverTimeAlterationEffect(context);
+                    CureAllDamageOverTimeAlterationEffect cureAllEffect =
+                            new CureAllDamageOverTimeAlterationEffect(context);
                     herbEffect = new AlterationToHerbEffectWrapper(cureAllEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.TEMP_MAX_HEALTH_BOOST:
@@ -267,7 +256,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             int newDurabilityValue = durability.durability - potion.costPerDrink;
             if (newDurabilityValue > 0 || potion.hasInfDurability) {
                 // Create an empty potion bottle using the bottlePrefab name of the item's potion component.
-                EntityRef emptyPotionBottle = CoreRegistry.get(EntityManager.class).create(Assets.getPrefab(potion.bottlePrefab).get());
+                EntityRef emptyPotionBottle =
+                        CoreRegistry.get(EntityManager.class).create(Assets.getPrefab(potion.bottlePrefab).get());
 
                 // Copy the old durability values from the filled potion bottle to the empty one.
                 emptyPotionBottle.getComponent(DurabilityComponent.class).durability = durability.durability;
@@ -279,9 +269,11 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     emptyPotionBottle.send(new ReduceDurabilityEvent(potion.costPerDrink));
                 }
 
-                // Give the empty potion bottle to the player's inventory. This will act as a swap between the filled and
+                // Give the empty potion bottle to the player's inventory. This will act as a swap between the filled
+                // and
                 // empty ones.
-                CoreRegistry.get(InventoryManager.class).giveItem(event.getInstigator(), event.getInstigator(), emptyPotionBottle);
+                CoreRegistry.get(InventoryManager.class).giveItem(event.getInstigator(), event.getInstigator(),
+                        emptyPotionBottle);
             }
         }
     }
@@ -289,9 +281,10 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     /**
      * Upon activating/using an item with a potion component, send a DrinkPotionEvent to begin drinking the potion.
      *
-     * @param event     The ActiveEvent which was caught by this handler. The important part of this is the instigator.
-     * @param item      Reference to the potion item.
-     * @param potion    The potion component of the potion item. Used to filter out non-potion item uses.
+     * @param event The ActiveEvent which was caught by this handler. The important part of this is the
+     *         instigator.
+     * @param item Reference to the potion item.
+     * @param potion The potion component of the potion item. Used to filter out non-potion item uses.
      */
     @ReceiveEvent
     public void potionWithoutGenomeConsumed(ActivateEvent event, EntityRef item, PotionComponent potion) {

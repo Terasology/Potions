@@ -2,12 +2,33 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.potions;
 
-import org.terasology.rendering.nui.CoreScreenLayer;
+import org.terasology.engine.rendering.nui.CoreScreenLayer;
 import org.terasology.nui.widgets.UILabel;
 
 public class PotionStatusScreen extends CoreScreenLayer {
 
-    private UILabel[] statusLabels = new UILabel[15];
+    private final UILabel[] statusLabels = new UILabel[15];
+
+    //Tweaked from http://stackoverflow.com/a/1086134
+    @Deprecated
+    public static String toTitleCase(String input) {
+        input = input.replace('_', ' ').toLowerCase();
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
+    }
 
     @Override
     public void initialise() {
@@ -29,27 +50,6 @@ public class PotionStatusScreen extends CoreScreenLayer {
         for (int i = 0; i < 15; i++) {
             statusLabels[i].setText("");
         }
-    }
-
-    //Tweaked from http://stackoverflow.com/a/1086134
-    @Deprecated
-    public static String toTitleCase(String input) {
-        input = input.replace('_', ' ').toLowerCase();
-        StringBuilder titleCase = new StringBuilder();
-        boolean nextTitleCase = true;
-
-        for (char c : input.toCharArray()) {
-            if (Character.isSpaceChar(c)) {
-                nextTitleCase = true;
-            } else if (nextTitleCase) {
-                c = Character.toTitleCase(c);
-                nextTitleCase = false;
-            }
-
-            titleCase.append(c);
-        }
-
-        return titleCase.toString();
     }
 
     @Override
