@@ -38,6 +38,9 @@ import java.util.ArrayList;
 @RegisterSystem(RegisterMode.CLIENT)
 public class PotionStatusUISystem extends BaseComponentSystem {
 
+    private static final String PERIODIC_ACTION_ID = "PotionStatusScreenUI";
+    private static final String POTION_STATUS_SCREEN_NAME = "potions:potionStatusScreen";
+
     @In
     private NUIManager nuiManager;
     @In
@@ -45,18 +48,12 @@ public class PotionStatusUISystem extends BaseComponentSystem {
     @In
     private EntityManager entityManager;
 
-    private PotionStatusScreen screen;
+    private final ArrayList<Float> magnitudes = new ArrayList<>();
+    private final ArrayList<Long> durations = new ArrayList<>();
+    private final ArrayList<String> effects = new ArrayList<>();
 
-    private ArrayList<Float> magnitudes = new ArrayList<>();
-    private ArrayList<Long> durations = new ArrayList<>();
-    private ArrayList<String> effects = new ArrayList<>();
-
-    private boolean isScreenVisible = false;
-
-    private int updateRate = 200;
-
-    private static final String PERIODIC_ACTION_ID = "PotionStatusScreenUI";
-    private static final String POTION_STATUS_SCREEN_NAME = "potions:potionStatusScreen";
+    private boolean isScreenVisible;
+    private final int updateRate = 200;
 
     @Override
     public void initialise() {
@@ -118,7 +115,7 @@ public class PotionStatusUISystem extends BaseComponentSystem {
 
     private void updateScreen() {
         if (isScreenVisible) {
-            screen = (PotionStatusScreen) nuiManager.getScreen(POTION_STATUS_SCREEN_NAME);
+            PotionStatusScreen screen = (PotionStatusScreen) nuiManager.getScreen(POTION_STATUS_SCREEN_NAME);
             screen.removeAll();
             for (int i = 0; i < Math.min(15, effects.size()); i++) {
                 screen.addEffect(i, effects.get(i), magnitudes.get(i), durations.get(i));

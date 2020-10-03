@@ -1,18 +1,6 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
+
 package org.terasology.potions.system;
 
 import com.google.common.collect.Iterables;
@@ -42,20 +30,33 @@ import java.util.Map;
  * This help category manages how the Alchemy tab (or help document) will function in the in game help registry window.
  */
 public class PotionsCategory implements HelpCategory {
-    /** Name of this category. */
-    private final String name = "Potions";
 
-    /** Reference to the InGameHelpRegistry. This will be necessary for determining what prefabs fall under this category. */
-    private ItemsCategoryInGameHelpRegistry itemsCategoryInGameHelpRegistry;
-
-    /** Create a mapping of Strings to DocuemntData to store the item help subpages. */
+    /**
+     * Create a mapping of Strings to DocuemntData to store the item help subpages.
+     */
     Map<String, DocumentData> items = Maps.newHashMap();
 
-    /** Reference to the root HTML document. */
+    /**
+     * Reference to the root HTML document.
+     */
     HTMLDocument rootDocument;
 
-    /** Reference to the current document data. This is the current help document that the user is on. */
+    /**
+     * Reference to the current document data. This is the current help document that the user is on.
+     */
     DocumentData currentDocument;
+
+    /**
+     * Name of this category.
+     */
+    private final String name = "Potions";
+
+    /**
+     * Reference to the InGameHelpRegistry. This will be necessary for determining what prefabs fall under this
+     * category.
+     */
+    private ItemsCategoryInGameHelpRegistry itemsCategoryInGameHelpRegistry;
+
 
     /**
      * Default constructor. Use this if you don't have an ItemsCategoryInGameHelpRegistry instance yet.
@@ -66,8 +67,8 @@ public class PotionsCategory implements HelpCategory {
     /**
      * Create an instance of this help category.
      *
-     * @param itemsCategoryInGameHelpRegistry   Reference to the items category in game help registry. This will contain
-     *                                          all known items that have an InGameHelp component.
+     * @param itemsCategoryInGameHelpRegistry Reference to the items category in game help registry. This will
+     *     contain all known items that have an InGameHelp component.
      */
     public PotionsCategory(ItemsCategoryInGameHelpRegistry itemsCategoryInGameHelpRegistry) {
         this.itemsCategoryInGameHelpRegistry = itemsCategoryInGameHelpRegistry;
@@ -76,8 +77,8 @@ public class PotionsCategory implements HelpCategory {
     /**
      * Set the reference to the titular registry.
      *
-     * @param reg   Reference to the items category in game help registry. This will contain all known items that have
-     *              an InGameHelp component.
+     * @param reg Reference to the items category in game help registry. This will contain all known items that have
+     *     an InGameHelp component.
      */
     public void setRegistry(ItemsCategoryInGameHelpRegistry reg) {
         this.itemsCategoryInGameHelpRegistry = reg;
@@ -162,7 +163,7 @@ public class PotionsCategory implements HelpCategory {
     /**
      * Get the category name of this help section.
      *
-     * @return  The name of this category,
+     * @return The name of this category,
      */
     @Override
     public String getCategoryName() {
@@ -172,7 +173,7 @@ public class PotionsCategory implements HelpCategory {
     /**
      * Get the document data for this category. If this category hasn't been initialized yet, then do so.
      *
-     * @return  Either the root document if the current document is null, or the current document.
+     * @return Either the root document if the current document is null, or the current document.
      */
     @Override
     public DocumentData getDocumentData() {
@@ -195,8 +196,8 @@ public class PotionsCategory implements HelpCategory {
     /**
      * Handle navigation between the top and sub-documents.
      *
-     * @param hyperlink     What document to navigate to.
-     * @return              True if the document linked to exists. False if not.
+     * @param hyperlink What document to navigate to.
+     * @return True if the document linked to exists. False if not.
      */
     @Override
     public boolean handleNavigate(String hyperlink) {
