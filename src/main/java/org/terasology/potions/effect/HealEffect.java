@@ -15,10 +15,11 @@
  */
 package org.terasology.potions.effect;
 
+import org.joml.Math;
+import org.joml.RoundingMode;
 import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.potions.HerbEffect;
 import org.terasology.logic.health.event.DoRestoreEvent;
-import org.terasology.math.TeraMath;
+import org.terasology.potions.HerbEffect;
 
 /**
  * This HerbEffect heals the target entity instantly when applied.
@@ -34,7 +35,7 @@ public class HealEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
-        entity.send(new DoRestoreEvent(TeraMath.floorToInt(magnitude), instigator));
+        entity.send(new DoRestoreEvent(Math.roundUsing(magnitude, RoundingMode.FLOOR), instigator));
     }
 
     /**
@@ -48,6 +49,6 @@ public class HealEffect implements HerbEffect {
      */
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
-        entity.send(new DoRestoreEvent(TeraMath.floorToInt(magnitude), instigator));
+        entity.send(new DoRestoreEvent(Math.roundUsing(magnitude, RoundingMode.FLOOR), instigator));
     }
 }

@@ -1,18 +1,6 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
+
 package org.terasology.potions.system;
 
 import org.terasology.alterationEffects.AlterationEffects;
@@ -32,16 +20,18 @@ import org.terasology.potions.events.BeforeApplyPotionEffectEvent;
 @RegisterSystem
 public class PotionEffectsSystem extends BaseComponentSystem {
 
-    /** String constant for identifying potion effects. */
-    private final static String POTION_EFFECT_PREFIX = "POTIONS";
+    /**
+     * String constant for identifying potion effects.
+     */
+    private static final String POTION_EFFECT_PREFIX = "POTIONS";
 
     /**
      * When an alteration effect is going to be applied, add the potion effects of the same type that can contribute to
      * it as modifiers.
      *
-     * @param event         Event containing information on what alteration effect is being applied, as well as a list
-     *                      of effect modifiers that can be added to.
-     * @param instigator    The entity who instigated this event.
+     * @param event Event containing information on what alteration effect is being applied, as well as a list of
+     *     effect modifiers that can be added to.
+     * @param instigator The entity who instigated this event.
      */
     @ReceiveEvent
     public void onEffectApplied(OnEffectModifyEvent event, EntityRef instigator) {
@@ -64,8 +54,8 @@ public class PotionEffectsSystem extends BaseComponentSystem {
 
         // Send out an event so that other systems can affect the values of the potion effect before it's applied.
         BeforeApplyPotionEffectEvent beforeDrink =
-                instigator.send(new BeforeApplyPotionEffectEvent(potionEffect,
-                        event.getEntity(), event.getInstigator()));
+            instigator.send(new BeforeApplyPotionEffectEvent(potionEffect,
+                event.getEntity(), event.getInstigator()));
 
         // If the event has not been consumed.
         if (!beforeDrink.isConsumed()) {
@@ -79,11 +69,10 @@ public class PotionEffectsSystem extends BaseComponentSystem {
                 event.addDuration(modifiedDuration, POTION_EFFECT_PREFIX);
                 event.addMagnitude(modifiedMagnitude);
             }
-        }
-        // Otherwise, if the event was consumed, remove the potion effect from the potion effects map. After all, if
-        // the event was consumed, that means tha application of the potion effect was denied, meaning that it would
-        // need to be removed from the active potion effects map.
-        else {
+        } else {
+            // Otherwise, if the event was consumed, remove the potion effect from the potion effects map. After all, if
+            // the event was consumed, that means tha application of the potion effect was denied, meaning that it would
+            // need to be removed from the active potion effects map.
             potionEffectsList.effects.remove(name + event.getId());
             instigator.saveComponent(potionEffectsList);
         }
@@ -91,19 +80,19 @@ public class PotionEffectsSystem extends BaseComponentSystem {
 
     /**
      * When an effect modifier is going to be removed, first see if it was added in this system (or module). If so,
-     * remove it from the potion effects map. Otherwise, leave it alone as it was added by another system. Remember,
-     * the entire alteration effect may or may not be removed following this. It depends on whether there are any
-     * remaining effect modifiers that contribute to the base alteration effect.
+     * remove it from the potion effects map. Otherwise, leave it alone as it was added by another system. Remember, the
+     * entire alteration effect may or may not be removed following this. It depends on whether there are any remaining
+     * effect modifiers that contribute to the base alteration effect.
      *
-     * @param event         Event containing information on what was the alteration effect being applied, and some details
-     *                      on the effect modifier expiring.
-     * @param instigator    The entity who instigated this event.
+     * @param event Event containing information on what was the alteration effect being applied, and some details
+     *     on the effect modifier expiring.
+     * @param instigator The entity who instigated this event.
      */
     @ReceiveEvent
     public void onEffectRemoved(OnEffectRemoveEvent event, EntityRef instigator) {
         // This is used as a guard/delimiter so that removal event intended for other systems will not affect this one.
         if (!event.getEffectId().equals(POTION_EFFECT_PREFIX)
-                && !event.getEffectId().equals(AlterationEffects.CONSUMABLE_ITEM) ) {
+            && !event.getEffectId().equals(AlterationEffects.CONSUMABLE_ITEM)) {
             return;
         }
 
