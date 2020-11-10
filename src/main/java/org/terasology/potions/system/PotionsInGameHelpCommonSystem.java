@@ -20,7 +20,6 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.entitySystem.systems.UpdateSubscriberSystem;
 import org.terasology.inGameHelpAPI.event.OnAddNewCategoryEvent;
 import org.terasology.logic.players.LocalPlayer;
-import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 
 /**
