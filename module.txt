@@ -1,19 +1,40 @@
 {
-    "id": "Potions",
-    "version": "1.3.0",
-    "author": "bi0hax, XTariq, shardulc, S-ulphuric, kallentu, Mandar Juvekar, Arpit Kamboj (digitalripperynr), SufurElite, JayGupta2003, He Who Shall Not Be Named (VaibhavBajaj), mdj117, FieryPhoenix909, jellysnake",
-    "displayName": "Potions",
-    "description": "A small collection of various potions that can be consumed for several effects.",
-    "dependencies": [
-        { "id": "AlterationEffects", "minVersion": "1.1.0" },
-        { "id": "Durability", "minVersion": "1.1.0" },
-        { "id": "Explosives", "minVersion": "1.0.0" },
-        { "id": "Fluid", "minVersion": "2.0.0" },
-        { "id": "Health", "minVersion": "1.0.0" },
-        { "id": "InGameHelpAPI", "minVersion": "1.0.0" },
-        { "id": "Inventory", "minVersion": "1.1.0" }
-    ],
-    "serverSideOnly": false,
-    "isAsset": true,
-    "isLibrary": true
+  "id": "Potions",
+  "version": "1.4.0-SNAPSHOT",
+  "author": "bi0hax, XTariq, shardulc, S-ulphuric, kallentu, Mandar Juvekar, Arpit Kamboj (digitalripperynr), SufurElite, JayGupta2003, He Who Shall Not Be Named (VaibhavBajaj), mdj117, FieryPhoenix909, jellysnake",
+  "displayName": "Potions",
+  "description": "A small collection of various potions that can be consumed for several effects.",
+  "dependencies": [
+    {
+      "id": "AlterationEffects",
+      "minVersion": "1.1.0"
+    },
+    {
+      "id": "Durability",
+      "minVersion": "1.1.0"
+    },
+    {
+      "id": "Explosives",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "Fluid",
+      "minVersion": "2.0.0"
+    },
+    {
+      "id": "Health",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "InGameHelpAPI",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "Inventory",
+      "minVersion": "1.1.0"
+    }
+  ],
+  "serverSideOnly": false,
+  "isAsset": true,
+  "isLibrary": true
 }
