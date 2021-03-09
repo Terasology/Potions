@@ -15,7 +15,7 @@
  */
 package org.terasology.potions;
 
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.EntityRef;
 
 /**
  * Interface for the application of various herb effects over a period of time.

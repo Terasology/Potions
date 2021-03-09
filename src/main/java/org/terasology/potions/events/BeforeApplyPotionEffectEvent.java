@@ -6,8 +6,8 @@ package org.terasology.potions.events;
 import gnu.trove.iterator.TFloatIterator;
 import gnu.trove.list.TFloatList;
 import gnu.trove.list.array.TFloatArrayList;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ConsumableEvent;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ConsumableEvent;
 import org.terasology.potions.component.PotionComponent;
 import org.terasology.potions.component.PotionEffect;
 

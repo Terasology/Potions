@@ -3,7 +3,7 @@
 
 package org.terasology.potions.effect;
 
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.explosives.logic.ExplosionActionComponent;
 import org.terasology.potions.HerbEffect;
 

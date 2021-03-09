@@ -15,12 +15,12 @@
  */
 package org.terasology.potions.system;
 
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.entitySystem.systems.UpdateSubscriberSystem;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.systems.UpdateSubscriberSystem;
+import org.terasology.engine.logic.players.LocalPlayer;
+import org.terasology.engine.registry.In;
 import org.terasology.inGameHelpAPI.event.OnAddNewCategoryEvent;
-import org.terasology.logic.players.LocalPlayer;
-import org.terasology.registry.In;
 
 /**
  * This system is used to add the PotionsCategory help category by sending it to the appropriate handler system over in

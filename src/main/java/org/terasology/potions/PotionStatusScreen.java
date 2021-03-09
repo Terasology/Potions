@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.potions;
 
-import org.terasology.rendering.nui.CoreScreenLayer;
+import org.terasology.engine.rendering.nui.CoreScreenLayer;
 import org.terasology.nui.widgets.UILabel;
 
 public class PotionStatusScreen extends CoreScreenLayer {

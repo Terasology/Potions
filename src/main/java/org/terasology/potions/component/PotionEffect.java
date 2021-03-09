@@ -3,7 +3,7 @@
 
 package org.terasology.potions.component;
 
-import org.terasology.network.Replicate;
+import org.terasology.engine.network.Replicate;
 import org.terasology.reflection.MappedContainer;
 
 /** Common class for describing an effect that may be present in a potion. */

@@ -3,15 +3,15 @@
 
 package org.terasology.potions.system;
 
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.potions.component.PotionComponent;
-import org.terasology.logic.common.DisplayNameComponent;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.logic.common.DisplayNameComponent;
+import org.terasology.engine.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.nui.widgets.TooltipLine;
+import org.terasology.potions.component.PotionComponent;
 
 /**
  * Client system that handles how tooltips are displayed for potions.
