@@ -18,7 +18,7 @@ package org.terasology.potions.effect;
 import org.joml.Math;
 import org.joml.RoundingMode;
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.logic.health.event.DoRestoreEvent;
+import org.terasology.module.health.events.DoRestoreEvent;
 import org.terasology.potions.HerbEffect;
 
 /**
