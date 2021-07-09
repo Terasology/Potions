@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 package org.terasology.potions.component;
@@ -20,4 +20,12 @@ public class PotionEffect {
     /** Duration of the potion's effect in milliseconds. */
     @Replicate
     public long duration;
+
+    public PotionEffect copy() {
+        PotionEffect newPE = new PotionEffect();
+        newPE.effect = this.effect;
+        newPE.magnitude = this.magnitude;
+        newPE.duration = this.duration;
+        return newPE;
+    }
 }

@@ -1,20 +1,21 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 
 package org.terasology.potions.component;
 
 import com.google.common.collect.Lists;
-import org.terasology.engine.entitySystem.Component;
 import org.terasology.engine.network.Replicate;
+import org.terasology.gestalt.entitysystem.component.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This component is used for storing information about a potion. Specifically, what potion bottle it came from, the
  * durability cost per drink, whether it has a genome, and all of the potion's effects.
  */
-public final class PotionComponent implements Component {
+public final class PotionComponent implements Component<PotionComponent> {
     /** Can this potion bottle be reused indefinitely. */
     @Replicate
     public boolean hasInfDurability = false;
@@ -36,4 +37,15 @@ public final class PotionComponent implements Component {
     /** List of PotionEffects that this potion has. */
     @Replicate
     public List<PotionEffect> effects = Lists.newArrayList();
+
+    @Override
+    public void copy(PotionComponent other) {
+        this.hasInfDurability = other.hasInfDurability;
+        this.bottlePrefab = other.bottlePrefab;
+        this.costPerDrink = other.costPerDrink;
+        this.hasGenome = other.hasGenome;
+        this.effects = other.effects.stream()
+                .map(PotionEffect::copy)
+                .collect(Collectors.toList());
+    }
 }
