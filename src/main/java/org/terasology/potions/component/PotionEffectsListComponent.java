@@ -22,7 +22,7 @@ public class PotionEffectsListComponent implements Component<PotionEffectsListCo
     public Map<String, PotionEffect> effects = new HashMap<String, PotionEffect>();
 
     @Override
-    public void copy(PotionEffectsListComponent other) {
+    public void copyFrom(PotionEffectsListComponent other) {
         effects.clear();
         other.effects.forEach((k, v) -> this.effects.put(k, v.copy()));
     }

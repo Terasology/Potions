@@ -39,7 +39,7 @@ public final class PotionComponent implements Component<PotionComponent> {
     public List<PotionEffect> effects = Lists.newArrayList();
 
     @Override
-    public void copy(PotionComponent other) {
+    public void copyFrom(PotionComponent other) {
         this.hasInfDurability = other.hasInfDurability;
         this.bottlePrefab = other.bottlePrefab;
         this.costPerDrink = other.costPerDrink;
