@@ -18,17 +18,18 @@ package org.terasology.potions;
 import org.terasology.engine.entitySystem.entity.EntityManager;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.event.EventPriority;
+import org.terasology.engine.entitySystem.event.Priority;
 import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.input.binds.general.PauseButton;
-import org.terasology.module.inventory.input.InventoryButton;
 import org.terasology.engine.logic.delay.DelayManager;
 import org.terasology.engine.logic.delay.PeriodicActionTriggeredEvent;
 import org.terasology.engine.registry.In;
 import org.terasology.engine.rendering.nui.NUIManager;
 import org.terasology.input.ButtonState;
+import org.terasology.module.inventory.input.InventoryButton;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.events.DrinkPotionEvent;
 
@@ -59,7 +60,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
     public void initialise() {
     }
 
-    @ReceiveEvent(priority = 110)
+    @Priority(110)
+    @ReceiveEvent
     public void inventoryToggled(InventoryButton event, EntityRef entity) {
         if (event.getState() == ButtonState.DOWN) {
             nuiManager.toggleScreen(POTION_STATUS_SCREEN_NAME);
@@ -68,7 +70,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
         }
     }
 
-    @ReceiveEvent(priority = 110)
+    @Priority(110)
+    @ReceiveEvent
     public void inventoryToggledOff(PauseButton event, EntityRef entity) {
         if (nuiManager.isOpen(POTION_STATUS_SCREEN_NAME)) {
             nuiManager.closeScreen(POTION_STATUS_SCREEN_NAME);
@@ -77,7 +80,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
         }
     }
 
-    @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH)
+    @Priority(EventPriority.PRIORITY_HIGH)
+    @ReceiveEvent
     public void onPotionDrink(DrinkPotionEvent event, EntityRef entity) {
 
         for (PotionEffect effect : event.getPotionComponent().effects) {
