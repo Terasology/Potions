@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 package org.terasology.potions.system;
@@ -7,9 +7,9 @@ import org.terasology.alterationEffects.AlterationEffects;
 import org.terasology.alterationEffects.OnEffectModifyEvent;
 import org.terasology.alterationEffects.OnEffectRemoveEvent;
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.component.PotionEffectsListComponent;
 import org.terasology.potions.events.BeforeApplyPotionEffectEvent;

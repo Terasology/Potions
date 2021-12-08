@@ -1,34 +1,22 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.potions;
 
 import org.terasology.engine.entitySystem.entity.EntityManager;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.event.EventPriority;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.event.Priority;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.input.binds.general.PauseButton;
-import org.terasology.module.inventory.input.InventoryButton;
 import org.terasology.engine.logic.delay.DelayManager;
 import org.terasology.engine.logic.delay.PeriodicActionTriggeredEvent;
 import org.terasology.engine.registry.In;
 import org.terasology.engine.rendering.nui.NUIManager;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.input.ButtonState;
+import org.terasology.module.inventory.input.InventoryButton;
 import org.terasology.potions.component.PotionEffect;
 import org.terasology.potions.events.DrinkPotionEvent;
 
@@ -59,7 +47,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
     public void initialise() {
     }
 
-    @ReceiveEvent(priority = 110)
+    @Priority(110)
+    @ReceiveEvent
     public void inventoryToggled(InventoryButton event, EntityRef entity) {
         if (event.getState() == ButtonState.DOWN) {
             nuiManager.toggleScreen(POTION_STATUS_SCREEN_NAME);
@@ -68,7 +57,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
         }
     }
 
-    @ReceiveEvent(priority = 110)
+    @Priority(110)
+    @ReceiveEvent
     public void inventoryToggledOff(PauseButton event, EntityRef entity) {
         if (nuiManager.isOpen(POTION_STATUS_SCREEN_NAME)) {
             nuiManager.closeScreen(POTION_STATUS_SCREEN_NAME);
@@ -77,7 +67,8 @@ public class PotionStatusUISystem extends BaseComponentSystem {
         }
     }
 
-    @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH)
+    @Priority(EventPriority.PRIORITY_HIGH)
+    @ReceiveEvent
     public void onPotionDrink(DrinkPotionEvent event, EntityRef entity) {
 
         for (PotionEffect effect : event.getPotionComponent().effects) {

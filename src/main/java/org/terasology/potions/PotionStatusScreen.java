@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.potions;
 
@@ -34,15 +34,16 @@ public class PotionStatusScreen extends CoreScreenLayer {
     //Tweaked from http://stackoverflow.com/a/1086134
     @Deprecated
     public static String toTitleCase(String input) {
-        input = input.replace('_', ' ').toLowerCase();
+        String inputString = input.replace('_', ' ').toLowerCase();
         StringBuilder titleCase = new StringBuilder();
         boolean nextTitleCase = true;
 
-        for (char c : input.toCharArray()) {
+        for (char c : inputString.toCharArray()) {
+            char character = c;
             if (Character.isSpaceChar(c)) {
                 nextTitleCase = true;
             } else if (nextTitleCase) {
-                c = Character.toTitleCase(c);
+                character = Character.toTitleCase(c);
                 nextTitleCase = false;
             }
 
